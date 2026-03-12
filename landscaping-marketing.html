@@ -114,6 +114,11 @@
     .footer-link { font-size: 14px; font-weight: 500; color: rgba(255,255,255,0.55); text-decoration: none; transition: color 0.2s ease; }
     .footer-link:hover { color: var(--white); }
     .footer-copy { text-align: center; font-size: 12px; color: rgba(255,255,255,0.25); padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.06); margin-top: 24px; }
+    .footer-industries { display: flex; flex-direction: column; gap: 12px; width: 100%; padding: 24px 0; border-top: 1px solid rgba(255,255,255,0.06); }
+    .footer-industries-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.3); }
+    .footer-industries-links { display: flex; flex-wrap: wrap; gap: 10px; }
+    .footer-industry-link { font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.55); text-decoration: none; padding: 6px 14px; border: 1px solid rgba(255,255,255,0.1); border-radius: 100px; transition: color 0.2s, border-color 0.2s; }
+    .footer-industry-link:hover { color: var(--white); border-color: rgba(255,255,255,0.3); }
     .reveal { opacity: 0; transform: translateY(32px); transition: opacity 0.65s ease, transform 0.65s ease; will-change: opacity, transform; }
     .reveal.visible { opacity: 1; transform: translateY(0); will-change: auto; }
     .reveal-delay-1 { transition-delay: 0.1s; } .reveal-delay-2 { transition-delay: 0.2s; } .reveal-delay-3 { transition-delay: 0.3s; }
@@ -353,6 +358,7 @@
           <input type="hidden" name="_template" value="table" />
           <input type="hidden" name="_cc" value="4783615444@vtext.com" />
           <input type="hidden" name="_next" value="" />
+          <input type="hidden" name="Source Page" value="Landscaping" />
           <div class="form-grid">
             <div class="form-section-title">Your Information</div>
             <div class="form-group">
@@ -441,27 +447,6 @@
   </div>
 
   <script>
-    // Nav scroll shadow
-    const navbar = document.getElementById('navbar');
-    if (navbar) {
-      let ticking = false;
-      window.addEventListener('scroll', () => {
-        if (!ticking) {
-          requestAnimationFrame(() => {
-            navbar.classList.toggle('scrolled', window.scrollY > 10);
-            ticking = false;
-          });
-          ticking = true;
-        }
-      });
-    }
-
-    // Reveal on scroll
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
     function openModal() {
       document.getElementById('formModal').classList.add('open');
       document.body.style.overflow = 'hidden';
@@ -474,11 +459,9 @@
       if (e.target === document.getElementById('formModal')) closeModal();
     }
     document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
-
     function toggleOther(id) {
       document.getElementById(id).classList.toggle('visible');
     }
-
     async function handleSubmit(e) {
       e.preventDefault();
       const form = document.getElementById('leadForm');

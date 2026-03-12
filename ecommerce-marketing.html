@@ -317,6 +317,7 @@
           <input type="hidden" name="_template" value="table" />
           <input type="hidden" name="_cc" value="4783615444@vtext.com" />
           <input type="hidden" name="_next" value="" />
+          <input type="hidden" name="Source Page" value="Ecommerce" />
           <div class="form-grid">
             <div class="form-section-title">Your Information</div>
             <div class="form-group">
@@ -405,27 +406,6 @@
   </div>
 
   <script>
-    // Nav scroll shadow
-    const navbar = document.getElementById('navbar');
-    if (navbar) {
-      let ticking = false;
-      window.addEventListener('scroll', () => {
-        if (!ticking) {
-          requestAnimationFrame(() => {
-            navbar.classList.toggle('scrolled', window.scrollY > 10);
-            ticking = false;
-          });
-          ticking = true;
-        }
-      });
-    }
-
-    // Reveal on scroll
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
     function openModal() {
       document.getElementById('formModal').classList.add('open');
       document.body.style.overflow = 'hidden';
@@ -438,11 +418,9 @@
       if (e.target === document.getElementById('formModal')) closeModal();
     }
     document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
-
     function toggleOther(id) {
       document.getElementById(id).classList.toggle('visible');
     }
-
     async function handleSubmit(e) {
       e.preventDefault();
       const form = document.getElementById('leadForm');
