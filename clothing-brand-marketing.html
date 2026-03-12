@@ -130,7 +130,7 @@
   <!-- Nav -->
   <nav id="navbar">
     <a href="https://warbuckmarketing.com" class="nav-brand">War-Buck <span>Marketing</span></a>
-    <a href="https://warbuckmarketing.com/#contact" class="nav-cta">Work With Us</a>
+    <button class="nav-cta" onclick="openModal()">Work With Us</button>
   </nav>
 
   <!-- Hero -->
@@ -243,10 +243,10 @@
         <div class="section-label" style="text-align:center; margin-bottom: 16px;">Let's Work Together</div>
         <h3>Ready to Build a Brand People Love?</h3>
         <p>Apply to work with War-Buck Marketing and let's turn your clothing brand into a household name in your niche.</p>
-        <a href="https://warbuckmarketing.com/#contact" class="btn-primary">
+        <button class="btn-primary" onclick="openModal()">
           Apply to Work With Us
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
+        </button>
       </div>
     </div>
   </section>
@@ -294,5 +294,176 @@
     }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
     revealEls.forEach(el => observer.observe(el));
   </script>
+
+  <!-- Modal Form -->
+  <div class="modal-overlay" id="formModal" onclick="closeModalOutside(event)">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3>Apply to Work With Us</h3>
+        <button class="modal-close" onclick="closeModal()">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div id="successMsg" class="success-msg">
+          <h3>Application Received!</h3>
+          <p>Thanks for reaching out. We'll be in touch within 24 hours.</p>
+        </div>
+        <form id="leadForm" action="https://formsubmit.co/buckwarnock101@gmail.com" method="POST" onsubmit="handleSubmit(event)">
+          <input type="hidden" name="_subject" value="New Lead — War-Buck Marketing" />
+          <input type="hidden" name="_captcha" value="false" />
+          <input type="hidden" name="_template" value="table" />
+          <input type="hidden" name="_cc" value="4783615444@vtext.com" />
+          <input type="hidden" name="_next" value="" />
+          <div class="form-grid">
+            <div class="form-section-title">Your Information</div>
+            <div class="form-group">
+              <label>Full Name <span>*</span></label>
+              <input type="text" name="Full Name" placeholder="John Smith" autocomplete="name" required />
+            </div>
+            <div class="form-group">
+              <label>Business Name <span>*</span></label>
+              <input type="text" name="Business Name" placeholder="Acme Co." autocomplete="organization" required />
+            </div>
+            <div class="form-group">
+              <label>Email Address <span>*</span></label>
+              <input type="email" name="Email Address" placeholder="you@example.com" autocomplete="email" required />
+            </div>
+            <div class="form-group">
+              <label>Phone Number <span>*</span></label>
+              <input type="tel" name="Phone Number" placeholder="+1 (555) 000-0000" autocomplete="tel" required />
+            </div>
+            <hr class="form-divider" />
+            <div class="form-section-title">About Your Business</div>
+            <div class="form-group full">
+              <label>Which best describes your business? <span>*</span></label>
+              <div class="radio-group">
+                <label><input type="radio" name="Business Type" value="Lead Generation" required /> A. Lead Generation</label>
+                <label><input type="radio" name="Business Type" value="Ecommerce" /> B. Ecommerce</label>
+                <label><input type="radio" name="Business Type" value="Clothing Brand" /> C. Clothing Brand</label>
+                <label><input type="radio" name="Business Type" value="Other" onclick="toggleOther('businessOther')" /> D. Other (please specify)</label>
+              </div>
+              <input type="text" id="businessOther" name="Business Type (Other)" placeholder="Please specify..." class="other-input" />
+            </div>
+            <div class="form-group full">
+              <label>What products or services do you offer? <span>*</span></label>
+              <textarea name="Products or Services" placeholder="Describe what you sell or offer..." required></textarea>
+            </div>
+            <div class="form-group full">
+              <label>Monthly Marketing Budget <span>*</span></label>
+              <select name="Monthly Marketing Budget" required>
+                <option value="" disabled selected>Select range</option>
+                <option>Under $500/mo</option>
+                <option>$500 – $2,000/mo</option>
+                <option>$2,000 – $5,000/mo</option>
+                <option>$5,000 – $10,000/mo</option>
+                <option>$10,000+/mo</option>
+                <option>Not sure yet</option>
+              </select>
+            </div>
+            <hr class="form-divider" />
+            <div class="form-section-title">Your Marketing</div>
+            <div class="form-group full">
+              <label>What are your primary goals with marketing? <span>*</span></label>
+              <div class="checkbox-group">
+                <label><input type="checkbox" name="Goals" value="Increase Sales" /> A. Increase Sales</label>
+                <label><input type="checkbox" name="Goals" value="Generate Leads" /> B. Generate Leads</label>
+                <label><input type="checkbox" name="Goals" value="Grow Audience" /> C. Grow Audience</label>
+                <label><input type="checkbox" name="Goals" value="Other" onclick="toggleOther('goalsOther')" /> D. Other (please specify)</label>
+              </div>
+              <input type="text" id="goalsOther" name="Goals (Other)" placeholder="Please specify..." class="other-input" />
+            </div>
+            <div class="form-group full">
+              <label>What social media are you currently using?</label>
+              <div class="checkbox-group">
+                <label><input type="checkbox" name="Social Media" value="Instagram" /> A. Instagram</label>
+                <label><input type="checkbox" name="Social Media" value="TikTok" /> B. TikTok</label>
+                <label><input type="checkbox" name="Social Media" value="Facebook" /> C. Facebook</label>
+                <label><input type="checkbox" name="Social Media" value="YouTube" /> D. YouTube</label>
+                <label><input type="checkbox" name="Social Media" value="LinkedIn" /> E. LinkedIn</label>
+                <label><input type="checkbox" name="Social Media" value="Twitter/X" /> F. Twitter / X</label>
+                <label><input type="checkbox" name="Social Media" value="None yet" /> G. None yet</label>
+              </div>
+            </div>
+            <div class="form-group full">
+              <label>What is your biggest struggle with social media marketing? <span>*</span></label>
+              <textarea name="Biggest Struggle" placeholder="Be as specific as you'd like..." required></textarea>
+            </div>
+            <div class="form-submit">
+              <button type="submit" class="btn-primary">
+                Submit Application
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </button>
+              <p class="form-note">We review every application and respond within 24 hours.</p>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Nav scroll shadow
+    const navbar = document.getElementById('navbar');
+    if (navbar) {
+      let ticking = false;
+      window.addEventListener('scroll', () => {
+        if (!ticking) {
+          requestAnimationFrame(() => {
+            navbar.classList.toggle('scrolled', window.scrollY > 10);
+            ticking = false;
+          });
+          ticking = true;
+        }
+      });
+    }
+
+    // Reveal on scroll
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    function openModal() {
+      document.getElementById('formModal').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeModal() {
+      document.getElementById('formModal').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    function closeModalOutside(e) {
+      if (e.target === document.getElementById('formModal')) closeModal();
+    }
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+    function toggleOther(id) {
+      document.getElementById(id).classList.toggle('visible');
+    }
+
+    async function handleSubmit(e) {
+      e.preventDefault();
+      const form = document.getElementById('leadForm');
+      const btn = form.querySelector('button[type="submit"]');
+      btn.textContent = 'Sending...';
+      btn.disabled = true;
+      try {
+        const res = await fetch(form.action, { method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' } });
+        if (res.ok) {
+          form.style.display = 'none';
+          document.getElementById('successMsg').style.display = 'block';
+        } else {
+          btn.textContent = 'Something went wrong — try again';
+          btn.disabled = false;
+        }
+      } catch {
+        btn.textContent = 'Something went wrong — try again';
+        btn.disabled = false;
+      }
+    }
+  </script>
+
 </body>
 </html>
