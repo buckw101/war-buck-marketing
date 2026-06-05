@@ -4,13 +4,13 @@
   <meta charset="UTF-8" />
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='12' fill='%232563eb'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='system-ui,sans-serif' font-weight='800' font-size='24' fill='white'>WB</text></svg>" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>War-Buck Marketing | Turn Your Attention Into Revenue</title>
-  <meta name="description" content="War-Buck Marketing helps businesses grow through paid ads and organic social media systems that generate consistent leads." />
+  <title>War-Buck Marketing | Paid Ads & Social Media for Local Service Businesses</title>
+  <meta name="description" content="War-Buck Marketing helps local service businesses — lawn care, contractors, detailers, and more — get consistent, paying customers through paid ads and organic social media. 130 clients added for one business in under 90 days." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
-  <meta property="og:title" content="War-Buck Marketing | Turn Your Attention Into Revenue" />
-  <meta property="og:description" content="War-Buck Marketing helps businesses grow through paid ads and organic social media systems that generate consistent leads." />
+  <meta property="og:title" content="War-Buck Marketing | Stop Chasing Work. Start Turning It Away." />
+  <meta property="og:description" content="We help local service businesses get consistent, paying customers through paid ads and organic social media. 130 clients added for one client in under 90 days." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://warbuckmarketing.com" />
   <meta property="og:image" content="https://warbuckmarketing.com/og-image.svg" />
@@ -559,15 +559,28 @@
       gap: 24px;
     }
 
+    .why-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 8px;
+    }
+
     .stat-card {
-      padding: 32px;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.08);
+      padding: 28px 32px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
       border-radius: var(--radius-lg);
+      transition: background 0.2s ease, border-color 0.2s ease;
+    }
+
+    .stat-card:hover {
+      background: rgba(255,255,255,0.08);
+      border-color: rgba(37,99,235,0.4);
     }
 
     .stat-number {
-      font-size: 48px;
+      font-size: 44px;
       font-weight: 900;
       color: var(--white);
       letter-spacing: -2px;
@@ -580,9 +593,10 @@
     }
 
     .stat-label {
-      font-size: 15px;
+      font-size: 14px;
       color: rgba(255,255,255,0.5);
-      font-weight: 400;
+      font-weight: 500;
+      line-height: 1.4;
     }
 
     /* ── LEAD CAPTURE ── */
@@ -981,7 +995,7 @@
 
     /* ── TESTIMONIALS ── */
     #testimonials {
-      background: var(--gray-50);
+      background: var(--white);
     }
 
     .testimonials-header {
@@ -989,8 +1003,9 @@
     }
 
     .testimonials-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       gap: 24px;
     }
 
@@ -998,16 +1013,23 @@
       background: var(--white);
       border: 1px solid var(--gray-100);
       border-radius: var(--radius-lg);
-      padding: 36px;
+      padding: 48px 56px;
       display: flex;
       flex-direction: column;
-      gap: 20px;
-      transition: box-shadow 0.25s ease, transform 0.25s ease;
+      gap: 24px;
+      width: 100%;
+      max-width: 780px;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
     }
 
-    .testimonial-card:hover {
-      box-shadow: var(--shadow-lg);
-      transform: translateY(-4px);
+    .testimonial-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent), #60a5fa);
     }
 
     .testimonial-stars {
@@ -1020,35 +1042,35 @@
     }
 
     .testimonial-quote {
-      font-size: 16px;
+      font-size: 20px;
       color: var(--gray-700);
-      line-height: 1.7;
-      flex: 1;
+      line-height: 1.65;
       font-style: italic;
+      font-weight: 400;
     }
 
     .testimonial-author {
       display: flex;
       align-items: center;
-      gap: 14px;
+      gap: 16px;
     }
 
     .testimonial-avatar {
-      width: 44px;
-      height: 44px;
+      width: 52px;
+      height: 52px;
       border-radius: 50%;
-      background: var(--accent-light);
+      background: var(--accent);
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 16px;
       font-weight: 800;
-      color: var(--accent);
+      color: var(--white);
       flex-shrink: 0;
     }
 
     .testimonial-name {
-      font-size: 15px;
+      font-size: 16px;
       font-weight: 700;
       color: var(--black);
     }
@@ -1056,6 +1078,179 @@
     .testimonial-biz {
       font-size: 13px;
       color: var(--gray-500);
+      margin-top: 2px;
+    }
+
+    /* ── BTN SECONDARY ── */
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 16px 28px;
+      background: transparent;
+      color: var(--gray-700);
+      font-size: 15px;
+      font-weight: 600;
+      border-radius: var(--radius);
+      text-decoration: none;
+      border: 1.5px solid var(--gray-300);
+      cursor: pointer;
+      transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: var(--accent-light);
+    }
+
+    /* ── CASE STUDY ── */
+    #case-study {
+      background: var(--gray-50);
+      padding: 96px 40px;
+    }
+
+    .case-study-header {
+      margin-bottom: 56px;
+    }
+
+    .case-study-card {
+      background: var(--black);
+      border-radius: var(--radius-lg);
+      padding: 40px 48px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .case-study-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--accent), #60a5fa);
+    }
+
+    .case-study-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 14px;
+      background: rgba(37,99,235,0.25);
+      border: 1px solid rgba(37,99,235,0.45);
+      border-radius: 100px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #60a5fa;
+      margin-bottom: 32px;
+    }
+
+    .case-study-client {
+      font-size: clamp(22px, 3vw, 32px);
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      color: var(--white);
+      margin-bottom: 6px;
+    }
+
+    .case-study-industry {
+      font-size: 14px;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 32px;
+    }
+
+    .case-study-metrics {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2px;
+      background: rgba(255,255,255,0.06);
+      border-radius: 14px;
+      overflow: hidden;
+      margin-bottom: 36px;
+    }
+
+    @media (max-width: 640px) {
+      .case-study-metrics { grid-template-columns: repeat(2, 1fr); }
+      .case-study-card { padding: 28px 20px; }
+    }
+
+    .cs-metric {
+      padding: 22px 16px;
+      background: rgba(0,0,0,0.4);
+      text-align: center;
+    }
+
+    .cs-metric-number {
+      font-size: clamp(28px, 3.5vw, 46px);
+      font-weight: 900;
+      letter-spacing: -2px;
+      line-height: 1;
+      color: var(--white);
+      margin-bottom: 4px;
+    }
+
+    .cs-metric-number span {
+      color: var(--accent);
+    }
+
+    .cs-metric-unit {
+      font-size: 13px;
+      font-weight: 700;
+      color: rgba(255,255,255,0.4);
+      letter-spacing: 0;
+      margin-bottom: 8px;
+    }
+
+    .cs-metric-label {
+      font-size: 12px;
+      color: rgba(255,255,255,0.5);
+      font-weight: 500;
+      line-height: 1.4;
+    }
+
+    .case-study-quote {
+      font-size: 16px;
+      color: rgba(255,255,255,0.7);
+      font-style: italic;
+      line-height: 1.7;
+      border-left: 3px solid var(--accent);
+      padding-left: 20px;
+      margin-bottom: 24px;
+    }
+
+    .case-study-attribution {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .cs-avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--white);
+      flex-shrink: 0;
+    }
+
+    .cs-name {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--white);
+    }
+
+    .cs-biz {
+      font-size: 13px;
+      color: rgba(255,255,255,0.4);
     }
 
     .testimonial-placeholder-note {
@@ -1198,6 +1393,231 @@
     .reveal-delay-3 { transition-delay: 0.3s; }
     .reveal-delay-4 { transition-delay: 0.4s; }
 
+    /* ── WHO IT'S FOR ── */
+    #who {
+      background: var(--white);
+    }
+
+    .who-header {
+      margin-bottom: 56px;
+    }
+
+    .who-body {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+
+    .who-types-label {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gray-500);
+      margin-bottom: 20px;
+    }
+
+    .who-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 40px;
+    }
+
+    .who-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 8px 16px;
+      background: var(--accent-light);
+      border: 1px solid var(--accent-subtle);
+      border-radius: 100px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--accent);
+    }
+
+    .who-chip svg {
+      flex-shrink: 0;
+    }
+
+    .who-checklist {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .who-check-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      font-size: 16px;
+      color: var(--gray-700);
+      line-height: 1.5;
+    }
+
+    .who-check-icon {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .who-check-icon svg {
+      color: var(--white);
+    }
+
+    .who-not {
+      margin-top: 40px;
+      padding: 28px 32px;
+      background: var(--gray-50);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--gray-100);
+    }
+
+    .who-not-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--gray-700);
+      margin-bottom: 14px;
+    }
+
+    .who-not-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .who-not-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 14px;
+      color: var(--gray-500);
+      line-height: 1.5;
+    }
+
+    .who-not-item::before {
+      content: '✕';
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--gray-300);
+      margin-top: 2px;
+      flex-shrink: 0;
+    }
+
+    @media (max-width: 768px) {
+      .who-body { grid-template-columns: 1fr; gap: 40px; }
+    }
+
+    /* ── FAQ ── */
+    #faq {
+      background: var(--white);
+      border-top: 1px solid var(--gray-100);
+    }
+
+    .faq-header {
+      margin-bottom: 56px;
+    }
+
+    .faq-list {
+      max-width: 760px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      border: 1px solid var(--gray-100);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .faq-item {
+      border-bottom: 1px solid var(--gray-100);
+    }
+
+    .faq-item:last-child {
+      border-bottom: none;
+    }
+
+    .faq-question {
+      width: 100%;
+      text-align: left;
+      background: var(--white);
+      border: none;
+      padding: 24px 28px;
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--black);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      transition: background 0.2s ease, color 0.2s ease;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .faq-question:hover {
+      background: var(--gray-50);
+    }
+
+    .faq-question.open {
+      color: var(--accent);
+      background: var(--accent-light);
+    }
+
+    .faq-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      border: 2px solid var(--gray-300);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: border-color 0.2s ease, background 0.2s ease, transform 0.3s ease;
+    }
+
+    .faq-question.open .faq-icon {
+      border-color: var(--accent);
+      background: var(--accent);
+      transform: rotate(45deg);
+    }
+
+    .faq-icon svg {
+      color: var(--gray-500);
+      transition: color 0.2s ease;
+    }
+
+    .faq-question.open .faq-icon svg {
+      color: var(--white);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease, padding 0.25s ease;
+      padding: 0 28px;
+    }
+
+    .faq-answer.open {
+      max-height: 300px;
+      padding: 0 28px 24px;
+    }
+
+    .faq-answer p {
+      font-size: 16px;
+      color: var(--gray-500);
+      line-height: 1.75;
+    }
+
     /* ── RESPONSIVE ── */
     @media (max-width: 768px) {
       nav {
@@ -1237,6 +1657,12 @@
       .process-steps {
         grid-template-columns: 1fr;
       }
+      .testimonial-card {
+        padding: 32px 24px;
+      }
+      .testimonial-quote {
+        font-size: 17px;
+      }
     }
   </style>
 </head>
@@ -1245,43 +1671,49 @@
   <!-- ── NAV ── -->
   <nav id="navbar">
     <a href="#hero" class="nav-brand">War-Buck <span>Marketing</span></a>
-    <button class="nav-cta" onclick="openModal()">Work With Us</button>
+    <button class="nav-cta" onclick="openModal()">Apply Now</button>
   </nav>
 
   <!-- ── HERO ── -->
   <section id="hero">
     <div class="hero-inner">
-      <div class="hero-badge">Digital Marketing Agency</div>
-      <h1>Turn Your Attention<br />Into <em>Revenue.</em></h1>
+      <div class="hero-badge">Local Business Marketing Agency</div>
+      <h1>Stop Chasing Work.<br />Start <em>Turning It Away.</em></h1>
       <p class="hero-sub">
-        War-Buck Marketing helps businesses grow through paid ads and organic social media systems that generate consistent leads.
+        War-Buck Marketing builds paid ads and organic social systems that fill your schedule with consistent, paying customers — so you can focus on the work, not finding it.
       </p>
       <div class="hero-actions">
         <button class="btn-primary" onclick="openModal()">
-          Work With Us
+          Apply Now — It's Free
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
             <path d="M5 12h14M12 5l7 7-7 7" aria-hidden="true"/>
           </svg>
         </button>
+        <a href="#case-study" class="btn-secondary">
+          See a Real Result
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 5v14M5 12l7 7 7-7" aria-hidden="true"/>
+          </svg>
+        </a>
       </div>
       <div class="hero-trust">
         <div class="trust-item">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
             <polyline points="20 6 9 17 4 12"/>
           </svg>
-          Paid Advertising
+          130 clients added in 90 days
         </div>
         <div class="trust-item">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
             <polyline points="20 6 9 17 4 12"/>
           </svg>
-          Organic Social Growth
+          12.6x average ROI
         </div>
         <div class="trust-item">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
             <polyline points="20 6 9 17 4 12"/>
           </svg>
-          Content Strategy
+          Leads in 1–2 weeks
         </div>
       </div>
     </div>
@@ -1292,8 +1724,8 @@
     <div class="section-inner">
       <div class="services-header reveal">
         <div class="section-label">What We Do</div>
-        <h2 class="section-title">Marketing that<br />actually works.</h2>
-        <p class="section-sub">We combine paid and organic strategies to build a lead engine for your business.</p>
+        <h2 class="section-title">Three things. Done right.<br />Consistent results.</h2>
+        <p class="section-sub">We don't try to do everything. We go deep on the three channels that actually move the needle for local service businesses.</p>
       </div>
       <div class="services-grid">
         <div class="service-card reveal reveal-delay-1">
@@ -1305,26 +1737,26 @@
             </svg>
           </div>
           <div class="service-title">Paid Advertising</div>
-          <p class="service-desc">Meta Ads, Instagram Ads, and TikTok Ads that bring in qualified leads and measurable ROI. Every dollar tracked, every result optimized.</p>
+          <p class="service-desc">Targeted Meta and Google Ads that put your business in front of local customers who are ready to buy — right now. Every dollar tracked, every result optimized for ROI.</p>
         </div>
         <div class="service-card reveal reveal-delay-2">
           <div class="service-icon">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.26 10a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.17 1h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 8a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+              <polygon points="23 7 16 12 23 17 23 7"/>
+              <rect x="1" y="5" width="15" height="14" rx="2" ry="2"/>
             </svg>
           </div>
-          <div class="service-title">Organic Social Media Growth</div>
-          <p class="service-desc">Short-form content strategies that build trust, authority, and inbound leads for your business — without depending entirely on paid spend.</p>
+          <div class="service-title">Organic Social Growth</div>
+          <p class="service-desc">Short-form video and content that builds trust, shows your work, and drives inbound calls — without you spending a dollar on ads. Your results become your marketing.</p>
         </div>
         <div class="service-card reveal reveal-delay-3">
           <div class="service-icon">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
-              <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+              <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
             </svg>
           </div>
-          <div class="service-title">Content Strategy</div>
-          <p class="service-desc">We turn your existing work, testimonials, and results into engaging content that attracts new customers daily — without you lifting a finger.</p>
+          <div class="service-title">Lead Systems &amp; Tracking</div>
+          <p class="service-desc">We build the systems behind your marketing — tracking, reporting, and optimization — so you always know what's working, what it's costing, and how to scale it.</p>
         </div>
       </div>
     </div>
@@ -1335,27 +1767,120 @@
     <div class="section-inner">
       <div class="process-header reveal">
         <div class="section-label">Our Process</div>
-        <h2 class="section-title">How It Works</h2>
-        <p class="section-sub">A clear, repeatable system built to generate consistent results.</p>
+        <h2 class="section-title">From zero to booked solid<br />in three steps.</h2>
+        <p class="section-sub">We've refined this process across dozens of local businesses. It works because it's built around your market, not a generic playbook.</p>
       </div>
       <div class="process-steps">
         <div class="step reveal reveal-delay-1">
           <div class="step-number">1</div>
-          <div class="step-name">Step One</div>
+          <div class="step-name">Week One</div>
           <div class="step-title">Strategy</div>
-          <p class="step-desc">We identify where your customers are and build a tailored growth plan around your goals, market, and budget.</p>
+          <p class="step-desc">We audit your market, study your competitors, and build a custom growth plan around your goals, service area, and budget — before we spend a dollar.</p>
         </div>
         <div class="step reveal reveal-delay-2">
           <div class="step-number">2</div>
-          <div class="step-name">Step Two</div>
-          <div class="step-title">Content + Ads</div>
-          <p class="step-desc">We launch organic content that builds authority and paid traffic campaigns that drive immediate, qualified leads.</p>
+          <div class="step-name">Week One–Two</div>
+          <div class="step-title">Build &amp; Launch</div>
+          <p class="step-desc">We create your ad campaigns, content assets, and tracking systems — then launch everything. Most clients see their first leads within 7–14 days of going live.</p>
         </div>
         <div class="step reveal reveal-delay-3">
           <div class="step-number">3</div>
-          <div class="step-name">Step Three</div>
-          <div class="step-title">Scale</div>
-          <p class="step-desc">Winning content gets amplified through ads to generate consistent, scalable leads month after month.</p>
+          <div class="step-name">Ongoing</div>
+          <div class="step-title">Optimize &amp; Scale</div>
+          <p class="step-desc">We monitor performance weekly, cut what's not working, double down on what is, and scale your spend as results improve. You just focus on serving more customers.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── WHO IT'S FOR ── -->
+  <section id="who">
+    <div class="section-inner">
+      <div class="who-header reveal">
+        <div class="section-label">Is This For You?</div>
+        <h2 class="section-title">Built for local service businesses<br />ready to scale.</h2>
+        <p class="section-sub">We specialize in one thing: getting consistent, paying customers to local businesses through paid ads and social media. If that's you, we should talk.</p>
+      </div>
+      <div class="who-body">
+        <div class="reveal">
+          <div class="who-types-label">We work with businesses like</div>
+          <div class="who-chips">
+            <span class="who-chip">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Lawn Care &amp; Landscaping
+            </span>
+            <span class="who-chip">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Home Contractors
+            </span>
+            <span class="who-chip">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Car Detailers
+            </span>
+            <span class="who-chip">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Pressure Washers
+            </span>
+            <span class="who-chip">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Painters
+            </span>
+            <span class="who-chip">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Cleaning Services
+            </span>
+            <span class="who-chip">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Exterior Services
+            </span>
+            <span class="who-chip">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Plumbers &amp; HVAC
+            </span>
+          </div>
+          <div class="who-not">
+            <div class="who-not-title">Probably not a fit if you're...</div>
+            <div class="who-not-list">
+              <div class="who-not-item">Looking for overnight results with zero investment</div>
+              <div class="who-not-item">Not ready to handle more customers right now</div>
+              <div class="who-not-item">A large enterprise or national brand</div>
+            </div>
+          </div>
+        </div>
+        <div class="reveal reveal-delay-1">
+          <div class="who-types-label">You're a great fit if you...</div>
+          <div class="who-checklist">
+            <div class="who-check-item">
+              <div class="who-check-icon">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <span>Run a local service business and want a steady stream of new customers</span>
+            </div>
+            <div class="who-check-item">
+              <div class="who-check-icon">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <span>Are done relying on word-of-mouth and referrals alone</span>
+            </div>
+            <div class="who-check-item">
+              <div class="who-check-icon">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <span>Have a working business and can handle more jobs or clients</span>
+            </div>
+            <div class="who-check-item">
+              <div class="who-check-icon">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <span>Want to invest in marketing that actually produces measurable ROI</span>
+            </div>
+            <div class="who-check-item">
+              <div class="who-check-icon">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <span>Want a hands-on partner, not an agency that disappears after onboarding</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -1378,7 +1903,7 @@
                   <polyline points="20 6 9 17 4 12"/>
                 </svg>
               </div>
-              <p>Data-driven marketing decisions — no guessing, no wasted spend</p>
+              <p>You work directly with us — not a junior account manager</p>
             </div>
             <div class="why-bullet">
               <div class="why-check">
@@ -1386,7 +1911,7 @@
                   <polyline points="20 6 9 17 4 12"/>
                 </svg>
               </div>
-              <p>Modern short-form content strategies built for today's platforms</p>
+              <p>We only take clients we know we can grow — no exceptions</p>
             </div>
             <div class="why-bullet">
               <div class="why-check">
@@ -1394,7 +1919,7 @@
                   <polyline points="20 6 9 17 4 12"/>
                 </svg>
               </div>
-              <p>Paid + organic growth combined for maximum impact</p>
+              <p>Paid + organic combined — your results compound every month</p>
             </div>
             <div class="why-bullet">
               <div class="why-check">
@@ -1402,7 +1927,7 @@
                   <polyline points="20 6 9 17 4 12"/>
                 </svg>
               </div>
-              <p>Focus on real leads and revenue — not vanity metrics</p>
+              <p>We track leads and ROI — you'll always know your numbers</p>
             </div>
             <div class="why-bullet">
               <div class="why-check">
@@ -1410,7 +1935,17 @@
                   <polyline points="20 6 9 17 4 12"/>
                 </svg>
               </div>
-              <p>Hands-on partnership with growing businesses like yours</p>
+              <p>Hyper-specialized in local service businesses — we know your market</p>
+            </div>
+          </div>
+          <div class="why-stats">
+            <div class="stat-card">
+              <div class="stat-number"><span>130</span>+</div>
+              <div class="stat-label">Clients added for one lawn care business in 90 days</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-number"><span>12.6</span>x</div>
+              <div class="stat-label">Return on ad spend achieved for a service client</div>
             </div>
           </div>
         </div>
@@ -1423,8 +1958,8 @@
     <div class="modal-box">
       <div class="modal-header">
         <h3>Apply to Work With Us</h3>
-        <button class="modal-close" onclick="closeModal()">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <button class="modal-close" onclick="closeModal()" aria-label="Close application form">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
           </svg>
         </button>
@@ -1432,8 +1967,9 @@
       <div class="modal-body">
 
         <div id="successMsg" class="success-msg">
-          <h3>Application Received!</h3>
-          <p>Thanks for reaching out. We'll be in touch within 24 hours.</p>
+          <div style="font-size:40px;margin-bottom:16px;">🎯</div>
+          <h3>You're in the queue.</h3>
+          <p>Application received. Buck personally reviews every one — expect a reply within 24 hours. Check your email for a confirmation.</p>
         </div>
 
         <form id="leadForm" action="https://formsubmit.co/buckwarnock101@gmail.com" method="POST" onsubmit="handleSubmit(event)">
@@ -1444,6 +1980,7 @@
             <input type="hidden" name="_template" value="table" />
             <input type="hidden" name="_cc" value="4783615444@vtext.com" />
             <input type="hidden" name="_next" value="" />
+            <input type="hidden" name="_autoresponse" value="Hey! Thanks for applying to work with War-Buck Marketing. I personally review every application and I'll be reaching out to you within 24 hours. Talk soon! — Buck, War-Buck Marketing" />
 
             <div class="form-grid">
 
@@ -1470,7 +2007,6 @@
                 <input type="tel" name="Phone Number" placeholder="+1 (555) 000-0000" autocomplete="tel" required />
               </div>
 
-
               <hr class="form-divider" />
 
               <!-- SECTION: Business -->
@@ -1479,17 +2015,17 @@
               <div class="form-group full">
                 <label>Which best describes your business? <span>*</span></label>
                 <div class="radio-group">
-                  <label><input type="radio" name="Business Type" value="Lead Generation" required /> A. Lead Generation</label>
-                  <label><input type="radio" name="Business Type" value="Ecommerce" /> B. Ecommerce</label>
-                  <label><input type="radio" name="Business Type" value="Clothing Brand" /> C. Clothing Brand</label>
-                  <label><input type="radio" name="Business Type" value="Other" onclick="toggleOther('businessOther')" /> D. Other (please specify)</label>
+                  <label><input type="radio" name="Business Type" value="Lawn Care / Landscaping" required /> Lawn Care / Landscaping</label>
+                  <label><input type="radio" name="Business Type" value="Home Services / Contracting" /> Home Services / Contracting</label>
+                  <label><input type="radio" name="Business Type" value="Car Detailing" /> Car Detailing</label>
+                  <label><input type="radio" name="Business Type" value="Other Service Business" onclick="toggleOther('businessOther')" /> Other (please specify)</label>
                 </div>
-                <input type="text" id="businessOther" name="Business Type (Other)" placeholder="Please specify..." class="other-input" />
+                <input type="text" id="businessOther" name="Business Type (Other)" placeholder="Describe your business..." class="other-input" />
               </div>
 
               <div class="form-group full">
-                <label>What products or services do you offer? <span>*</span></label>
-                <textarea name="Products or Services" placeholder="Describe what you sell or offer..." required></textarea>
+                <label>What services do you offer? <span>*</span></label>
+                <textarea name="Products or Services" placeholder="e.g. weekly lawn maintenance, landscaping installs, seasonal cleanups..." required></textarea>
               </div>
 
               <div class="form-group full">
@@ -1513,10 +2049,10 @@
               <div class="form-group full">
                 <label>What are your primary goals with marketing? <span>*</span></label>
                 <div class="checkbox-group">
-                  <label><input type="checkbox" name="Goals" value="Increase Sales" /> A. Increase Sales</label>
-                  <label><input type="checkbox" name="Goals" value="Generate Leads" /> B. Generate Leads</label>
-                  <label><input type="checkbox" name="Goals" value="Grow Audience" /> C. Grow Audience</label>
-                  <label><input type="checkbox" name="Goals" value="Other" onclick="toggleOther('goalsOther')" /> D. Other (please specify)</label>
+                  <label><input type="checkbox" name="Goals" value="Increase Sales" /> Increase Sales &amp; Revenue</label>
+                  <label><input type="checkbox" name="Goals" value="Generate Leads" /> Generate More Leads</label>
+                  <label><input type="checkbox" name="Goals" value="Grow Audience" /> Grow Social Media Presence</label>
+                  <label><input type="checkbox" name="Goals" value="Other" onclick="toggleOther('goalsOther')" /> Other (please specify)</label>
                 </div>
                 <input type="text" id="goalsOther" name="Goals (Other)" placeholder="Please specify..." class="other-input" />
               </div>
@@ -1524,19 +2060,18 @@
               <div class="form-group full">
                 <label>What social media are you currently using?</label>
                 <div class="checkbox-group">
-                  <label><input type="checkbox" name="Social Media" value="Instagram" /> A. Instagram</label>
-                  <label><input type="checkbox" name="Social Media" value="TikTok" /> B. TikTok</label>
-                  <label><input type="checkbox" name="Social Media" value="Facebook" /> C. Facebook</label>
-                  <label><input type="checkbox" name="Social Media" value="YouTube" /> D. YouTube</label>
-                  <label><input type="checkbox" name="Social Media" value="LinkedIn" /> E. LinkedIn</label>
-                  <label><input type="checkbox" name="Social Media" value="Twitter/X" /> F. Twitter / X</label>
-                  <label><input type="checkbox" name="Social Media" value="None yet" /> G. None yet</label>
+                  <label><input type="checkbox" name="Social Media" value="Instagram" /> Instagram</label>
+                  <label><input type="checkbox" name="Social Media" value="TikTok" /> TikTok</label>
+                  <label><input type="checkbox" name="Social Media" value="Facebook" /> Facebook</label>
+                  <label><input type="checkbox" name="Social Media" value="YouTube" /> YouTube</label>
+                  <label><input type="checkbox" name="Social Media" value="LinkedIn" /> LinkedIn</label>
+                  <label><input type="checkbox" name="Social Media" value="None yet" /> None yet</label>
                 </div>
               </div>
 
               <div class="form-group full">
-                <label>What is your biggest struggle with social media marketing? <span>*</span></label>
-                <textarea name="Biggest Struggle" placeholder="Be as specific as you'd like..." required></textarea>
+                <label>What's your biggest challenge getting customers right now? <span>*</span></label>
+                <textarea name="Biggest Struggle" placeholder="e.g. inconsistent leads, slow season, tried ads but nothing worked, don't know where to start..." required></textarea>
               </div>
 
               <div class="form-submit">
@@ -1556,67 +2091,134 @@
     </div>
   </div>
 
-  <!-- ── TESTIMONIALS ── -->
-  <section id="testimonials">
+  <!-- ── CASE STUDY ── -->
+  <section id="case-study">
     <div class="section-inner">
-      <div class="testimonials-header reveal">
-        <div class="section-label">Client Results</div>
-        <h2 class="section-title">What our clients say.</h2>
-        <p class="section-sub">Real businesses. Real growth. Real results.</p>
+      <div class="case-study-header reveal">
+        <div class="section-label">Case Study</div>
+        <h2 class="section-title">Real numbers.<br />Real business. Real fast.</h2>
+        <p class="section-sub">Here's exactly what we built for a local lawn care company — and what's possible for yours.</p>
       </div>
-      <div class="testimonials-grid">
 
-        <div class="testimonial-card reveal reveal-delay-1">
-          <div class="testimonial-stars">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      <div class="case-study-card reveal">
+        <div class="case-study-tag">Featured Client Win</div>
+        <div class="case-study-client">Attaboy Lawn Care</div>
+        <div class="case-study-industry">Lawn Care &amp; Landscaping &nbsp;·&nbsp; Local Service Business</div>
+
+        <div class="case-study-metrics">
+          <div class="cs-metric">
+            <div class="cs-metric-number"><span>130</span></div>
+            <div class="cs-metric-label">Monthly Paying<br />Clients Added</div>
           </div>
-          <p class="testimonial-quote">"Replace this with a real client quote. Something specific — mention the result, the timeline, and how it changed their business."</p>
-          <div class="testimonial-author">
-            <div class="testimonial-avatar">JD</div>
-            <div>
-              <div class="testimonial-name">Client Name</div>
-              <div class="testimonial-biz">Business Type</div>
-            </div>
+          <div class="cs-metric">
+            <div class="cs-metric-number">&lt;<span>90</span></div>
+            <div class="cs-metric-label">Days to<br />Achieve This</div>
+          </div>
+          <div class="cs-metric">
+            <div class="cs-metric-number"><span>12.6</span>x</div>
+            <div class="cs-metric-label">Return on<br />Ad Spend</div>
+          </div>
+          <div class="cs-metric">
+            <div class="cs-metric-number">$<span>200</span></div>
+            <div class="cs-metric-unit">/day</div>
+            <div class="cs-metric-label">Consistent Revenue<br />From Ads</div>
           </div>
         </div>
 
-        <div class="testimonial-card reveal reveal-delay-2">
-          <div class="testimonial-stars">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <blockquote class="case-study-quote">
+          "War-Buck took us from struggling to find consistent work to 130 monthly paying clients in under 90 days. The system they built just runs — we focus on the work, they handle the leads."
+        </blockquote>
+
+        <div class="case-study-attribution">
+          <div class="cs-avatar">AL</div>
+          <div>
+            <div class="cs-name">Attaboy Lawn Care</div>
+            <div class="cs-biz">Lawn Care &amp; Landscaping Company</div>
           </div>
-          <p class="testimonial-quote">"Replace this with a real client quote. The more specific the result, the more it converts — leads, followers, revenue, saved time."</p>
-          <div class="testimonial-author">
-            <div class="testimonial-avatar">SM</div>
-            <div>
-              <div class="testimonial-name">Client Name</div>
-              <div class="testimonial-biz">Business Type</div>
-            </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FAQ ── -->
+  <section id="faq">
+    <div class="section-inner">
+      <div class="faq-header reveal">
+        <div class="section-label">FAQ</div>
+        <h2 class="section-title">Questions we hear<br />all the time.</h2>
+        <p class="section-sub">Straight answers. No fluff.</p>
+      </div>
+      <div class="faq-list reveal">
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            How fast will I see results?
+            <span class="faq-icon">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </span>
+          </button>
+          <div class="faq-answer">
+            <p>Most clients start seeing leads within the first 1–2 weeks of launching ads. Organic growth takes a little longer — typically 30–60 days to build real momentum. Our fastest result so far was Attaboy Lawn Care hitting 130 monthly paying clients in under 90 days.</p>
           </div>
         </div>
 
-        <div class="testimonial-card reveal reveal-delay-3">
-          <div class="testimonial-stars">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            What platforms do you run ads on?
+            <span class="faq-icon">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </span>
+          </button>
+          <div class="faq-answer">
+            <p>Primarily Meta (Facebook &amp; Instagram) and Google Ads — these two platforms drive the most ROI for local service businesses. We also build organic presence on TikTok, Instagram, and Facebook depending on your business type and where your customers spend time.</p>
           </div>
-          <p class="testimonial-quote">"Replace this with a real client quote. Even one sentence from a happy client can dramatically increase how many people apply."</p>
-          <div class="testimonial-author">
-            <div class="testimonial-avatar">RK</div>
-            <div>
-              <div class="testimonial-name">Client Name</div>
-              <div class="testimonial-biz">Business Type</div>
-            </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            Do I need a big budget to get started?
+            <span class="faq-icon">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </span>
+          </button>
+          <div class="faq-answer">
+            <p>No — we've gotten strong results for clients starting with modest ad budgets. The key is how the money is spent, not just how much. We'll tell you during the application call exactly what we'd recommend based on your goals and market.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            What industries do you work with?
+            <span class="faq-icon">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </span>
+          </button>
+          <div class="faq-answer">
+            <p>We focus on local service businesses — lawn care, landscaping, contractors, car detailers, painters, cleaners, pressure washers, HVAC, plumbing, and similar trades. These are the businesses we know best and consistently get results for.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            How is this different from hiring a big agency?
+            <span class="faq-icon">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </span>
+          </button>
+          <div class="faq-answer">
+            <p>At a big agency you're account #247 and talking to a junior rep. At War-Buck, you work directly with us — the people who built the strategy and run your ads. We only take on clients we're confident we can grow, and we stay involved in the results week over week.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            What does working together actually look like?
+            <span class="faq-icon">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </span>
+          </button>
+          <div class="faq-answer">
+            <p>You apply, we review your application and hop on a short strategy call. If it's a fit, we build your ads and content system, launch within about a week, and optimize from there. You'll always know what's running, what's working, and where your money is going.</p>
           </div>
         </div>
 
@@ -1629,15 +2231,15 @@
     <div class="section-inner">
       <div class="contact-inner">
         <div class="section-label reveal">Get Started</div>
-        <h2 class="section-title reveal">Ready to Grow Your Business?</h2>
+        <h2 class="section-title reveal">Stop relying on referrals.<br />Start owning your market.</h2>
         <p class="section-sub reveal">
-          If you're serious about growing through modern digital marketing, apply below. We'll review your application and reach out within 24 hours.
+          Apply in under 3 minutes. We review every application personally and reach out within 24 hours with a real opinion — not a sales pitch.
         </p>
         <div class="contact-cta-box reveal">
-          <h3>Work With War-Buck Marketing</h3>
-          <p>Takes less than 3 minutes. We only work with businesses we know we can help.</p>
+          <h3>Apply to Work With War-Buck Marketing</h3>
+          <p>We only accept clients we're confident we can grow. If we don't think we're the right fit, we'll tell you straight.</p>
           <button class="btn-primary btn-lg" onclick="openModal()">
-            Apply Now
+            Apply Now — It's Free
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
               <path d="M5 12h14M12 5l7 7-7 7" aria-hidden="true"/>
             </svg>
@@ -1666,11 +2268,11 @@
     <div class="footer-inner">
       <div class="footer-brand">
         <div class="footer-brand-name">War-Buck <span>Marketing</span></div>
-        <div class="footer-tagline">Digital Marketing &amp; Social Growth</div>
+        <div class="footer-tagline">Local Business Marketing Agency</div>
       </div>
       <div class="footer-links">
-        <a href="https://www.instagram.com/buckscales/" class="footer-link" target="_blank" rel="noopener">Instagram</a>
-        <a href="mailto:hello@warbuckmarketing.com" class="footer-link">Email Us</a>
+        <a href="https://www.instagram.com/buckscales/" class="footer-link" target="_blank" rel="noopener noreferrer">Instagram</a>
+        <a href="mailto:buckwarnock101@gmail.com" class="footer-link">Email Us</a>
       </div>
     </div>
     <div class="footer-inner" style="margin-top: 8px;">
@@ -1693,11 +2295,6 @@
   </footer>
 
   <script>
-    // ── Smooth scroll to contact ──
-    function scrollToContact() {
-      document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
-    }
-
     // ── Nav shadow on scroll (rAF throttled) ──
     const navbar = document.getElementById('navbar');
     let rafPending = false;
@@ -1753,6 +2350,42 @@
     }
 
     // ── Form submission ──
+    const SUPABASE_URL = 'https://mlpwadopeqisrgflqwbi.supabase.co';
+    const SUPABASE_ANON_KEY = 'sb_publishable_YQO_ZljWCubOqvMpHylkFw_hnnmPPsA';
+
+    async function saveLeadToSupabase(data) {
+      const businessType = data.get('Business Type') === 'Other'
+        ? (data.get('Business Type (Other)') || 'Other')
+        : data.get('Business Type');
+
+      const goalsArr = data.getAll('Goals').filter(g => g !== 'Other');
+      if (data.get('Goals (Other)')) goalsArr.push(data.get('Goals (Other)'));
+
+      const lead = {
+        full_name: data.get('Full Name'),
+        business_name: data.get('Business Name'),
+        email: data.get('Email Address'),
+        phone: data.get('Phone Number'),
+        business_type: businessType,
+        products_services: data.get('Products or Services'),
+        monthly_budget: data.get('Monthly Marketing Budget'),
+        goals: goalsArr.join(', '),
+        social_media: data.getAll('Social Media').join(', '),
+        biggest_struggle: data.get('Biggest Struggle'),
+      };
+
+      await fetch(`${SUPABASE_URL}/rest/v1/leads`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'apikey': SUPABASE_ANON_KEY,
+          'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+          'Prefer': 'return=minimal',
+        },
+        body: JSON.stringify(lead),
+      });
+    }
+
     async function handleSubmit(e) {
       e.preventDefault();
       const form = document.getElementById('leadForm');
@@ -1762,13 +2395,12 @@
 
       try {
         const data = new FormData(form);
-        const res = await fetch(form.action, {
-          method: 'POST',
-          body: data,
-          headers: { 'Accept': 'application/json' }
-        });
+        const [emailRes] = await Promise.allSettled([
+          fetch(form.action, { method: 'POST', body: data, headers: { 'Accept': 'application/json' } }),
+          saveLeadToSupabase(data),
+        ]);
 
-        if (res.ok) {
+        if (emailRes.status === 'fulfilled' && emailRes.value.ok) {
           form.style.display = 'none';
           document.getElementById('successMsg').style.display = 'block';
         } else {
@@ -1778,6 +2410,21 @@
       } catch (err) {
         btn.textContent = 'Something went wrong — try again';
         btn.disabled = false;
+      }
+    }
+  </script>
+  <script>
+    function toggleFaq(btn) {
+      const answer = btn.nextElementSibling;
+      const isOpen = btn.classList.contains('open');
+      // close all
+      document.querySelectorAll('.faq-question.open').forEach(q => {
+        q.classList.remove('open');
+        q.nextElementSibling.classList.remove('open');
+      });
+      if (!isOpen) {
+        btn.classList.add('open');
+        answer.classList.add('open');
       }
     }
   </script>
