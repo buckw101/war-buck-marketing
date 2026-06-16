@@ -165,10 +165,21 @@
     .reveal-delay-1 { transition-delay: 0.1s; } .reveal-delay-2 { transition-delay: 0.2s; } .reveal-delay-3 { transition-delay: 0.3s; }
     @media (max-width: 768px) { nav { padding: 16px 20px; } section { padding: 72px 20px; } #hero { padding: 100px 20px 64px; } }
 
-    /* ── PORTFOLIO ── */
+    /* ── PORTFOLIO SLIDERS ── */
     #portfolio { background: var(--gray-50); }
-    .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-top: 48px; }
-    .portfolio-card { background: var(--white); border: 1px solid var(--gray-100); border-radius: var(--radius-lg); overflow: hidden; transition: box-shadow 0.25s ease, transform 0.25s ease; }
+    .slider-group { margin-top: 56px; }
+    .slider-group + .slider-group { margin-top: 48px; }
+    .slider-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
+    .slider-label { display: inline-flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 700; color: var(--black); letter-spacing: -0.2px; }
+    .slider-label-dot { width: 8px; height: 8px; border-radius: 50%; background: #22c55e; flex-shrink: 0; }
+    .slider-label-demo { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
+    .slider-nav { display: flex; gap: 8px; }
+    .slider-btn { width: 38px; height: 38px; border-radius: 50%; border: 1.5px solid var(--gray-300); background: var(--white); color: var(--gray-700); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: border-color 0.2s, background 0.2s, color 0.2s; flex-shrink: 0; }
+    .slider-btn:hover { border-color: var(--accent); background: var(--accent); color: var(--white); }
+    .slider-btn:disabled { opacity: 0.35; cursor: default; pointer-events: none; }
+    .slider-track { display: flex; gap: 20px; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: none; padding-bottom: 4px; }
+    .slider-track::-webkit-scrollbar { display: none; }
+    .portfolio-card { flex: 0 0 calc(33.333% - 14px); scroll-snap-align: start; background: var(--white); border: 1px solid var(--gray-100); border-radius: var(--radius-lg); overflow: hidden; transition: box-shadow 0.25s ease, transform 0.25s ease; }
     .portfolio-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-4px); }
     .portfolio-image { display: block; position: relative; overflow: hidden; aspect-ratio: 8 / 5; background: var(--gray-100); }
     .portfolio-image img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; transition: transform 0.45s ease; }
@@ -181,6 +192,8 @@
     .portfolio-desc { font-size: 14px; color: var(--gray-500); margin-bottom: 10px; line-height: 1.5; }
     .portfolio-link { display: inline-flex; align-items: center; gap: 6px; font-size: 14px; font-weight: 600; color: var(--accent); text-decoration: none; }
     .portfolio-link:hover { text-decoration: underline; }
+    @media (max-width: 900px) { .portfolio-card { flex: 0 0 calc(50% - 10px); } }
+    @media (max-width: 560px) { .portfolio-card { flex: 0 0 calc(85vw); } .slider-label { font-size: 14px; } }
 
     /* ── BENEFITS ── */
     .benefit-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-top: 48px; }
@@ -312,108 +325,159 @@
       <div class="reveal" style="text-align:center;">
         <p class="section-label" style="text-align:center;">Our Work</p>
         <h2 class="section-title" style="text-align:center; margin: 0 auto 16px;">Built For Businesses<br />Like Yours.</h2>
-        <p class="section-sub" style="margin: 0 auto; text-align:center;">A few recent website builds across different industries — every one custom designed, mobile-optimized, and built to turn visitors into leads.</p>
+        <p class="section-sub" style="margin: 0 auto; text-align:center;">Every site is custom designed, mobile-first, and built to turn visitors into leads.</p>
       </div>
-      <div class="portfolio-grid">
 
-        <div class="portfolio-card reveal reveal-delay-1">
-          <a href="https://www.attaboylawncare.com" target="_blank" rel="noopener noreferrer" class="portfolio-image">
-            <img src="/images/portfolio/lawn-care.jpg" alt="Attaboy Lawn Care website homepage — custom lawn care company website" width="960" height="600" loading="lazy" />
-            <span class="portfolio-live">Live Site</span>
-          </a>
-          <div class="portfolio-info">
-            <span class="portfolio-tag">Lawn Care</span>
-            <div class="portfolio-name">Attaboy Lawn Care</div>
-            <p class="portfolio-desc">Custom multi-page site built for Macon, GA's fastest-growing lawn care company — 130 new clients in 90 days.</p>
-            <a href="https://www.attaboylawncare.com" target="_blank" rel="noopener noreferrer" class="portfolio-link">
-              View Live Site
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      <!-- Live Sites Slider -->
+      <div class="slider-group reveal">
+        <div class="slider-header">
+          <div class="slider-label">
+            <span class="slider-label-dot"></span>
+            Live Client Sites
+          </div>
+          <div class="slider-nav">
+            <button class="slider-btn" id="live-prev" onclick="slide('live',-1)" aria-label="Previous">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+            </button>
+            <button class="slider-btn" id="live-next" onclick="slide('live',1)" aria-label="Next">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+            </button>
+          </div>
+        </div>
+        <div class="slider-track" id="live-track">
+
+          <div class="portfolio-card">
+            <a href="https://www.attaboylawncare.com" target="_blank" rel="noopener noreferrer" class="portfolio-image">
+              <img src="/images/portfolio/lawn-care.jpg" alt="Attaboy Lawn Care website homepage — custom lawn care company website" width="960" height="600" loading="lazy" />
+              <span class="portfolio-live">Live Site</span>
             </a>
+            <div class="portfolio-info">
+              <span class="portfolio-tag">Lawn Care</span>
+              <div class="portfolio-name">Attaboy Lawn Care</div>
+              <p class="portfolio-desc">Multi-page site for Macon, GA's fastest-growing lawn care company — 130 new clients in 90 days.</p>
+              <a href="https://www.attaboylawncare.com" target="_blank" rel="noopener noreferrer" class="portfolio-link">
+                View Live Site
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              </a>
+            </div>
           </div>
-        </div>
 
-        <div class="portfolio-card reveal reveal-delay-2">
-          <a href="https://glissontreeservicellc.com" target="_blank" rel="noopener noreferrer" class="portfolio-image">
-            <img src="/images/portfolio/tree-service.jpg" alt="Glisson Tree Service website homepage — custom tree service company website" width="960" height="600" loading="lazy" />
-            <span class="portfolio-live">Live Site</span>
-          </a>
-          <div class="portfolio-info">
-            <span class="portfolio-tag">Tree Service</span>
-            <div class="portfolio-name">Glisson Tree Service</div>
-            <p class="portfolio-desc">10-page site with a built-in CRM, live now in Macon, GA.</p>
-            <a href="https://glissontreeservicellc.com" target="_blank" rel="noopener noreferrer" class="portfolio-link">
-              View Live Site
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          <div class="portfolio-card">
+            <a href="https://glissontreeservicellc.com" target="_blank" rel="noopener noreferrer" class="portfolio-image">
+              <img src="/images/portfolio/tree-service.jpg" alt="Glisson Tree Service website homepage — custom tree service company website" width="960" height="600" loading="lazy" />
+              <span class="portfolio-live">Live Site</span>
             </a>
+            <div class="portfolio-info">
+              <span class="portfolio-tag">Tree Service</span>
+              <div class="portfolio-name">Glisson Tree Service</div>
+              <p class="portfolio-desc">10-page site with a built-in CRM, live now in Macon, GA.</p>
+              <a href="https://glissontreeservicellc.com" target="_blank" rel="noopener noreferrer" class="portfolio-link">
+                View Live Site
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              </a>
+            </div>
           </div>
-        </div>
 
-        <div class="portfolio-card reveal reveal-delay-3">
-          <a href="https://tsquareremodel.com" target="_blank" rel="noopener noreferrer" class="portfolio-image">
-            <img src="/images/portfolio/remodeling.jpg" alt="T Square Remodeling website homepage — custom construction company website" width="960" height="600" loading="lazy" />
-            <span class="portfolio-live">Live Site</span>
-          </a>
-          <div class="portfolio-info">
-            <span class="portfolio-tag">Remodeling &amp; Construction</span>
-            <div class="portfolio-name">T Square Remodeling</div>
-            <p class="portfolio-desc">14-page site built to win commercial and residential bids, live in Macon, GA.</p>
-            <a href="https://tsquareremodel.com" target="_blank" rel="noopener noreferrer" class="portfolio-link">
-              View Live Site
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          <div class="portfolio-card">
+            <a href="https://tsquareremodel.com" target="_blank" rel="noopener noreferrer" class="portfolio-image">
+              <img src="/images/portfolio/remodeling.jpg" alt="T Square Remodeling website homepage — custom construction company website" width="960" height="600" loading="lazy" />
+              <span class="portfolio-live">Live Site</span>
             </a>
+            <div class="portfolio-info">
+              <span class="portfolio-tag">Remodeling &amp; Construction</span>
+              <div class="portfolio-name">T Square Remodeling</div>
+              <p class="portfolio-desc">14-page site built to win commercial and residential bids, live in Macon, GA.</p>
+              <a href="https://tsquareremodel.com" target="_blank" rel="noopener noreferrer" class="portfolio-link">
+                View Live Site
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              </a>
+            </div>
           </div>
-        </div>
 
-        <div class="portfolio-card reveal reveal-delay-3">
-          <a href="https://dirthurts.llc" target="_blank" rel="noopener noreferrer" class="portfolio-image">
-            <img src="/images/portfolio/pressure-washing.jpg" alt="Dirt Hurts website homepage — custom exterior cleaning company website" width="960" height="600" loading="lazy" />
-            <span class="portfolio-live">Live Site</span>
-          </a>
-          <div class="portfolio-info">
-            <span class="portfolio-tag">Pressure Washing &amp; Exterior Cleaning</span>
-            <div class="portfolio-name">Dirt Hurts</div>
-            <p class="portfolio-desc">4-page site with a built-in CRM and instant lead alerts, live now in North Carolina.</p>
-            <a href="https://dirthurts.llc" target="_blank" rel="noopener noreferrer" class="portfolio-link">
-              View Live Site
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          <div class="portfolio-card">
+            <a href="https://dirthurts.llc" target="_blank" rel="noopener noreferrer" class="portfolio-image">
+              <img src="/images/portfolio/pressure-washing.jpg" alt="Dirt Hurts website homepage — custom exterior cleaning company website" width="960" height="600" loading="lazy" />
+              <span class="portfolio-live">Live Site</span>
             </a>
+            <div class="portfolio-info">
+              <span class="portfolio-tag">Pressure Washing &amp; Exterior Cleaning</span>
+              <div class="portfolio-name">Dirt Hurts</div>
+              <p class="portfolio-desc">4-page site with a built-in CRM and instant lead alerts, live now in North Carolina.</p>
+              <a href="https://dirthurts.llc" target="_blank" rel="noopener noreferrer" class="portfolio-link">
+                View Live Site
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              </a>
+            </div>
           </div>
-        </div>
 
-        <div class="portfolio-card reveal reveal-delay-1">
-          <div class="portfolio-image">
-            <img src="/images/portfolio/landscaping.jpg" alt="Custom website design for a landscaping and lawn care company homepage" width="960" height="600" loading="lazy" />
-          </div>
-          <div class="portfolio-info">
-            <span class="portfolio-tag">Landscaping</span>
-            <div class="portfolio-name">Landscaping &amp; Lawn Care (Demo)</div>
-            <p class="portfolio-desc">Bold hero, service highlights, and a quote form built to fill the schedule.</p>
-          </div>
         </div>
-
-        <div class="portfolio-card reveal reveal-delay-2">
-          <div class="portfolio-image">
-            <img src="/images/portfolio/concrete.jpg" alt="Custom website design for a concrete and hardscaping contractor homepage" width="960" height="600" loading="lazy" />
-          </div>
-          <div class="portfolio-info">
-            <span class="portfolio-tag">Concrete &amp; Hardscaping</span>
-            <div class="portfolio-name">Concrete &amp; Hardscaping (Demo)</div>
-            <p class="portfolio-desc">Project stats and trust signals up front to win bigger jobs.</p>
-          </div>
-        </div>
-
-        <div class="portfolio-card reveal reveal-delay-3">
-          <div class="portfolio-image">
-            <img src="/images/portfolio/hvac.jpg" alt="Custom website design for an HVAC heating and cooling company homepage" width="960" height="600" loading="lazy" />
-          </div>
-          <div class="portfolio-info">
-            <span class="portfolio-tag">HVAC</span>
-            <div class="portfolio-name">HVAC &amp; Home Comfort (Demo)</div>
-            <p class="portfolio-desc">Reviews and guarantees front and center to build instant trust.</p>
-          </div>
-        </div>
-
       </div>
+
+      <!-- Demo Slider -->
+      <div class="slider-group reveal">
+        <div class="slider-header">
+          <div class="slider-label">
+            <span class="slider-label-demo"></span>
+            Design Examples
+          </div>
+          <div class="slider-nav">
+            <button class="slider-btn" id="demo-prev" onclick="slide('demo',-1)" aria-label="Previous">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+            </button>
+            <button class="slider-btn" id="demo-next" onclick="slide('demo',1)" aria-label="Next">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+            </button>
+          </div>
+        </div>
+        <div class="slider-track" id="demo-track">
+
+          <div class="portfolio-card">
+            <div class="portfolio-image">
+              <img src="/images/portfolio/landscaping.jpg" alt="Custom website design for a landscaping and lawn care company" width="960" height="600" loading="lazy" />
+            </div>
+            <div class="portfolio-info">
+              <span class="portfolio-tag">Landscaping &amp; Lawn Care</span>
+              <div class="portfolio-name">Landscaping &amp; Lawn Care</div>
+              <p class="portfolio-desc">Bold hero, service highlights, and a quote form built to fill the schedule.</p>
+            </div>
+          </div>
+
+          <div class="portfolio-card">
+            <div class="portfolio-image">
+              <img src="/images/portfolio/concrete.jpg" alt="Custom website design for a concrete and hardscaping contractor" width="960" height="600" loading="lazy" />
+            </div>
+            <div class="portfolio-info">
+              <span class="portfolio-tag">Concrete &amp; Hardscaping</span>
+              <div class="portfolio-name">Concrete &amp; Hardscaping</div>
+              <p class="portfolio-desc">Project stats and trust signals up front to win bigger jobs.</p>
+            </div>
+          </div>
+
+          <div class="portfolio-card">
+            <div class="portfolio-image">
+              <img src="/images/portfolio/hvac.jpg" alt="Custom website design for an HVAC heating and cooling company" width="960" height="600" loading="lazy" />
+            </div>
+            <div class="portfolio-info">
+              <span class="portfolio-tag">HVAC &amp; Home Comfort</span>
+              <div class="portfolio-name">HVAC &amp; Home Comfort</div>
+              <p class="portfolio-desc">Reviews and guarantees front and center to build instant trust.</p>
+            </div>
+          </div>
+
+          <div class="portfolio-card">
+            <div class="portfolio-image">
+              <img src="/images/portfolio/auto-detailing.jpg" alt="Custom website design for a car detailing and auto detailing business" width="960" height="600" loading="lazy" />
+            </div>
+            <div class="portfolio-info">
+              <span class="portfolio-tag">Auto Detailing</span>
+              <div class="portfolio-name">Auto Detailing</div>
+              <p class="portfolio-desc">Premium look and feel with online booking to fill the calendar.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -761,6 +825,15 @@
       entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); } });
     }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
     revealEls.forEach(el => observer.observe(el));
+
+    // ── Portfolio sliders ──
+    function slide(id, dir) {
+      const track = document.getElementById(id + '-track');
+      const card = track.querySelector('.portfolio-card');
+      const gap = 20;
+      const cardW = card.getBoundingClientRect().width + gap;
+      track.scrollBy({ left: dir * cardW, behavior: 'smooth' });
+    }
 
     // ── FAQ accordion ──
     function toggleFaq(btn) {
