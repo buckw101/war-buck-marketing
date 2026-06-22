@@ -12,6 +12,7 @@
   </script>
 
   <meta charset="UTF-8" />
+  <link rel="manifest" href="/manifest.json" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Window Cleaning Marketing Agency | War-Buck Marketing</title>
   <meta name="description" content="War-Buck Marketing helps window cleaning businesses get consistent leads through paid ads and viral content. Grow your window cleaning company fast." />
@@ -334,7 +335,7 @@
       </div>
       <div class="footer-links">
         <a href="/blog" class="footer-link">Resources</a>
-        <a href="https://www.instagram.com/buckscales/" class="footer-link" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.instagram.com/buckscales/" class="footer-link" target="_blank" rel="noopener noreferrer">Instagram</a>
         <a href="mailto:buckwarnock101@gmail.com" class="footer-link">Email Us</a>
         <a href="/leave-a-review" class="footer-link">Leave a Review</a>
       </div>
@@ -390,11 +391,12 @@
           <p>Thanks for reaching out. We'll be in touch within 24 hours.</p>
         </div>
         <form id="leadForm" action="https://formsubmit.co/buckwarnock101@gmail.com" method="POST" onsubmit="handleSubmit(event)">
-          <input type="hidden" name="_subject" value="New Lead — War-Buck Marketing" />
+          <input type="hidden" name="_subject" value="New Lead — Window Cleaning Marketing" />
           <input type="hidden" name="_captcha" value="false" />
           <input type="hidden" name="_template" value="table" />
           <input type="hidden" name="_cc" value="4783615444@vtext.com" />
           <input type="hidden" name="_next" value="" />
+          <input type="hidden" name="_autoresponse" value="Hey! Thanks for reaching out to War-Buck Marketing. We personally review every application and will be in touch within 24 hours. — Buck, War-Buck Marketing" />
           <input type="hidden" name="Source Page" value="Window Cleaning" />
           <div class="form-grid">
             <div class="form-section-title">Your Information</div>
@@ -496,26 +498,79 @@
       if (e.target === document.getElementById('formModal')) closeModal();
     }
     document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
     function toggleOther(id) {
-      document.getElementById(id).classList.toggle('visible');
+      document.getElementById(id).classList.add('visible');
     }
+    // Hide "other" text field when a different radio is selected
+    document.addEventListener('change', function(e) {
+      if (e.target.type === 'radio') {
+        const group = e.target.closest('.form-group');
+        if (!group) return;
+        group.querySelectorAll('.other-input').forEach(inp => {
+          const otherRadio = group.querySelector('[type="radio"][value="Other"]');
+          if (otherRadio) inp.classList.toggle('visible', otherRadio.checked);
+        });
+      }
+    });
+
+    const SUPABASE_URL = 'https://mlpwadopeqisrgflqwbi.supabase.co';
+    const SUPABASE_ANON_KEY = 'sb_publishable_YQO_ZljWCubOqvMpHylkFw_hnnmPPsA';
+
+    async function saveLeadToSupabase(data) {
+      const businessType = data.get('Business Type') === 'Other'
+        ? (data.get('Business Type (Other)') || 'Other')
+        : data.get('Business Type');
+      const goalsArr = data.getAll('Goals').filter(g => g !== 'Other');
+      if (data.get('Goals (Other)')) goalsArr.push(data.get('Goals (Other)'));
+      const lead = {
+        full_name: data.get('Full Name'),
+        business_name: data.get('Business Name'),
+        email: data.get('Email Address'),
+        phone: data.get('Phone Number'),
+        business_type: businessType,
+        products_services: data.get('Products or Services'),
+        monthly_budget: data.get('Monthly Marketing Budget'),
+        goals: goalsArr.join(', '),
+        social_media: data.getAll('Social Media').join(', '),
+        biggest_struggle: data.get('Biggest Struggle'),
+        inquiry_type: 'Marketing Services',
+      };
+      await fetch(`${SUPABASE_URL}/rest/v1/leads`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'apikey': SUPABASE_ANON_KEY,
+          'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+          'Prefer': 'return=minimal',
+        },
+        body: JSON.stringify(lead),
+      });
+    }
+
     async function handleSubmit(e) {
       e.preventDefault();
       const form = document.getElementById('leadForm');
       const btn = form.querySelector('button[type="submit"]');
+      const originalHTML = btn.innerHTML;
       btn.textContent = 'Sending...';
       btn.disabled = true;
       try {
-        const res = await fetch(form.action, { method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' } });
-        if (res.ok) {
+        const data = new FormData(form);
+        const [emailRes] = await Promise.allSettled([
+          fetch(form.action, { method: 'POST', body: data, headers: { 'Accept': 'application/json' } }),
+          saveLeadToSupabase(data),
+        ]);
+        if (emailRes.status === 'fulfilled' && emailRes.value.ok) {
           form.style.display = 'none';
           document.getElementById('successMsg').style.display = 'block';
+          gtag('event', 'conversion', { 'send_to': 'AW-18232240418/t4iRCPK9wb8cEKLS5_VD', 'value': 1.0, 'currency': 'USD' });
         } else {
-          btn.textContent = 'Something went wrong — try again';
+          btn.innerHTML = originalHTML;
           btn.disabled = false;
         }
       } catch {
-        btn.textContent = 'Something went wrong — try again';
+        btn.innerHTML = originalHTML;
         btn.disabled = false;
       }
     }

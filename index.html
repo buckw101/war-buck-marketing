@@ -12,6 +12,7 @@
   </script>
 
   <meta charset="UTF-8" />
+  <link rel="manifest" href="/manifest.json" />
   <link rel="icon" type="image/png" sizes="96x96" href="/favicon.png" />
   <link rel="icon" href="/favicon.ico" sizes="any" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
@@ -2529,9 +2530,18 @@
 
     // ── Toggle "Other" inputs ──
     function toggleOther(id) {
-      const el = document.getElementById(id);
-      el.classList.toggle('visible');
+      document.getElementById(id).classList.add('visible');
     }
+    document.addEventListener('change', function(e) {
+      if (e.target.type === 'radio') {
+        const group = e.target.closest('.form-group');
+        if (!group) return;
+        group.querySelectorAll('.other-input').forEach(inp => {
+          const otherRadio = group.querySelector('[type="radio"][value="Other"]');
+          if (otherRadio) inp.classList.toggle('visible', otherRadio.checked);
+        });
+      }
+    });
 
     // ── Form submission ──
     const SUPABASE_URL = 'https://mlpwadopeqisrgflqwbi.supabase.co';
@@ -2588,6 +2598,7 @@
         if (emailRes.status === 'fulfilled' && emailRes.value.ok) {
           form.style.display = 'none';
           document.getElementById('successMsg').style.display = 'block';
+          gtag('event', 'conversion', { 'send_to': 'AW-18232240418/t4iRCPK9wb8cEKLS5_VD', 'value': 1.0, 'currency': 'USD' });
         } else {
           btn.textContent = 'Something went wrong — try again';
           btn.disabled = false;
