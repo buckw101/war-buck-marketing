@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18232240418"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'AW-18232240418');
+  </script>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Leave a Review | War-Buck Marketing</title>
+  <meta name="description" content="Share your experience working with War-Buck Marketing — it takes less than a minute." />
+  <link rel="canonical" href="https://warbuckmarketing.com/leave-a-review" />
+  <meta name="robots" content="noindex, follow" />
+
+  <meta property="og:title" content="Leave a Review | War-Buck Marketing" />
+  <meta property="og:description" content="Share your experience working with War-Buck Marketing." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://warbuckmarketing.com/leave-a-review" />
+  <meta property="og:image" content="https://warbuckmarketing.com/og-image.svg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon.png" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black: #0a0a0a; --gray-900: #1a1a1a; --gray-700: #374151; --gray-500: #6b7280;
+      --gray-300: #d1d5db; --gray-100: #f3f4f6; --gray-50: #f9fafb; --white: #ffffff;
+      --accent: #2563eb; --accent-dark: #1d4ed8; --accent-light: #eff6ff; --accent-subtle: #dbeafe;
+      --star-gold: #f59e0b;
+      --radius: 12px; --radius-lg: 20px; --shadow: 0 4px 24px rgba(0,0,0,0.08); --shadow-lg: 0 8px 48px rgba(0,0,0,0.12);
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; background: var(--white); color: var(--black); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+
+    /* ── NAV ── */
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: center; padding: 20px 40px; background: rgba(255,255,255,0.9); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid rgba(0,0,0,0.06); transition: box-shadow 0.3s ease; }
+    nav.scrolled { box-shadow: 0 2px 20px rgba(0,0,0,0.08); }
+    .nav-brand { font-size: 17px; font-weight: 800; letter-spacing: -0.3px; color: var(--black); text-decoration: none; }
+    .nav-brand span { color: var(--accent); }
+
+    /* ── BUTTONS ── */
+    .btn-primary { display: inline-flex; align-items: center; justify-content: center; gap: 8px; width: 100%; padding: 16px 32px; background: var(--accent); color: var(--white); font-size: 16px; font-weight: 700; border-radius: var(--radius); text-decoration: none; border: none; cursor: pointer; transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease; box-shadow: 0 4px 20px rgba(37,99,235,0.3); }
+    .btn-primary:hover { background: var(--accent-dark); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(37,99,235,0.4); }
+    .btn-primary:disabled { opacity: 0.7; cursor: default; transform: none; }
+    .btn-secondary { display: inline-flex; align-items: center; justify-content: center; gap: 8px; width: 100%; padding: 14px 28px; background: transparent; color: var(--gray-700); font-size: 14px; font-weight: 600; border-radius: var(--radius); text-decoration: none; border: 1.5px solid var(--gray-300); cursor: pointer; transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease; }
+    .btn-secondary:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-light); }
+
+    /* ── CARD ── */
+    .review-wrap { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 120px 20px 60px; background: linear-gradient(135deg, #f8faff 0%, #f0f4ff 40%, #fafafa 100%); position: relative; overflow: hidden; }
+    .review-wrap::before { content: ''; position: absolute; top: -200px; right: -200px; width: 600px; height: 600px; background: radial-gradient(circle, rgba(37,99,235,0.08) 0%, transparent 70%); pointer-events: none; }
+    .review-wrap::after { content: ''; position: absolute; bottom: -100px; left: -100px; width: 400px; height: 400px; background: radial-gradient(circle, rgba(37,99,235,0.05) 0%, transparent 70%); pointer-events: none; }
+    .review-card { max-width: 540px; width: 100%; background: var(--white); border: 1px solid var(--gray-100); border-radius: var(--radius-lg); box-shadow: var(--shadow-lg); padding: 48px 40px; text-align: center; position: relative; z-index: 1; }
+
+    .review-badge { display: inline-flex; align-items: center; gap: 6px; padding: 6px 14px; background: var(--accent-light); border: 1px solid var(--accent-subtle); border-radius: 100px; font-size: 13px; font-weight: 500; color: var(--accent); margin-bottom: 24px; }
+    .review-badge::before { content: '●'; font-size: 8px; }
+
+    .review-card h1, .review-card h2 { font-size: clamp(24px, 5vw, 32px); font-weight: 800; letter-spacing: -0.5px; line-height: 1.2; color: var(--black); margin-bottom: 12px; }
+    .review-sub { font-size: 16px; color: var(--gray-500); line-height: 1.6; margin-bottom: 32px; }
+    .review-emoji { font-size: 40px; margin-bottom: 16px; }
+
+    /* ── STEPS ── */
+    .review-step.hidden { display: none; }
+    .review-step { animation: fadeIn 0.4s ease; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* ── STAR RATING ── */
+    .star-rating { display: flex; flex-direction: row-reverse; justify-content: center; gap: 6px; border: none; }
+    .star-rating input { position: absolute; opacity: 0; pointer-events: none; }
+    .star-rating label { cursor: pointer; color: var(--gray-300); transition: color 0.15s ease, transform 0.15s ease; line-height: 0; }
+    .star-rating label:hover { transform: scale(1.12); }
+    .star-rating input:checked ~ label,
+    .star-rating label:hover ~ label,
+    .star-rating label:hover { color: var(--star-gold); }
+    .star-rating-hint { font-size: 13px; color: var(--gray-500); margin-top: 16px; }
+
+    /* ── PRIVATE FEEDBACK FORM ── */
+    .form-group { display: flex; flex-direction: column; gap: 8px; text-align: left; margin-bottom: 16px; }
+    .form-group label { font-size: 14px; font-weight: 600; color: var(--gray-700); }
+    .form-group label span { color: var(--accent); }
+    .form-group input, .form-group textarea { width: 100%; padding: 12px 16px; border: 1.5px solid var(--gray-300); border-radius: 10px; font-size: 15px; font-family: 'Inter', sans-serif; color: var(--black); background: var(--white); transition: border-color 0.2s ease, box-shadow 0.2s ease; outline: none; -webkit-appearance: none; }
+    .form-group input:focus, .form-group textarea:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(37,99,235,0.1); }
+    .form-group textarea { resize: vertical; min-height: 100px; }
+    .form-note { text-align: center; font-size: 13px; color: var(--gray-500); margin-top: 16px; }
+
+    .review-actions { display: flex; flex-direction: column; gap: 12px; margin-top: 8px; }
+    .success-msg { display: none; text-align: center; }
+
+    /* ── RATING DISPLAY (echo back selected stars) ── */
+    .rating-display { display: flex; justify-content: center; gap: 4px; margin-bottom: 16px; }
+    .rating-display svg { width: 22px; height: 22px; color: var(--gray-300); }
+    .rating-display svg.filled { color: var(--star-gold); }
+
+    /* ── MICROCOPY / FALLBACK / SECONDARY ACTIONS ── */
+    .review-microcopy { font-size: 13px; color: var(--gray-500); margin-top: 16px; line-height: 1.5; }
+    .review-fallback { font-size: 12px; color: var(--gray-300); margin-top: 8px; word-break: break-word; }
+    .review-fallback a { color: var(--gray-500); text-decoration: underline; }
+    .review-fallback a:hover { color: var(--accent); }
+    .review-text-link { display: block; width: 100%; background: none; border: none; cursor: pointer; font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 600; color: var(--gray-500); text-decoration: underline; text-decoration-color: transparent; transition: color 0.2s ease, text-decoration-color 0.2s ease; padding: 4px; margin-top: 20px; }
+    .review-text-link:hover { color: var(--accent); text-decoration-color: var(--accent); }
+
+    #positiveConfirm { display: none; margin-top: 16px; font-size: 14px; font-weight: 600; color: var(--accent-dark); }
+
+    /* ── FOOTER ── */
+    footer { background: var(--black); padding: 40px; }
+    .footer-inner { max-width: 1080px; margin: 0 auto; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 8px; }
+    .footer-brand-name { font-size: 16px; font-weight: 800; color: var(--white); }
+    .footer-brand-name span { color: var(--accent); }
+    .footer-copy { text-align: center; font-size: 12px; color: rgba(255,255,255,0.35); }
+
+    @media (max-width: 640px) {
+      nav { padding: 16px 20px; }
+      .review-wrap { padding: 96px 16px 48px; }
+      .review-card { padding: 36px 24px; }
+      .star-rating svg { width: 34px; height: 34px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAV ── -->
+  <nav id="navbar">
+    <a href="/" class="nav-brand">War-Buck <span>Marketing</span></a>
+  </nav>
+
+  <!-- ── REVIEW FUNNEL ── -->
+  <main class="review-wrap">
+    <div class="review-card">
+
+      <!-- STEP 1: Rating -->
+      <div class="review-step" id="step-rating">
+        <div class="review-badge">Quick Feedback</div>
+        <h1>How was your experience with War-Buck Marketing?</h1>
+        <p class="review-sub">It takes less than a minute, and it really helps us out.</p>
+
+        <fieldset class="star-rating" id="starRating">
+          <legend class="sr-only">Rate your experience from 1 to 5 stars</legend>
+
+          <input type="radio" id="star5" name="rating" value="5" />
+          <label for="star5" aria-label="5 stars">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"/></svg>
+          </label>
+
+          <input type="radio" id="star4" name="rating" value="4" />
+          <label for="star4" aria-label="4 stars">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"/></svg>
+          </label>
+
+          <input type="radio" id="star3" name="rating" value="3" />
+          <label for="star3" aria-label="3 stars">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"/></svg>
+          </label>
+
+          <input type="radio" id="star2" name="rating" value="2" />
+          <label for="star2" aria-label="2 stars">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"/></svg>
+          </label>
+
+          <input type="radio" id="star1" name="rating" value="1" />
+          <label for="star1" aria-label="1 star">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"/></svg>
+          </label>
+        </fieldset>
+
+        <p class="star-rating-hint">Tap a star to continue</p>
+      </div>
+
+      <!-- STEP 2A: Positive path -->
+      <div class="review-step hidden" id="step-positive">
+        <div class="review-emoji">🎉</div>
+        <div class="rating-display" id="ratingDisplay" aria-hidden="true"></div>
+        <h2>Thanks — that means a lot!</h2>
+        <p class="review-sub">Reviews like yours help other local business owners find War-Buck Marketing and trust we can help them too. Mind sharing it on Google? It takes less than a minute.</p>
+        <div class="review-actions">
+          <a href="https://g.page/r/Cf3auNitoQA-EBM/review" target="_blank" rel="noopener noreferrer" class="btn-primary" onclick="confirmReviewClick()">
+            Leave Us a Google Review
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          </a>
+        </div>
+        <p class="review-microcopy">Opens Google in a new tab — takes about 30 seconds. You may need to be signed in to your Google account.</p>
+        <p id="positiveConfirm" aria-live="polite">Thanks for clicking through — we really appreciate it! 🙏</p>
+        <p class="review-fallback">Button didn't open anything? <a href="https://g.page/r/Cf3auNitoQA-EBM/review" target="_blank" rel="noopener noreferrer">Use this link instead</a></p>
+        <button type="button" class="review-text-link" onclick="resetFunnel()">Selected the wrong rating? Change it</button>
+      </div>
+
+      <!-- STEP 2B: Negative path -->
+      <div class="review-step hidden" id="step-negative">
+        <div id="negForm">
+          <div class="review-emoji">🙏</div>
+          <h2>We'd like to make this right.</h2>
+          <p class="review-sub">Tell us what happened and Buck will personally follow up — usually within a few hours. This goes straight to our team and won't be posted publicly.</p>
+
+          <form id="feedbackForm" action="https://formsubmit.co/buckwarnock101@gmail.com" method="POST" onsubmit="handleFeedbackSubmit(event)">
+            <input type="hidden" name="_subject" value="Private Feedback — War-Buck Marketing" />
+            <input type="hidden" name="_captcha" value="false" />
+            <input type="hidden" name="_template" value="table" />
+            <input type="hidden" name="_cc" value="4783615444@vtext.com" />
+            <input type="hidden" name="_next" value="" />
+            <input type="hidden" id="ratingField" name="Rating Given" value="" />
+
+            <div class="form-group">
+              <label>Name</label>
+              <input type="text" name="Name" placeholder="Your name" autocomplete="name" />
+            </div>
+
+            <div class="form-group">
+              <label>Email <span>*</span></label>
+              <input type="email" name="Email" placeholder="you@example.com" autocomplete="email" required />
+            </div>
+
+            <div class="form-group">
+              <label>What happened? <span>*</span></label>
+              <textarea name="Feedback" placeholder="Tell us what went wrong and how we can make it right..." required></textarea>
+            </div>
+
+            <div class="review-actions">
+              <button type="submit" class="btn-primary">
+                Send Feedback
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </button>
+            </div>
+            <p class="form-note">We read every message personally and respond fast.</p>
+            <button type="button" class="review-text-link" onclick="resetFunnel()">Selected the wrong rating? Change it</button>
+          </form>
+        </div>
+
+        <div id="negSuccess" class="success-msg">
+          <div class="review-emoji">✅</div>
+          <h2>Thanks for letting us know.</h2>
+          <p class="review-sub" style="margin-bottom: 0;">Buck will personally follow up soon. We appreciate you taking the time to tell us.</p>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand-name">War-Buck <span>Marketing</span></div>
+      <p class="footer-copy">&copy; 2026 War-Buck Marketing. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // ── Nav shadow on scroll ──
+    const navbar = document.getElementById('navbar');
+    let rafPending = false;
+    window.addEventListener('scroll', () => {
+      if (!rafPending) {
+        rafPending = true;
+        requestAnimationFrame(() => {
+          navbar.classList.toggle('scrolled', window.scrollY > 20);
+          rafPending = false;
+        });
+      }
+    }, { passive: true });
+
+    // ── Rating branching ──
+    const stepRating = document.getElementById('step-rating');
+    const stepPositive = document.getElementById('step-positive');
+    const stepNegative = document.getElementById('step-negative');
+    const ratingField = document.getElementById('ratingField');
+
+    // ── Star icon helper (echoes the selected rating back to the user) ──
+    const STAR_PATH = 'M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z';
+    function renderStars(container, rating) {
+      container.innerHTML = '';
+      for (let i = 1; i <= 5; i++) {
+        const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+        svg.setAttribute('viewBox', '0 0 24 24');
+        svg.setAttribute('fill', 'currentColor');
+        if (i <= rating) svg.classList.add('filled');
+        const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        path.setAttribute('d', STAR_PATH);
+        svg.appendChild(path);
+        container.appendChild(svg);
+      }
+    }
+
+    document.querySelectorAll('input[name="rating"]').forEach(input => {
+      input.addEventListener('change', () => {
+        const rating = parseInt(input.value, 10);
+        ratingField.value = rating + ' / 5 stars';
+
+        setTimeout(() => {
+          stepRating.classList.add('hidden');
+          if (rating >= 4) {
+            renderStars(document.getElementById('ratingDisplay'), rating);
+            stepPositive.classList.remove('hidden');
+          } else {
+            stepNegative.classList.remove('hidden');
+          }
+        }, 350);
+      });
+    });
+
+    function confirmReviewClick() {
+      document.getElementById('positiveConfirm').style.display = 'block';
+    }
+
+    function resetFunnel() {
+      document.querySelectorAll('input[name="rating"]').forEach(input => { input.checked = false; });
+      stepPositive.classList.add('hidden');
+      stepNegative.classList.add('hidden');
+      stepRating.classList.remove('hidden');
+      document.getElementById('positiveConfirm').style.display = 'none';
+      document.getElementById('ratingDisplay').innerHTML = '';
+
+      const form = document.getElementById('feedbackForm');
+      form.reset();
+      form.style.display = '';
+      document.getElementById('negForm').style.display = '';
+      document.getElementById('negSuccess').style.display = 'none';
+      const btn = form.querySelector('button[type="submit"]');
+      btn.disabled = false;
+      btn.textContent = 'Send Feedback';
+    }
+
+    // ── Private feedback submission ──
+    async function handleFeedbackSubmit(e) {
+      e.preventDefault();
+      const form = e.target;
+      const btn = form.querySelector('button[type="submit"]');
+      btn.textContent = 'Sending...';
+      btn.disabled = true;
+
+      try {
+        const res = await fetch(form.action, { method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' } });
+        if (res.ok) {
+          document.getElementById('negForm').style.display = 'none';
+          document.getElementById('negSuccess').style.display = 'block';
+        } else {
+          btn.textContent = 'Send Feedback';
+          btn.disabled = false;
+        }
+      } catch {
+        btn.textContent = 'Send Feedback';
+        btn.disabled = false;
+      }
+    }
+  </script>
+
+</body>
+</html>

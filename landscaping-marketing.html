@@ -1,6 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18232240418"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'AW-18232240418');
+  </script>
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Landscaping Marketing Agency | War-Buck Marketing</title>
@@ -34,6 +44,7 @@
     "description": "War-Buck Marketing helps landscaping companies get consistent leads through paid ads and organic social media.",
     "serviceType": "Landscaping Marketing Agency",
     "areaServed": "United States",
+    "sameAs": ["https://www.instagram.com/buckscales/"],
     "contactPoint": {
       "@type": "ContactPoint",
       "email": "buckwarnock101@gmail.com",
@@ -43,7 +54,9 @@
   </script>
 
   <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='12' fill='%232563eb'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='system-ui,sans-serif' font-weight='800' font-size='24' fill='white'>WB</text></svg>" />
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon.png" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -66,6 +79,14 @@
     .nav-brand span { color: var(--accent); }
     .nav-cta { display: inline-flex; align-items: center; padding: 10px 22px; background: var(--black); color: var(--white); font-size: 14px; font-weight: 600; border-radius: 8px; text-decoration: none; transition: background 0.2s ease, transform 0.15s ease; cursor: pointer; border: none; }
     .nav-cta:hover { background: var(--gray-900); transform: translateY(-1px); }
+    .nav-links { display: flex; align-items: center; gap: 28px; }
+    .nav-link { font-size: 14px; font-weight: 600; color: var(--gray-700); text-decoration: none; transition: color 0.2s ease; }
+    .nav-link:hover { color: var(--accent); }
+    .nav-right { display: flex; align-items: center; gap: 16px; }
+    .nav-phone { display: inline-flex; align-items: center; gap: 6px; font-size: 14px; font-weight: 600; color: var(--gray-700); text-decoration: none; transition: color 0.2s ease; }
+    .nav-phone:hover { color: var(--accent); }
+    .nav-phone svg { flex-shrink: 0; }
+    @media (max-width: 900px) { .nav-links { display: none; } .nav-phone span { display: none; } }
     section { padding: 96px 40px; }
     .section-inner { max-width: 1080px; margin: 0 auto; }
     .section-label { font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; }
@@ -125,6 +146,25 @@
     @media (max-width: 768px) { nav { padding: 16px 20px; } section { padding: 72px 20px; } .cta-box { padding: 40px 24px; } }
     @media (max-width: 480px) { .grid-3, .step-grid { grid-template-columns: 1fr; } }
 
+    /* ── CASE STUDY ── */
+    .cs-section { background: var(--black); padding: 96px 40px; }
+    .cs-section .section-label { color: rgba(255,255,255,0.5); }
+    .cs-section .section-title { color: var(--white); margin-bottom: 40px; }
+    .cs-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: var(--radius-lg); padding: 52px; position: relative; overflow: hidden; }
+    .cs-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--accent), #60a5fa); }
+    .cs-tag { display: inline-block; padding: 5px 14px; background: rgba(37,99,235,0.2); border: 1px solid rgba(37,99,235,0.4); border-radius: 100px; font-size: 12px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #60a5fa; margin-bottom: 28px; }
+    .cs-metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 2px; background: rgba(255,255,255,0.06); border-radius: 14px; overflow: hidden; margin: 32px 0; }
+    .cs-metric { padding: 28px 20px; background: rgba(0,0,0,0.3); text-align: center; }
+    .cs-num { font-size: clamp(36px, 5vw, 60px); font-weight: 900; letter-spacing: -2px; line-height: 1; color: var(--white); margin-bottom: 8px; }
+    .cs-num span { color: var(--accent); }
+    .cs-lbl { font-size: 13px; color: rgba(255,255,255,0.5); font-weight: 500; line-height: 1.4; }
+    .cs-quote { font-size: 17px; color: rgba(255,255,255,0.75); font-style: italic; line-height: 1.7; border-left: 3px solid var(--accent); padding-left: 22px; margin-bottom: 28px; }
+    .cs-attr { display: flex; align-items: center; gap: 12px; }
+    .cs-av { width: 44px; height: 44px; border-radius: 50%; background: var(--accent); display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 800; color: var(--white); flex-shrink: 0; }
+    .cs-name { font-size: 14px; font-weight: 700; color: var(--white); }
+    .cs-biz { font-size: 12px; color: rgba(255,255,255,0.4); }
+    @media (max-width: 768px) { .cs-section { padding: 72px 20px; } .cs-card { padding: 32px 24px; } }
+
     /* ── FORM & MODAL ── */
     .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
     .form-group { display: flex; flex-direction: column; gap: 8px; }
@@ -170,7 +210,20 @@
   <!-- Nav -->
   <nav id="navbar">
     <a href="https://warbuckmarketing.com" class="nav-brand">War-Buck <span>Marketing</span></a>
-    <button class="nav-cta" onclick="openModal()">Work With Us</button>
+    <div class="nav-links">
+      <a href="https://warbuckmarketing.com/#services" class="nav-link">Services</a>
+      <a href="https://warbuckmarketing.com/website-design" class="nav-link">Website Design</a>
+      <a href="https://warbuckmarketing.com/website-packages" class="nav-link">Pricing</a>
+      <a href="https://warbuckmarketing.com/blog" class="nav-link">Blog</a>
+      <a href="https://calendly.com/buckwarnock101/free-strategy-call" class="nav-link" target="_blank" rel="noopener noreferrer">Book a Call</a>
+    </div>
+    <div class="nav-right">
+      <a href="tel:4783615444" class="nav-phone">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.42 2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6.18 6.18l.95-.95a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <span>(478) 361-5444</span>
+      </a>
+      <button class="nav-cta" onclick="openModal()">Apply for Marketing</button>
+    </div>
   </nav>
 
   <!-- Hero -->
@@ -251,6 +304,43 @@
     </div>
   </section>
 
+  <!-- Case Study -->
+  <section class="cs-section">
+    <div class="section-inner">
+      <p class="section-label reveal">Case Study</p>
+      <h2 class="section-title reveal">Real result. Real numbers.<br />Real landscaping business.</h2>
+      <div class="cs-card reveal">
+        <div class="cs-tag">Featured Client Win — Attaboy Lawn Care</div>
+        <div class="cs-metrics">
+          <div class="cs-metric">
+            <div class="cs-num"><span>130</span></div>
+            <div class="cs-lbl">Monthly Paying<br />Clients Added</div>
+          </div>
+          <div class="cs-metric">
+            <div class="cs-num">&lt;<span>90</span></div>
+            <div class="cs-lbl">Days to<br />Achieve This</div>
+          </div>
+          <div class="cs-metric">
+            <div class="cs-num"><span>12.6</span>x</div>
+            <div class="cs-lbl">Return on<br />Ad Spend</div>
+          </div>
+          <div class="cs-metric">
+            <div class="cs-num">$<span>200</span><span style="font-size:0.5em">/day</span></div>
+            <div class="cs-lbl">Consistent Daily<br />Revenue From Ads</div>
+          </div>
+        </div>
+        <blockquote class="cs-quote">"War-Buck took us from struggling to find consistent work to 130 monthly paying clients in under 90 days. The system they built just runs — we focus on the work, they handle the leads."</blockquote>
+        <div class="cs-attr">
+          <div class="cs-av">AL</div>
+          <div>
+            <div class="cs-name">Attaboy Lawn Care</div>
+            <div class="cs-biz">Lawn Care &amp; Landscaping Company</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Process -->
   <section class="bg-blue">
     <div class="section-inner">
@@ -286,7 +376,7 @@
         <p class="section-label" style="text-align:center;">Get Started</p>
         <h3>Ready to Grow Your Landscaping Company?</h3>
         <p>Apply to work with War-Buck Marketing and we'll build a lead generation system tailored to your landscaping business.</p>
-        <button class="btn-primary" onclick="openModal()">Apply to Work With Us &#8594;</button>
+        <button class="btn-primary" onclick="openModal()">Apply for Marketing &#8594;</button>
       </div>
     </div>
   </section>
@@ -299,14 +389,17 @@
         <div class="footer-tagline">Digital Marketing &amp; Social Growth</div>
       </div>
       <div class="footer-links">
+        <a href="/blog" class="footer-link">Resources</a>
         <a href="https://www.instagram.com/buckscales/" class="footer-link" target="_blank" rel="noopener">Instagram</a>
         <a href="mailto:buckwarnock101@gmail.com" class="footer-link">Email Us</a>
+        <a href="/leave-a-review" class="footer-link">Leave a Review</a>
       </div>
     </div>
     <div class="footer-inner" style="margin-top:8px;">
       <div class="footer-industries">
         <div class="footer-industries-label">Industries We Serve</div>
         <div class="footer-industries-links">
+          <a href="/contractor-marketing" class="footer-industry-link">Contractors</a>
           <a href="/roofing-marketing" class="footer-industry-link">Roofing Companies</a>
           <a href="/car-detailing-marketing" class="footer-industry-link">Car Detailers</a>
           <a href="/landscaping-marketing" class="footer-industry-link">Landscapers</a>
@@ -340,7 +433,7 @@
   <div class="modal-overlay" id="formModal" onclick="closeModalOutside(event)">
     <div class="modal-box">
       <div class="modal-header">
-        <h3>Apply to Work With Us</h3>
+        <h3>Apply for Marketing</h3>
         <button class="modal-close" onclick="closeModal()">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
             <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
@@ -435,7 +528,7 @@
             </div>
             <div class="form-submit">
               <button type="submit" class="btn-primary">
-                Submit Application
+                Apply for Marketing
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
               </button>
               <p class="form-note">We review every application and respond within 24 hours.</p>
