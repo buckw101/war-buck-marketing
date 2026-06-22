@@ -1,8 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18232240418"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'AW-18232240418');
+  </script>
+
   <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='12' fill='%232563eb'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='system-ui,sans-serif' font-weight='800' font-size='24' fill='white'>WB</text></svg>" />
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon.png" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>War-Buck Marketing | Paid Ads & Social Media for Local Service Businesses</title>
   <meta name="description" content="War-Buck Marketing helps local service businesses — lawn care, contractors, detailers, and more — get consistent, paying customers through paid ads and organic social media. 130 clients added for one business in under 90 days." />
@@ -31,11 +43,50 @@
     "description": "War-Buck Marketing helps businesses grow through paid ads and organic social media systems that generate consistent leads.",
     "serviceType": "Digital Marketing Agency",
     "areaServed": "United States",
+    "sameAs": ["https://www.instagram.com/buckscales/"],
     "contactPoint": {
       "@type": "ContactPoint",
       "email": "buckwarnock101@gmail.com",
       "contactType": "customer service"
     }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How fast will I see results?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Most clients start seeing leads within the first 1-2 weeks of launching ads. Organic growth takes a little longer, typically 30-60 days to build real momentum. Our fastest result so far was Attaboy Lawn Care hitting 130 monthly paying clients in under 90 days." }
+      },
+      {
+        "@type": "Question",
+        "name": "What platforms do you run ads on?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Primarily Meta (Facebook and Instagram) and Google Ads, these two platforms drive the most ROI for local service businesses. We also build organic presence on TikTok, Instagram, and Facebook depending on your business type and where your customers spend time." }
+      },
+      {
+        "@type": "Question",
+        "name": "Do I need a big budget to get started?",
+        "acceptedAnswer": { "@type": "Answer", "text": "No, we've gotten strong results for clients starting with modest ad budgets. The key is how the money is spent, not just how much. We'll tell you during the application call exactly what we'd recommend based on your goals and market." }
+      },
+      {
+        "@type": "Question",
+        "name": "What industries do you work with?",
+        "acceptedAnswer": { "@type": "Answer", "text": "We focus on local service businesses, lawn care, landscaping, contractors, car detailers, painters, cleaners, pressure washers, HVAC, plumbing, and similar trades. These are the businesses we know best and consistently get results for." }
+      },
+      {
+        "@type": "Question",
+        "name": "How is this different from hiring a big agency?",
+        "acceptedAnswer": { "@type": "Answer", "text": "At a big agency you're account #247 and talking to a junior rep. At War-Buck, you work directly with us, the people who built the strategy and run your ads. We only take on clients we're confident we can grow, and we stay involved in the results week over week." }
+      },
+      {
+        "@type": "Question",
+        "name": "What does working together actually look like?",
+        "acceptedAnswer": { "@type": "Answer", "text": "You apply, we review your application and hop on a short strategy call. If it's a fit, we build your ads and content system, launch within about a week, and optimize from there. You'll always know what's running, what's working, and where your money is going." }
+      }
+    ]
   }
   </script>
   <style>
@@ -128,6 +179,30 @@
     .nav-cta:hover {
       background: var(--gray-900);
       transform: translateY(-1px);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .nav-link {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--gray-700);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .nav-link:hover {
+      color: var(--accent);
+    }
+
+    @media (max-width: 900px) {
+      .nav-links {
+        display: none;
+      }
     }
 
     /* ── HERO ── */
@@ -336,6 +411,13 @@
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 24px;
+    }
+
+    .services-cta {
+      margin-top: 40px;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
     }
 
     .service-card {
@@ -1303,6 +1385,7 @@
       display: flex;
       gap: 24px;
       align-items: center;
+      flex-wrap: wrap;
     }
 
     .footer-link {
@@ -1654,7 +1737,8 @@
 
     @media (max-width: 480px) {
       .services-grid,
-      .process-steps {
+      .process-steps,
+      .why-stats {
         grid-template-columns: 1fr;
       }
       .testimonial-card {
@@ -1671,6 +1755,13 @@
   <!-- ── NAV ── -->
   <nav id="navbar">
     <a href="#hero" class="nav-brand">War-Buck <span>Marketing</span></a>
+    <div class="nav-links">
+      <a href="#services" class="nav-link">Services</a>
+      <a href="/website-design" class="nav-link">Website Design</a>
+      <a href="/website-packages" class="nav-link">Pricing</a>
+      <a href="/blog" class="nav-link">Blog</a>
+      <a href="https://calendly.com/buckwarnock101/free-strategy-call" class="nav-link" target="_blank" rel="noopener noreferrer">Book a Call</a>
+    </div>
     <button class="nav-cta" onclick="openModal()">Apply Now</button>
   </nav>
 
@@ -1689,10 +1780,10 @@
             <path d="M5 12h14M12 5l7 7-7 7" aria-hidden="true"/>
           </svg>
         </button>
-        <a href="#case-study" class="btn-secondary">
-          See a Real Result
+        <a href="https://calendly.com/buckwarnock101/free-strategy-call" class="btn-secondary" target="_blank" rel="noopener noreferrer">
+          Book a Free Call
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M12 5v14M5 12l7 7 7-7" aria-hidden="true"/>
+            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
           </svg>
         </a>
       </div>
@@ -1758,6 +1849,57 @@
           <div class="service-title">Lead Systems &amp; Tracking</div>
           <p class="service-desc">We build the systems behind your marketing — tracking, reporting, and optimization — so you always know what's working, what it's costing, and how to scale it.</p>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── WEBSITE DESIGN ── -->
+  <section id="website-design" style="border-top: 1px solid var(--gray-100);">
+    <div class="section-inner">
+      <div class="services-header reveal">
+        <div class="section-label">Also From War-Buck</div>
+        <h2 class="section-title">Your Ads Need Somewhere<br />Great To Land.</h2>
+        <p class="section-sub">We also design and build modern, mobile-first websites for local service businesses — built to load fast, rank on Google, build instant trust, and turn visitors into booked jobs.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card reveal reveal-delay-1">
+          <div class="service-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
+              <line x1="12" y1="18" x2="12.01" y2="18"/>
+            </svg>
+          </div>
+          <div class="service-title">Mobile-First Design</div>
+          <p class="service-desc">More than half your visitors are on a phone. Every site is designed and tested to look great and work perfectly on any screen size — not just desktop.</p>
+        </div>
+        <div class="service-card reveal reveal-delay-2">
+          <div class="service-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+            </svg>
+          </div>
+          <div class="service-title">Built For Speed</div>
+          <p class="service-desc">Slow sites lose customers before they even load. We build lean, fast pages that keep visitors engaged and rank better on Google.</p>
+        </div>
+        <div class="service-card reveal reveal-delay-3">
+          <div class="service-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"/>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+            </svg>
+          </div>
+          <div class="service-title">Built To Be Found</div>
+          <p class="service-desc">Clean code, proper structure, and on-page SEO so your business shows up when local customers search for what you do.</p>
+        </div>
+      </div>
+      <div class="services-cta reveal reveal-delay-3">
+        <a href="/website-design" class="btn-primary">
+          Get My Free Website Strategy
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 12h14M12 5l7 7-7 7" aria-hidden="true"/>
+          </svg>
+        </a>
+        <a href="/website-packages" class="btn-secondary">View Pricing &amp; Packages</a>
       </div>
     </div>
   </section>
@@ -2258,6 +2400,7 @@
               Takes less than 3 minutes
             </span>
           </div>
+          <p style="margin-top:20px;font-size:14px;color:var(--gray-500);">Prefer to talk now? <a href="https://calendly.com/buckwarnock101/free-strategy-call" target="_blank" rel="noopener noreferrer" style="color:var(--accent);font-weight:600;text-decoration:none;">Book a free 30-min strategy call &rarr;</a></p>
         </div>
       </div>
     </div>
@@ -2271,14 +2414,20 @@
         <div class="footer-tagline">Local Business Marketing Agency</div>
       </div>
       <div class="footer-links">
+        <a href="/website-design" class="footer-link">Website Design</a>
+        <a href="/website-packages" class="footer-link">Website Packages</a>
+        <a href="/blog" class="footer-link">Resources</a>
         <a href="https://www.instagram.com/buckscales/" class="footer-link" target="_blank" rel="noopener noreferrer">Instagram</a>
         <a href="mailto:buckwarnock101@gmail.com" class="footer-link">Email Us</a>
+        <a href="https://calendly.com/buckwarnock101/free-strategy-call" class="footer-link" target="_blank" rel="noopener noreferrer">Book a Call</a>
+        <a href="/leave-a-review" class="footer-link">Leave a Review</a>
       </div>
     </div>
     <div class="footer-inner" style="margin-top: 8px;">
       <div class="footer-industries">
         <div class="footer-industries-label">Industries We Serve</div>
         <div class="footer-industries-links">
+          <a href="/contractor-marketing" class="footer-industry-link">Contractors</a>
           <a href="/roofing-marketing" class="footer-industry-link">Roofing Companies</a>
           <a href="/car-detailing-marketing" class="footer-industry-link">Car Detailers</a>
           <a href="/landscaping-marketing" class="footer-industry-link">Landscapers</a>
@@ -2372,6 +2521,7 @@
         goals: goalsArr.join(', '),
         social_media: data.getAll('Social Media').join(', '),
         biggest_struggle: data.get('Biggest Struggle'),
+        inquiry_type: 'Marketing Services',
       };
 
       await fetch(`${SUPABASE_URL}/rest/v1/leads`, {
