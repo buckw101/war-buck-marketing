@@ -212,7 +212,7 @@
     a.bento-img-wrap:focus-visible { outline: 3px solid var(--accent); outline-offset: -3px; }
 
     /* Badges */
-    .bento-live-badge { position: absolute; top: 10px; right: 10px; display: inline-flex; align-items: center; gap: 5px; background: rgba(10,10,10,0.72); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); color: #fff; font-size: 10px; font-weight: 700; letter-spacing: 0.5px; padding: 4px 9px; border-radius: 100px; pointer-events: none; }
+    .bento-live-badge { position: absolute; top: 10px; right: 10px; display: inline-flex; align-items: center; gap: 4px; background: rgba(10,10,10,0.72); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); color: #fff; font-size: 9px; font-weight: 700; letter-spacing: 0.6px; padding: 3px 8px; border-radius: 100px; pointer-events: none; }
     .bento-live-badge::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: #22c55e; flex-shrink: 0; animation: b-dot 2.5s ease-in-out infinite; }
     @keyframes b-dot { 0%,100%{opacity:1} 50%{opacity:.4} }
     .bento-demo-badge { position: absolute; top: 10px; right: 10px; display: inline-flex; align-items: center; background: rgba(37,99,235,0.13); border: 1px solid rgba(37,99,235,0.25); color: var(--accent); font-size: 10px; font-weight: 700; letter-spacing: 1px; padding: 4px 10px; border-radius: 100px; pointer-events: none; }
@@ -899,22 +899,33 @@
     }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
     revealEls.forEach(el => observer.observe(el));
 
-    // ── Bento tilt ──
+    // ── Bento tilt (RAF-throttled) ──
     (function () {
       if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
       if (window.matchMedia('(hover: none)').matches) return;
       document.querySelectorAll('[data-tilt]').forEach(function (card) {
+        var rafId = null, tx = 0, ty = 0;
+        card.addEventListener('mouseenter', function () {
+          card.style.willChange = 'transform';
+          card.style.transition = 'box-shadow 0.35s ease';
+        });
         card.addEventListener('mousemove', function (e) {
           if (!card.classList.contains('visible')) return;
           var r = card.getBoundingClientRect();
-          var x = (e.clientX - r.left) / r.width  - 0.5;
-          var y = (e.clientY - r.top)  / r.height - 0.5;
-          card.style.transition = 'box-shadow 0.35s ease';
-          card.style.transform  = 'perspective(900px) rotateX(' + (-y * 8) + 'deg) rotateY(' + (x * 8) + 'deg) translateZ(6px)';
+          tx = (e.clientX - r.left) / r.width  - 0.5;
+          ty = (e.clientY - r.top)  / r.height - 0.5;
+          if (!rafId) {
+            rafId = requestAnimationFrame(function () {
+              card.style.transform = 'perspective(900px) rotateX(' + (-ty * 7) + 'deg) rotateY(' + (tx * 7) + 'deg) translateZ(5px)';
+              rafId = null;
+            });
+          }
         });
         card.addEventListener('mouseleave', function () {
-          card.style.transition = 'box-shadow 0.35s ease, transform 0.65s cubic-bezier(0.23,1,0.32,1)';
+          if (rafId) { cancelAnimationFrame(rafId); rafId = null; }
+          card.style.transition = 'box-shadow 0.35s ease, transform 0.6s cubic-bezier(0.23,1,0.32,1)';
           card.style.transform  = '';
+          card.style.willChange = 'auto';
         });
       });
     }());
