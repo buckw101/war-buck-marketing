@@ -175,35 +175,98 @@
     .reveal-delay-1 { transition-delay: 0.1s; } .reveal-delay-2 { transition-delay: 0.2s; } .reveal-delay-3 { transition-delay: 0.3s; }
     @media (max-width: 768px) { nav { padding: 16px 20px; } section { padding: 72px 20px; } #hero { padding: 100px 20px 64px; } }
 
-    /* ── PORTFOLIO SLIDERS ── */
+    /* ── BENTO PORTFOLIO ── */
     #portfolio { background: var(--gray-50); }
-    .slider-group { margin-top: 56px; }
-    .slider-group + .slider-group { margin-top: 48px; }
-    .slider-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
-    .slider-label { display: inline-flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 700; color: var(--black); letter-spacing: -0.2px; }
-    .slider-label-dot { width: 8px; height: 8px; border-radius: 50%; background: #22c55e; flex-shrink: 0; }
-    .slider-label-demo { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
-    .slider-nav { display: flex; gap: 8px; }
-    .slider-btn { width: 38px; height: 38px; border-radius: 50%; border: 1.5px solid var(--gray-300); background: var(--white); color: var(--gray-700); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: border-color 0.2s, background 0.2s, color 0.2s; flex-shrink: 0; }
-    .slider-btn:hover { border-color: var(--accent); background: var(--accent); color: var(--white); }
-    .slider-btn:disabled { opacity: 0.35; cursor: default; pointer-events: none; }
-    .slider-track { display: flex; gap: 20px; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: none; padding-bottom: 4px; }
-    .slider-track::-webkit-scrollbar { display: none; }
-    .portfolio-card { flex: 0 0 calc(33.333% - 14px); scroll-snap-align: start; background: var(--white); border: 1px solid var(--gray-100); border-radius: var(--radius-lg); overflow: hidden; transition: box-shadow 0.25s ease, transform 0.25s ease; }
-    .portfolio-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-4px); }
-    .portfolio-image { display: block; position: relative; overflow: hidden; aspect-ratio: 8 / 5; background: var(--gray-100); }
-    .portfolio-image img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; transition: transform 0.45s ease; }
-    .portfolio-card:hover .portfolio-image img { transform: scale(1.06); }
-    .portfolio-live { position: absolute; top: 12px; right: 12px; display: inline-flex; align-items: center; gap: 6px; background: rgba(10,10,10,0.72); color: var(--white); font-size: 11px; font-weight: 700; letter-spacing: 0.5px; padding: 6px 12px; border-radius: 100px; }
-    .portfolio-live::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: #22c55e; flex-shrink: 0; }
-    .portfolio-info { padding: 20px 22px 24px; }
-    .portfolio-tag { display: block; font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; }
-    .portfolio-name { font-size: 17px; font-weight: 700; color: var(--black); margin-bottom: 4px; letter-spacing: -0.2px; }
-    .portfolio-desc { font-size: 14px; color: var(--gray-500); margin-bottom: 10px; line-height: 1.5; }
-    .portfolio-link { display: inline-flex; align-items: center; gap: 6px; font-size: 14px; font-weight: 600; color: var(--accent); text-decoration: none; }
-    .portfolio-link:hover { text-decoration: underline; }
-    @media (max-width: 900px) { .portfolio-card { flex: 0 0 calc(50% - 10px); } }
-    @media (max-width: 560px) { .portfolio-card { flex: 0 0 calc(85vw); } .slider-label { font-size: 14px; } }
+
+    .bento-section-header { display: flex; align-items: center; gap: 12px; font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--gray-500); margin-top: 60px; margin-bottom: 24px; }
+    .bento-section-header::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: #22c55e; flex-shrink: 0; animation: b-pulse 2.5s ease-in-out infinite; }
+    .bento-section-header.demo::before { background: var(--accent); animation: none; }
+    @keyframes b-pulse { 0%,100% { box-shadow: 0 0 0 0 rgba(34,197,94,0.55); } 50% { box-shadow: 0 0 0 5px rgba(34,197,94,0); } }
+
+    /* Grids */
+    .bento-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .demo-grid  { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-top: 0; }
+
+    /* Base card */
+    .bento-card { display: flex; flex-direction: column; background: var(--white); border: 1px solid var(--gray-100); border-radius: 20px; overflow: hidden; position: relative; will-change: transform; transition: box-shadow 0.35s ease; }
+    .bento-card:hover { box-shadow: 0 20px 60px rgba(0,0,0,0.11), 0 4px 20px rgba(37,99,235,0.07); }
+
+    /* Hero — 2 cols wide, same row height as sibling */
+    .bento-hero { grid-column: 1 / 3; }
+
+    /* Full-width wide card */
+    .bento-wide { grid-column: 1 / -1; flex-direction: row; }
+    .bento-wide .bento-img-wrap { flex: 0 0 52%; aspect-ratio: unset; min-height: 260px; }
+    .bento-wide .bento-body { flex: 1; justify-content: center; padding: 36px 44px; }
+
+    /* Dark CTA card */
+    .bento-cta-card { background: var(--black); border-color: transparent; }
+    .bento-cta-card:hover { box-shadow: 0 20px 60px rgba(0,0,0,0.28); }
+    .bento-cta-card .bento-body { justify-content: center; }
+
+    /* Image wrap */
+    .bento-img-wrap { display: block; position: relative; overflow: hidden; aspect-ratio: 8 / 5; background: var(--gray-100); flex-shrink: 0; }
+    .bento-hero .bento-img-wrap { height: 250px; aspect-ratio: unset; }
+    .bento-img-wrap img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; transition: transform 0.55s cubic-bezier(0.25,0.46,0.45,0.94); }
+    .bento-card:hover .bento-img-wrap img { transform: scale(1.06); }
+    a.bento-img-wrap:focus-visible { outline: 3px solid var(--accent); outline-offset: -3px; }
+
+    /* Badges */
+    .bento-live-badge { position: absolute; top: 12px; right: 12px; display: inline-flex; align-items: center; gap: 6px; background: rgba(10,10,10,0.72); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); color: #fff; font-size: 11px; font-weight: 700; letter-spacing: 0.5px; padding: 6px 12px; border-radius: 100px; pointer-events: none; }
+    .bento-live-badge::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: #22c55e; flex-shrink: 0; animation: b-dot 2.5s ease-in-out infinite; }
+    @keyframes b-dot { 0%,100%{opacity:1} 50%{opacity:.4} }
+    .bento-demo-badge { position: absolute; top: 10px; right: 10px; display: inline-flex; align-items: center; background: rgba(37,99,235,0.13); border: 1px solid rgba(37,99,235,0.25); color: var(--accent); font-size: 10px; font-weight: 700; letter-spacing: 1px; padding: 4px 10px; border-radius: 100px; pointer-events: none; }
+
+    /* Body */
+    .bento-body { flex: 1; display: flex; flex-direction: column; padding: 22px 24px 26px; }
+    .bento-hero .bento-body { padding: 26px 28px 30px; }
+
+    .bento-tag { display: block; font-size: 10px; font-weight: 700; letter-spacing: 1.8px; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; }
+    .bento-cta-card .bento-tag { color: rgba(255,255,255,0.45); }
+
+    .bento-name { font-size: 17px; font-weight: 700; color: var(--black); letter-spacing: -0.2px; margin-bottom: 6px; line-height: 1.2; }
+    .bento-hero .bento-name { font-size: 24px; letter-spacing: -0.4px; margin-bottom: 10px; }
+    .bento-wide .bento-name { font-size: 22px; letter-spacing: -0.3px; margin-bottom: 10px; }
+    .bento-cta-card .bento-name { color: var(--white); font-size: 22px; letter-spacing: -0.4px; margin-bottom: 10px; }
+
+    .bento-desc { font-size: 14px; color: var(--gray-500); line-height: 1.6; margin-bottom: 0; }
+    .bento-hero .bento-desc { font-size: 15px; }
+    .bento-wide .bento-desc { font-size: 15px; }
+    .bento-cta-card .bento-desc { color: rgba(255,255,255,0.55); font-size: 14px; }
+
+    /* Demo card overrides */
+    .demo-card .bento-body { padding: 16px 20px 20px; }
+    .demo-card .bento-name { font-size: 15px; margin-bottom: 3px; }
+    .demo-card .bento-tag { margin-bottom: 5px; }
+    .demo-card .bento-desc { font-size: 13px; }
+
+    /* CTA button */
+    .bento-btn { display: inline-flex; align-items: center; gap: 8px; padding: 11px 22px; background: var(--accent); color: var(--white); font-size: 14px; font-weight: 600; border-radius: 9px; text-decoration: none; transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease; box-shadow: 0 2px 12px rgba(37,99,235,0.25); margin-top: auto; align-self: flex-start; }
+    .bento-btn:hover { background: var(--accent-dark); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(37,99,235,0.4); }
+    .bento-hero .bento-btn { font-size: 15px; padding: 13px 26px; margin-top: 20px; }
+    .bento-wide .bento-btn { margin-top: 20px; }
+    .bento-cta-card .bento-btn { background: var(--white); color: var(--black); box-shadow: none; margin-top: 22px; }
+    .bento-cta-card .bento-btn:hover { background: var(--gray-100); box-shadow: none; }
+
+    /* Responsive */
+    @media (max-width: 960px) {
+      .bento-grid { grid-template-columns: repeat(2, 1fr); }
+      .bento-hero { grid-column: 1 / -1; }
+      .bento-hero .bento-img-wrap { height: auto; aspect-ratio: 16 / 7; }
+      .bento-wide { flex-direction: column; }
+      .bento-wide .bento-img-wrap { flex: none; min-height: 0; aspect-ratio: 16 / 7; }
+      .bento-wide .bento-body { padding: 24px 28px; }
+    }
+    @media (max-width: 600px) {
+      .bento-grid, .demo-grid { grid-template-columns: 1fr; gap: 16px; }
+      .bento-hero { grid-column: 1; }
+      .bento-section-header { margin-top: 44px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .bento-card { transition: none; }
+      .bento-img-wrap img { transition: none; }
+      .bento-live-badge::before, .bento-section-header::before { animation: none; }
+    }
 
     /* ── BENEFITS ── */
     .benefit-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-top: 48px; }
@@ -351,154 +414,149 @@
         <p class="section-sub" style="margin: 0 auto; text-align:center;">Every site is custom designed, mobile-first, and built to turn visitors into leads.</p>
       </div>
 
-      <!-- Live Sites Slider -->
-      <div class="slider-group reveal">
-        <div class="slider-header">
-          <div class="slider-label">
-            <span class="slider-label-dot"></span>
-            Live Client Sites
-          </div>
-          <div class="slider-nav">
-            <button class="slider-btn" id="live-prev" onclick="slide('live',-1)" aria-label="Previous">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
-            </button>
-            <button class="slider-btn" id="live-next" onclick="slide('live',1)" aria-label="Next">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
-            </button>
+      <!-- Live Sites label -->
+      <div class="bento-section-header reveal">Live Client Sites</div>
+
+      <!-- Live Sites Bento Grid -->
+      <div class="bento-grid">
+
+        <!-- Hero: Attaboy (col 1–2) -->
+        <div class="bento-card bento-hero reveal" data-tilt>
+          <a href="https://www.attaboylawncare.com" target="_blank" rel="noopener noreferrer" class="bento-img-wrap">
+            <img src="/images/portfolio/lawn-care.jpg" alt="Attaboy Lawn Care website — custom lawn care company website" width="960" height="600" loading="lazy" />
+            <span class="bento-live-badge">Live Site</span>
+          </a>
+          <div class="bento-body">
+            <span class="bento-tag">Lawn Care</span>
+            <div class="bento-name">Attaboy Lawn Care</div>
+            <p class="bento-desc">Multi-page site for Macon, GA's fastest-growing lawn care company — 130 new clients in 90 days.</p>
+            <a href="https://www.attaboylawncare.com" target="_blank" rel="noopener noreferrer" class="bento-btn">
+              View Live Site
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            </a>
           </div>
         </div>
-        <div class="slider-track" id="live-track">
 
-          <div class="portfolio-card">
-            <a href="https://www.attaboylawncare.com" target="_blank" rel="noopener noreferrer" class="portfolio-image">
-              <img src="/images/portfolio/lawn-care.jpg" alt="Attaboy Lawn Care website homepage — custom lawn care company website" width="960" height="600" loading="lazy" />
-              <span class="portfolio-live">Live Site</span>
+        <!-- Side A: Glisson Tree Service (col 3) -->
+        <div class="bento-card reveal reveal-delay-1" data-tilt>
+          <a href="https://glissontreeservicellc.com" target="_blank" rel="noopener noreferrer" class="bento-img-wrap">
+            <img src="/images/portfolio/tree-service.jpg" alt="Glisson Tree Service website — custom tree service company website" width="960" height="600" loading="lazy" />
+            <span class="bento-live-badge">Live Site</span>
+          </a>
+          <div class="bento-body">
+            <span class="bento-tag">Tree Service</span>
+            <div class="bento-name">Glisson Tree Service</div>
+            <p class="bento-desc">10-page site with a built-in CRM, live in Macon, GA.</p>
+            <a href="https://glissontreeservicellc.com" target="_blank" rel="noopener noreferrer" class="bento-btn">
+              View Live Site
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
             </a>
-            <div class="portfolio-info">
-              <span class="portfolio-tag">Lawn Care</span>
-              <div class="portfolio-name">Attaboy Lawn Care</div>
-              <p class="portfolio-desc">Multi-page site for Macon, GA's fastest-growing lawn care company — 130 new clients in 90 days.</p>
-              <a href="https://www.attaboylawncare.com" target="_blank" rel="noopener noreferrer" class="portfolio-link">
-                View Live Site
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-              </a>
-            </div>
           </div>
-
-          <div class="portfolio-card">
-            <a href="https://glissontreeservicellc.com" target="_blank" rel="noopener noreferrer" class="portfolio-image">
-              <img src="/images/portfolio/tree-service.jpg" alt="Glisson Tree Service website homepage — custom tree service company website" width="960" height="600" loading="lazy" />
-              <span class="portfolio-live">Live Site</span>
-            </a>
-            <div class="portfolio-info">
-              <span class="portfolio-tag">Tree Service</span>
-              <div class="portfolio-name">Glisson Tree Service</div>
-              <p class="portfolio-desc">10-page site with a built-in CRM, live now in Macon, GA.</p>
-              <a href="https://glissontreeservicellc.com" target="_blank" rel="noopener noreferrer" class="portfolio-link">
-                View Live Site
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-              </a>
-            </div>
-          </div>
-
-          <div class="portfolio-card">
-            <a href="https://tsquareremodel.com" target="_blank" rel="noopener noreferrer" class="portfolio-image">
-              <img src="/images/portfolio/remodeling.jpg" alt="T Square Remodeling website homepage — custom construction company website" width="960" height="600" loading="lazy" />
-              <span class="portfolio-live">Live Site</span>
-            </a>
-            <div class="portfolio-info">
-              <span class="portfolio-tag">Remodeling &amp; Construction</span>
-              <div class="portfolio-name">T Square Remodeling</div>
-              <p class="portfolio-desc">14-page site built to win commercial and residential bids, live in Macon, GA.</p>
-              <a href="https://tsquareremodel.com" target="_blank" rel="noopener noreferrer" class="portfolio-link">
-                View Live Site
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-              </a>
-            </div>
-          </div>
-
-          <div class="portfolio-card">
-            <a href="https://dirthurts.llc" target="_blank" rel="noopener noreferrer" class="portfolio-image">
-              <img src="/images/portfolio/pressure-washing.jpg" alt="Dirt Hurts website homepage — custom exterior cleaning company website" width="960" height="600" loading="lazy" />
-              <span class="portfolio-live">Live Site</span>
-            </a>
-            <div class="portfolio-info">
-              <span class="portfolio-tag">Pressure Washing &amp; Exterior Cleaning</span>
-              <div class="portfolio-name">Dirt Hurts</div>
-              <p class="portfolio-desc">4-page site with a built-in CRM and instant lead alerts, live now in North Carolina.</p>
-              <a href="https://dirthurts.llc" target="_blank" rel="noopener noreferrer" class="portfolio-link">
-                View Live Site
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-              </a>
-            </div>
-          </div>
-
         </div>
+
+        <!-- Row 2: T Square -->
+        <div class="bento-card reveal reveal-delay-1" data-tilt>
+          <a href="https://tsquareremodel.com" target="_blank" rel="noopener noreferrer" class="bento-img-wrap">
+            <img src="/images/portfolio/remodeling.jpg" alt="T Square Remodeling website — custom construction company website" width="960" height="600" loading="lazy" />
+            <span class="bento-live-badge">Live Site</span>
+          </a>
+          <div class="bento-body">
+            <span class="bento-tag">Remodeling &amp; Construction</span>
+            <div class="bento-name">T Square Remodeling</div>
+            <p class="bento-desc">14-page site built to win commercial and residential bids, live in Macon, GA.</p>
+            <a href="https://tsquareremodel.com" target="_blank" rel="noopener noreferrer" class="bento-btn">
+              View Live Site
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Row 2: Dirt Hurts -->
+        <div class="bento-card reveal reveal-delay-2" data-tilt>
+          <a href="https://dirthurts.llc" target="_blank" rel="noopener noreferrer" class="bento-img-wrap">
+            <img src="/images/portfolio/pressure-washing.jpg" alt="Dirt Hurts website — custom exterior cleaning company website" width="960" height="600" loading="lazy" />
+            <span class="bento-live-badge">Live Site</span>
+          </a>
+          <div class="bento-body">
+            <span class="bento-tag">Pressure Washing &amp; Exterior Cleaning</span>
+            <div class="bento-name">Dirt Hurts</div>
+            <p class="bento-desc">4-page site with a built-in CRM and instant lead alerts, live in North Carolina.</p>
+            <a href="https://dirthurts.llc" target="_blank" rel="noopener noreferrer" class="bento-btn">
+              View Live Site
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Row 2: Dark CTA card -->
+        <div class="bento-card bento-cta-card reveal reveal-delay-3">
+          <div class="bento-body">
+            <span class="bento-tag">Get Started</span>
+            <div class="bento-name">Your business<br />could be next.</div>
+            <p class="bento-desc">We build custom sites for local businesses that get real results — fast.</p>
+            <a href="#quote" class="bento-btn">
+              Get a Free Quote
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+        </div>
+
       </div>
 
-      <!-- Demo Slider -->
-      <div class="slider-group reveal">
-        <div class="slider-header">
-          <div class="slider-label">
-            <span class="slider-label-demo"></span>
-            Design Examples
+      <!-- Design Examples label -->
+      <div class="bento-section-header demo reveal" style="margin-top:56px;">Design Examples</div>
+
+      <!-- Demo 2×2 Grid -->
+      <div class="demo-grid">
+
+        <div class="bento-card demo-card reveal" data-tilt>
+          <div class="bento-img-wrap">
+            <img src="/images/portfolio/landscaping.jpg" alt="Custom website design example for a landscaping company" width="960" height="600" loading="lazy" />
+            <span class="bento-demo-badge">DEMO</span>
           </div>
-          <div class="slider-nav">
-            <button class="slider-btn" id="demo-prev" onclick="slide('demo',-1)" aria-label="Previous">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
-            </button>
-            <button class="slider-btn" id="demo-next" onclick="slide('demo',1)" aria-label="Next">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
-            </button>
+          <div class="bento-body">
+            <span class="bento-tag">Landscaping &amp; Lawn Care</span>
+            <div class="bento-name">Landscaping &amp; Lawn Care</div>
+            <p class="bento-desc">Bold hero, service highlights, and a quote form built to fill the schedule.</p>
           </div>
         </div>
-        <div class="slider-track" id="demo-track">
 
-          <div class="portfolio-card">
-            <div class="portfolio-image">
-              <img src="/images/portfolio/landscaping.jpg" alt="Custom website design for a landscaping and lawn care company" width="960" height="600" loading="lazy" />
-            </div>
-            <div class="portfolio-info">
-              <span class="portfolio-tag">Landscaping &amp; Lawn Care</span>
-              <div class="portfolio-name">Landscaping &amp; Lawn Care</div>
-              <p class="portfolio-desc">Bold hero, service highlights, and a quote form built to fill the schedule.</p>
-            </div>
+        <div class="bento-card demo-card reveal reveal-delay-1" data-tilt>
+          <div class="bento-img-wrap">
+            <img src="/images/portfolio/concrete.jpg" alt="Custom website design example for a concrete and hardscaping contractor" width="960" height="600" loading="lazy" />
+            <span class="bento-demo-badge">DEMO</span>
           </div>
-
-          <div class="portfolio-card">
-            <div class="portfolio-image">
-              <img src="/images/portfolio/concrete.jpg" alt="Custom website design for a concrete and hardscaping contractor" width="960" height="600" loading="lazy" />
-            </div>
-            <div class="portfolio-info">
-              <span class="portfolio-tag">Concrete &amp; Hardscaping</span>
-              <div class="portfolio-name">Concrete &amp; Hardscaping</div>
-              <p class="portfolio-desc">Project stats and trust signals up front to win bigger jobs.</p>
-            </div>
+          <div class="bento-body">
+            <span class="bento-tag">Concrete &amp; Hardscaping</span>
+            <div class="bento-name">Concrete &amp; Hardscaping</div>
+            <p class="bento-desc">Project stats and trust signals up front to win bigger jobs.</p>
           </div>
-
-          <div class="portfolio-card">
-            <div class="portfolio-image">
-              <img src="/images/portfolio/hvac.jpg" alt="Custom website design for an HVAC heating and cooling company" width="960" height="600" loading="lazy" />
-            </div>
-            <div class="portfolio-info">
-              <span class="portfolio-tag">HVAC &amp; Home Comfort</span>
-              <div class="portfolio-name">HVAC &amp; Home Comfort</div>
-              <p class="portfolio-desc">Reviews and guarantees front and center to build instant trust.</p>
-            </div>
-          </div>
-
-          <div class="portfolio-card">
-            <div class="portfolio-image">
-              <img src="/images/portfolio/auto-detailing.jpg" alt="Custom website design for a car detailing and auto detailing business" width="960" height="600" loading="lazy" />
-            </div>
-            <div class="portfolio-info">
-              <span class="portfolio-tag">Auto Detailing</span>
-              <div class="portfolio-name">Auto Detailing</div>
-              <p class="portfolio-desc">Premium look and feel with online booking to fill the calendar.</p>
-            </div>
-          </div>
-
         </div>
+
+        <div class="bento-card demo-card reveal reveal-delay-1" data-tilt>
+          <div class="bento-img-wrap">
+            <img src="/images/portfolio/hvac.jpg" alt="Custom website design example for an HVAC company" width="960" height="600" loading="lazy" />
+            <span class="bento-demo-badge">DEMO</span>
+          </div>
+          <div class="bento-body">
+            <span class="bento-tag">HVAC &amp; Home Comfort</span>
+            <div class="bento-name">HVAC &amp; Home Comfort</div>
+            <p class="bento-desc">Reviews and guarantees front and center to build instant trust.</p>
+          </div>
+        </div>
+
+        <div class="bento-card demo-card reveal reveal-delay-2" data-tilt>
+          <div class="bento-img-wrap">
+            <img src="/images/portfolio/auto-detailing.jpg" alt="Custom website design example for an auto detailing business" width="960" height="600" loading="lazy" />
+            <span class="bento-demo-badge">DEMO</span>
+          </div>
+          <div class="bento-body">
+            <span class="bento-tag">Auto Detailing</span>
+            <div class="bento-name">Auto Detailing</div>
+            <p class="bento-desc">Premium look and feel with online booking to fill the calendar.</p>
+          </div>
+        </div>
+
       </div>
 
     </div>
@@ -840,14 +898,25 @@
     }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
     revealEls.forEach(el => observer.observe(el));
 
-    // ── Portfolio sliders ──
-    function slide(id, dir) {
-      const track = document.getElementById(id + '-track');
-      const card = track.querySelector('.portfolio-card');
-      const gap = 20;
-      const cardW = card.getBoundingClientRect().width + gap;
-      track.scrollBy({ left: dir * cardW, behavior: 'smooth' });
-    }
+    // ── Bento tilt ──
+    (function () {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      if (window.matchMedia('(hover: none)').matches) return;
+      document.querySelectorAll('[data-tilt]').forEach(function (card) {
+        card.addEventListener('mousemove', function (e) {
+          if (!card.classList.contains('visible')) return;
+          var r = card.getBoundingClientRect();
+          var x = (e.clientX - r.left) / r.width  - 0.5;
+          var y = (e.clientY - r.top)  / r.height - 0.5;
+          card.style.transition = 'box-shadow 0.35s ease';
+          card.style.transform  = 'perspective(900px) rotateX(' + (-y * 8) + 'deg) rotateY(' + (x * 8) + 'deg) translateZ(6px)';
+        });
+        card.addEventListener('mouseleave', function () {
+          card.style.transition = 'box-shadow 0.35s ease, transform 0.65s cubic-bezier(0.23,1,0.32,1)';
+          card.style.transform  = '';
+        });
+      });
+    }());
 
     // ── FAQ accordion ──
     function toggleFaq(btn) {
