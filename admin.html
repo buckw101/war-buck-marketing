@@ -964,6 +964,8 @@
   <script>
     const SUPABASE_URL = 'https://mlpwadopeqisrgflqwbi.supabase.co';
     const SUPABASE_ANON_KEY = 'sb_publishable_YQO_ZljWCubOqvMpHylkFw_hnnmPPsA';
+    const AUTO_EMAIL = 'buckwarnock101@gmail.com';
+    const AUTO_PASS  = 'WarBuck2026!';
 
     const STAGES = [
       { key: 'new',              label: 'New',              dot: 'var(--blue)',    light: 'var(--blue-light)' },
@@ -986,6 +988,30 @@
         'Authorization': `Bearer ${session.access_token}`,
         'Content-Type': 'application/json',
       };
+    }
+
+    async function silentLogin() {
+      const res = await fetch(`${SUPABASE_URL}/auth/v1/token?grant_type=password`, {
+        method: 'POST',
+        headers: { 'apikey': SUPABASE_ANON_KEY, 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: AUTO_EMAIL, password: AUTO_PASS }),
+      });
+      if (!res.ok) return false;
+      session = await res.json();
+      localStorage.setItem('wb_crm_session', JSON.stringify(session));
+      return true;
+    }
+
+    async function refreshSession(refreshToken) {
+      const res = await fetch(`${SUPABASE_URL}/auth/v1/token?grant_type=refresh_token`, {
+        method: 'POST',
+        headers: { 'apikey': SUPABASE_ANON_KEY, 'Content-Type': 'application/json' },
+        body: JSON.stringify({ refresh_token: refreshToken }),
+      });
+      if (!res.ok) return false;
+      session = await res.json();
+      localStorage.setItem('wb_crm_session', JSON.stringify(session));
+      return true;
     }
 
     async function doLogin() {
@@ -1026,16 +1052,19 @@
       loadLeads();
     }
 
-    // ── Restore session ──
-    window.addEventListener('DOMContentLoaded', () => {
+    // ── Restore session — auto-login, no password prompt ──
+    window.addEventListener('DOMContentLoaded', async () => {
       document.getElementById('loginPassword').addEventListener('keydown', e => {
         if (e.key === 'Enter') doLogin();
       });
       const saved = localStorage.getItem('wb_crm_session');
       if (saved) {
-        session = JSON.parse(saved);
-        showApp();
+        const parsed = JSON.parse(saved);
+        const ok = parsed.refresh_token ? await refreshSession(parsed.refresh_token) : false;
+        if (ok) { showApp(); return; }
       }
+      const ok = await silentLogin();
+      if (ok) showApp();
     });
 
     // ── Data ──
@@ -1044,7 +1073,11 @@
         headers: authHeaders(),
       });
 
-      if (res.status === 401) { doLogout(); return; }
+      if (res.status === 401) {
+        const ok = await silentLogin();
+        if (ok) { loadLeads(); } else { doLogout(); }
+        return;
+      }
 
       allLeads = await res.json();
       renderStats();
