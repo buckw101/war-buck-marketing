@@ -173,7 +173,18 @@
     .reveal { opacity: 0; transform: translateY(32px); transition: opacity 0.65s ease, transform 0.65s ease; will-change: opacity, transform; }
     .reveal.visible { opacity: 1; transform: translateY(0); will-change: auto; }
     .reveal-delay-1 { transition-delay: 0.1s; } .reveal-delay-2 { transition-delay: 0.2s; } .reveal-delay-3 { transition-delay: 0.3s; }
-    @media (max-width: 768px) { nav { padding: 16px 20px; } section { padding: 72px 20px; } #hero { padding: 100px 20px 64px; } }
+    @media (max-width: 768px) { nav { padding: 16px 20px; } section { padding: 72px 20px; } #hero { padding: 100px 20px 64px; } body { padding-bottom: 72px; } }
+
+    /* ── MOBILE STICKY BAR ── */
+    .mobile-sticky-bar { display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 200; background: var(--white); border-top: 1px solid var(--gray-100); padding: 10px 16px; gap: 10px; box-shadow: 0 -4px 20px rgba(0,0,0,0.1); }
+    @media (max-width: 768px) { .mobile-sticky-bar { display: flex; } }
+    .sticky-call { flex: 1; display: inline-flex; align-items: center; justify-content: center; gap: 7px; padding: 13px 16px; background: var(--black); color: var(--white); font-size: 15px; font-weight: 700; border-radius: 10px; text-decoration: none; }
+    .sticky-quote { flex: 1; display: inline-flex; align-items: center; justify-content: center; gap: 7px; padding: 13px 16px; background: var(--accent); color: var(--white); font-size: 15px; font-weight: 700; border-radius: 10px; text-decoration: none; }
+
+    /* ── MOBILE HERO: swap secondary btn ── */
+    .btn-hero-call-mobile { display: none; }
+    .btn-hero-view-work { display: inline-flex; }
+    @media (max-width: 640px) { .btn-hero-call-mobile { display: inline-flex; } .btn-hero-view-work { display: none; } }
 
     /* ── BENTO PORTFOLIO ── */
     #portfolio { background: var(--gray-50); }
@@ -387,7 +398,11 @@
           Get My Free Website Strategy
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12l7 7 7-7" aria-hidden="true"/></svg>
         </a>
-        <a href="#portfolio" class="btn-secondary">View Our Work</a>
+        <a href="#portfolio" class="btn-secondary btn-hero-view-work">View Our Work</a>
+        <a href="tel:4783615444" class="btn-primary btn-hero-call-mobile">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.42 2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6.18 6.18l.95-.95a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Call Now
+        </a>
       </div>
       <div class="hero-trust reveal reveal-delay-3">
         <div class="trust-item">
@@ -845,8 +860,8 @@
                 <input type="tel" name="Phone Number" placeholder="(478) 000-0000" autocomplete="tel" required />
               </div>
               <div class="form-group full">
-                <label>Email Address <span>*</span></label>
-                <input type="email" name="Email Address" placeholder="you@example.com" autocomplete="email" required />
+                <label>Email Address <span style="font-weight:400;color:var(--gray-500);">(optional)</span></label>
+                <input type="email" name="Email Address" placeholder="you@example.com" autocomplete="email" />
               </div>
               <div class="form-group full">
                 <label>Type of Business <span style="font-weight:400;color:var(--gray-500);">(optional)</span></label>
@@ -886,6 +901,18 @@
       <p class="footer-copy">&copy; 2026 War-Buck Marketing. All rights reserved.</p>
     </div>
   </footer>
+
+  <!-- Mobile Sticky Bar -->
+  <div class="mobile-sticky-bar">
+    <a href="tel:4783615444" class="sticky-call">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.42 2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6.18 6.18l.95-.95a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      Call Now
+    </a>
+    <a href="https://calendly.com/buckwarnock101/free-strategy-call" target="_blank" rel="noopener noreferrer" class="sticky-quote">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      Book Free Call
+    </a>
+  </div>
 
   <script>
     const navbar = document.getElementById('navbar');
