@@ -186,6 +186,9 @@
     .btn-hero-view-work { display: inline-flex; }
     @media (max-width: 640px) { .btn-hero-call-mobile { display: inline-flex; } .btn-hero-view-work { display: none; } }
 
+    /* ── URGENCY PILL ── */
+    .urgency-pill { display: inline-flex; align-items: center; gap: 7px; padding: 7px 16px; background: #fef2f2; border: 1px solid #fecaca; border-radius: 100px; font-size: 13px; font-weight: 700; color: #dc2626; margin-bottom: 14px; }
+
     /* ── BENTO PORTFOLIO ── */
     #portfolio { background: var(--gray-50); }
 
@@ -390,6 +393,7 @@
   <!-- Hero -->
   <section id="hero">
     <div class="hero-inner">
+      <div id="urgency-pill" class="urgency-pill reveal">⚡ Summer Pricing Ends Tonight — Websites from $400</div>
       <div class="hero-badge reveal">Website Design for Local Service Businesses</div>
       <h1 class="reveal reveal-delay-1">A Website That Works As Hard As <em>You</em> Do.</h1>
       <p class="hero-sub reveal reveal-delay-2">Custom-designed, mobile-first websites built to build trust, rank on Google, and turn visitors into calls, quotes, and booked jobs. Tell us about your business and get a free strategy session — no obligation.</p>
@@ -822,6 +826,13 @@
           <p class="section-label">Get Started — Free</p>
           <h2 class="section-title">Ready For A Website<br />That Works As Hard<br />As You Do?</h2>
           <p class="section-sub" style="max-width:480px;">Tell us a bit about your business. We'll personally review it and follow up within 24 hours with a free strategy breakdown — what we'd build, what it would cost, and how it could help your business grow.</p>
+
+          <div style="background:var(--accent-light);border:1px solid var(--accent-subtle);border-radius:var(--radius);padding:20px 24px;margin-top:28px;margin-bottom:4px;">
+            <div style="font-size:11px;font-weight:700;color:var(--accent);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:8px;">Real Client Result</div>
+            <div style="font-size:26px;font-weight:900;color:var(--black);letter-spacing:-0.5px;line-height:1.15;">130 new clients<br>in 90 days.</div>
+            <div style="font-size:13px;color:var(--gray-500);margin-top:6px;line-height:1.5;">Attaboy Lawn Care — from a War-Buck website. 12.6x return on their investment.</div>
+          </div>
+
           <div class="quote-checklist">
             <div class="trust-item">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
@@ -868,12 +879,22 @@
                 <input type="text" name="Type of Business" placeholder="e.g. Landscaping, HVAC, Roofing, Cleaning..." />
               </div>
               <div class="form-group full">
+                <label>When are you looking to get started? <span style="font-weight:400;color:var(--gray-500);">(optional)</span></label>
+                <select name="Timeline">
+                  <option value="">Select a timeline...</option>
+                  <option value="ASAP">Ready to start ASAP</option>
+                  <option value="Within 30 days">Within the next 30 days</option>
+                  <option value="1-3 months">1–3 months from now</option>
+                  <option value="Just researching">Just researching for now</option>
+                </select>
+              </div>
+              <div class="form-group full">
                 <label>Anything you want us to know? <span style="font-weight:400;color:var(--gray-500);">(optional)</span></label>
                 <textarea name="Project Details" placeholder="Do you have a current site? What's your biggest goal with a new one?"></textarea>
               </div>
               <div class="form-submit">
                 <button type="submit" class="btn-primary">
-                  Apply for a Website
+                  Get My Free Website Strategy
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                 </button>
                 <p class="form-note">Or call/text us directly: <a href="tel:4783615444" style="color:var(--accent);font-weight:600;">(478) 361-5444</a> — we respond within 24 hrs.</p>
@@ -1002,11 +1023,45 @@
       e.preventDefault();
       const form = document.getElementById('leadForm');
       const btn = form.querySelector('button[type="submit"]');
+
+      // Phone validation — block fake/garbage numbers
+      const phoneInput = form.querySelector('[name="Phone Number"]');
+      const digits = phoneInput.value.replace(/\D/g, '');
+      const isAllSame = digits.length > 0 && /^(.)\1+$/.test(digits);
+      const isSequential = ['1234567890','0987654321','1111111111','0000000000'].includes(digits);
+      if (digits.length < 10 || isAllSame || isSequential) {
+        phoneInput.style.borderColor = '#dc2626';
+        phoneInput.style.boxShadow = '0 0 0 3px rgba(220,38,38,0.15)';
+        phoneInput.focus();
+        const hint = form.querySelector('#phone-hint') || (() => {
+          const el = document.createElement('p');
+          el.id = 'phone-hint';
+          el.style.cssText = 'color:#dc2626;font-size:13px;margin-top:4px;';
+          el.textContent = 'Please enter a valid phone number.';
+          phoneInput.parentElement.appendChild(el);
+          return el;
+        })();
+        return;
+      }
+      phoneInput.style.borderColor = '';
+      phoneInput.style.boxShadow = '';
+      const hint = form.querySelector('#phone-hint');
+      if (hint) hint.remove();
+
+      // Dynamic conversion value — higher quality signals = higher value
+      // Trains Google smart bidding to favor serious buyers
+      const data = new FormData(form);
+      let convValue = 1.0;
+      if ((data.get('Type of Business') || '').trim()) convValue += 0.5;
+      const timeline = data.get('Timeline') || '';
+      if (timeline === 'ASAP') convValue += 2.0;
+      else if (timeline === 'Within 30 days') convValue += 1.0;
+      else if (timeline === '1-3 months') convValue += 0.5;
+
       const originalText = btn.innerHTML;
       btn.textContent = 'Sending...';
       btn.disabled = true;
       try {
-        const data = new FormData(form);
         const [emailRes] = await Promise.allSettled([
           fetch(form.action, { method: 'POST', body: data, headers: { 'Accept': 'application/json' } }),
           saveLeadToSupabase(data),
@@ -1016,7 +1071,7 @@
           document.getElementById('successMsg').style.display = 'block';
           gtag('event', 'conversion', {
             'send_to': 'AW-18232240418/t4iRCPK9wb8cEKLS5_VD',
-            'value': 1.0,
+            'value': convValue,
             'currency': 'USD'
           });
         } else {
@@ -1028,6 +1083,14 @@
         btn.disabled = false;
       }
     }
+
+    // Auto-hide urgency pill after June 30
+    (function() {
+      if (new Date() > new Date('2026-07-01T00:00:00')) {
+        const el = document.getElementById('urgency-pill');
+        if (el) el.style.display = 'none';
+      }
+    })();
   </script>
 
 </body>
