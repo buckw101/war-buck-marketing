@@ -1,0 +1,235 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-07-03T16:18:55Z",
+  "title": "Design System: War-Buck Marketing",
+  "extensions": {
+    "colorMeta": {
+      "ledger-black": {
+        "role": "neutral",
+        "displayName": "Ledger Black",
+        "canonical": "oklch(16% 0.02 260)",
+        "tonalRamp": [
+          "#070b14",
+          "#1f252f",
+          "#3c424d",
+          "#5b626d",
+          "#7b838f",
+          "#9ea6b2",
+          "#c2cad7",
+          "#e7effc"
+        ]
+      },
+      "cool-paper": {
+        "role": "neutral",
+        "displayName": "Cool Paper",
+        "canonical": "oklch(97% 0.006 260)",
+        "tonalRamp": [
+          "#0a0b0e",
+          "#232528",
+          "#404245",
+          "#5f6165",
+          "#808286",
+          "#a3a5a9",
+          "#c7c9cd",
+          "#eceff3"
+        ]
+      },
+      "signal-blue": {
+        "role": "primary",
+        "displayName": "Signal Blue",
+        "canonical": "oklch(50% 0.205 264)",
+        "tonalRamp": [
+          "#100061",
+          "#040081",
+          "#0020a2",
+          "#1544c4",
+          "#3065e7",
+          "#4c85ff",
+          "#69a6ff",
+          "#88c7ff"
+        ]
+      },
+      "signal-blue-light": {
+        "role": "primary",
+        "displayName": "Signal Blue Light",
+        "canonical": "oklch(74% 0.135 258)"
+      },
+      "signal-blue-deep": {
+        "role": "primary",
+        "displayName": "Signal Blue Deep",
+        "canonical": "oklch(22% 0.075 264)"
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Hero H1s only."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Section titles (.section-title), opens every major page section."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Service/feature card titles (.svc-title); deliberately restrained size."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Default paragraph copy."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Nav sub-tagline and form-section labels only \u2014 not a decorative eyebrow."
+      }
+    },
+    "shadows": [
+      {
+        "name": "ambient-sm",
+        "value": "0 2px 10px oklch(20% 0.02 260 / 0.07)",
+        "purpose": "Lightest touch, small floating elements."
+      },
+      {
+        "name": "ambient-md",
+        "value": "0 14px 36px oklch(20% 0.02 260 / 0.12)",
+        "purpose": "Resting state for portfolio site-preview cards."
+      },
+      {
+        "name": "ambient-lg",
+        "value": "0 28px 72px oklch(20% 0.02 260 / 0.20)",
+        "purpose": "Hover/lifted state for portfolio site-preview cards."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-signature",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Default easing for all state transitions site-wide."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "mobile-nav",
+        "value": "900px"
+      },
+      {
+        "name": "sm",
+        "value": "640px"
+      },
+      {
+        "name": "md",
+        "value": "780px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Main CTA button, solid Signal Blue, used sitewide for the single highest-priority action.",
+      "html": "<a href=\"#\" class=\"ds-btn-primary\">Get My Free Strategy Call<svg class=\"ds-btn-icon\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M5 12h14M13 6l6 6-6 6\"/></svg></a>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; gap: 8px; padding: 16px 30px; background: #2255d5; color: #ffffff; font-family: 'Switzer', sans-serif; font-size: 15px; font-weight: 700; border-radius: 8px; text-decoration: none; border: none; cursor: pointer; transition: background 0.2s cubic-bezier(0.16,1,0.3,1), transform 0.15s cubic-bezier(0.16,1,0.3,1); white-space: nowrap; } .ds-btn-primary:hover { background: #1241c1; transform: translateY(-2px); } .ds-btn-primary .ds-btn-icon { transition: transform 0.2s cubic-bezier(0.16,1,0.3,1); } .ds-btn-primary:hover .ds-btn-icon { transform: translateX(3px); } .ds-btn-primary:focus-visible { outline: 3px solid #74acff; outline-offset: 2px; }"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Outline button for the lower-priority action alongside a primary CTA.",
+      "html": "<a href=\"#\" class=\"ds-btn-secondary\">See Live Examples</a>",
+      "css": ".ds-btn-secondary { display: inline-flex; align-items: center; gap: 8px; padding: 16px 28px; background: transparent; color: #10141b; font-family: 'Switzer', sans-serif; font-size: 15px; font-weight: 600; border-radius: 8px; text-decoration: none; border: 1.5px solid #b2b8c1; cursor: pointer; transition: border-color 0.2s cubic-bezier(0.16,1,0.3,1), background 0.2s cubic-bezier(0.16,1,0.3,1); white-space: nowrap; } .ds-btn-secondary:hover { border-color: #2255d5; background: rgba(34,85,213,0.06); } .ds-btn-secondary:focus-visible { outline: 3px solid #2255d5; outline-offset: 2px; }"
+    },
+    {
+      "name": "Portfolio Preview Card",
+      "kind": "card",
+      "refersTo": "card-portfolio",
+      "description": "Live-site preview card with browser-chrome header; shadow present at rest, lifts on hover. The system's one 'physical object' card.",
+      "html": "<a href=\"#\" class=\"ds-site-card\"><div class=\"ds-site-frame\"><div class=\"ds-site-chrome\"><span></span><span></span><span></span></div><img src=\"https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?auto=format&fit=crop&w=800&q=80\" alt=\"\"/></div></a>",
+      "css": ".ds-site-card { text-decoration: none; display: block; color: inherit; } .ds-site-frame { border-radius: 14px; overflow: hidden; background: #080d16; box-shadow: 0 14px 36px oklch(20% 0.02 260 / 0.12); transition: transform 0.35s cubic-bezier(0.16,1,0.3,1), box-shadow 0.35s cubic-bezier(0.16,1,0.3,1); } .ds-site-card:hover .ds-site-frame { transform: translateY(-6px); box-shadow: 0 28px 72px oklch(20% 0.02 260 / 0.20); } .ds-site-chrome { display: flex; align-items: center; gap: 6px; padding: 12px 14px; } .ds-site-chrome span { width: 8px; height: 8px; border-radius: 50%; background: #48566c; } .ds-site-frame img { display: block; width: 100%; height: auto; aspect-ratio: 16/10; object-fit: cover; object-position: top; }"
+    },
+    {
+      "name": "Case Study Card",
+      "kind": "card",
+      "refersTo": "card-case",
+      "description": "Flat, full-bleed Ledger Black block for client results \u2014 no shadow by design. Big Cabinet-Grotesk metrics with Signal-Blue-Light highlighted digits.",
+      "html": "<div class=\"ds-case-card\"><div class=\"ds-case-tag\">Client Results</div><div class=\"ds-case-client\">Attaboy Lawn Care</div><div class=\"ds-case-metrics\"><div class=\"ds-cs-metric\"><div class=\"ds-cs-metric-number\"><span>130</span></div><div class=\"ds-cs-metric-label\">New paying clients in 90 days</div></div></div></div>",
+      "css": ".ds-case-card { background: #080d16; border-radius: 26px; padding: 44px 44px 40px; } .ds-case-tag { display: inline-flex; align-items: center; gap: 7px; font-family: 'Switzer', sans-serif; font-size: 11.5px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #74acff; margin-bottom: 26px; } .ds-case-client { font-family: 'Cabinet Grotesk', sans-serif; font-size: clamp(24px,3.2vw,34px); font-weight: 800; color: #eff2f7; letter-spacing: -0.02em; margin-bottom: 34px; } .ds-case-metrics { display: grid; grid-template-columns: repeat(4,1fr); gap: 1px; background: rgba(72,86,108,0.16); border-radius: 14px; overflow: hidden; } .ds-cs-metric { padding: 24px 16px; background: #080d16; } .ds-cs-metric-number { font-family: 'Cabinet Grotesk', sans-serif; font-size: clamp(26px,3.5vw,40px); font-weight: 800; letter-spacing: -0.02em; line-height: 1; color: #eff2f7; margin-bottom: 6px; } .ds-cs-metric-number span { color: #74acff; } .ds-cs-metric-label { font-family: 'Switzer', sans-serif; font-size: 12px; color: #5f6a7b; line-height: 1.4; }"
+    },
+    {
+      "name": "Text Input",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Standard form field, used in the multi-step intake modal.",
+      "html": "<div class=\"ds-form-group\"><label>Business Name</label><input type=\"text\" placeholder=\"e.g. Attaboy Lawn Care\"/></div>",
+      "css": ".ds-form-group { display: flex; flex-direction: column; gap: 8px; } .ds-form-group label { font-family: 'Switzer', sans-serif; font-size: 14px; font-weight: 600; color: #10141b; } .ds-form-group input { width: 100%; padding: 12px 16px; border: 1.5px solid #b2b8c1; border-radius: 10px; font-family: 'Switzer', sans-serif; font-size: 15px; color: #10141b; background: #ffffff; transition: border-color 0.2s cubic-bezier(0.16,1,0.3,1), box-shadow 0.2s cubic-bezier(0.16,1,0.3,1); outline: none; } .ds-form-group input:focus { border-color: #2255d5; box-shadow: 0 0 0 3px rgba(34,85,213,0.14); }"
+    },
+    {
+      "name": "Navigation Bar",
+      "kind": "nav",
+      "refersTo": "nav",
+      "description": "Fixed Ledger Black nav with stacked Cabinet Grotesk wordmark + Signal-Blue-Light uppercase tagline.",
+      "html": "<nav class=\"ds-nav\"><a href=\"#\" class=\"ds-nav-brand\"><span class=\"ds-nav-brand-main\">War-Buck</span><span class=\"ds-nav-brand-sub\">Marketing</span></a><div class=\"ds-nav-links\"><a href=\"#\" class=\"ds-nav-link\">Services</a><a href=\"#\" class=\"ds-nav-link\">Results</a></div></nav>",
+      "css": ".ds-nav { display: flex; align-items: center; justify-content: space-between; padding: 18px 40px; background: #080d16; border-bottom: 1px solid rgba(72,86,108,0.16); } .ds-nav-brand { display: flex; flex-direction: column; gap: 1px; text-decoration: none; line-height: 1; } .ds-nav-brand-main { font-family: 'Cabinet Grotesk', sans-serif; font-size: 19px; font-weight: 800; letter-spacing: -0.02em; color: #eff2f7; } .ds-nav-brand-sub { font-family: 'Switzer', sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: #74acff; } .ds-nav-links { display: flex; align-items: center; gap: 30px; } .ds-nav-link { font-family: 'Switzer', sans-serif; font-size: 14px; font-weight: 500; color: #9da5b1; text-decoration: none; transition: color 0.2s cubic-bezier(0.16,1,0.3,1); } .ds-nav-link:hover { color: #eff2f7; }"
+    },
+    {
+      "name": "OG Growth Panel",
+      "kind": "custom",
+      "refersTo": "og-image-panel",
+      "description": "Signature results motif introduced 2026-07-03 in the redesigned social share image: an asymmetric Signal-Blue panel with ascending bars, symbolizing client growth. Candidate for reuse in future ad creative / social templates.",
+      "html": "<div class=\"ds-growth-panel\"><div class=\"ds-growth-bar\" style=\"height:40%\"></div><div class=\"ds-growth-bar\" style=\"height:60%\"></div><div class=\"ds-growth-bar\" style=\"height:80%\"></div><div class=\"ds-growth-bar\" style=\"height:100%\"></div></div>",
+      "css": ".ds-growth-panel { display: flex; align-items: flex-end; gap: 16px; height: 200px; padding: 24px; background: linear-gradient(135deg, #2255d5, #12409e); border-radius: 14px; } .ds-growth-bar { width: 32px; background: rgba(255,255,255,0.85); border-radius: 4px 4px 0 0; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Operator's Ledger",
+    "overview": "War-Buck Marketing's interface reads like the private ledger of an operator who's actually closing deals, not a SaaS company's marketing deck. The canvas is near-black \u2014 Ledger Black (#080d16), not a \"dark mode\" gray \u2014 because the brand personality is a serious operator, not a scrappy freelancer and not a faceless corporate SaaS vendor. Against that black, exactly one color is allowed to matter: Signal Blue (#2255d5), used decisively wherever there's a number, a result, or a call to act. Everything else is near-black ink, off-white paper, or quiet gray text \u2014 no secondary or tertiary accent colors competing for attention. This system explicitly rejects the pastel-blue, light-background, icon-in-rounded-box \"corporate SaaS\" register the site shipped with before its 2026-07-02 redesign.",
+    "keyCharacteristics": [
+      "Near-black canvas as the default surface for high-stakes sections (nav, hero, case studies, mobile menu), not just a dark-mode toggle",
+      "One saturated blue (Signal Blue) carries every accent, CTA, and highlighted number \u2014 never diluted into a pastel tint",
+      "Cabinet Grotesk (extra-bold, tight tracking) for anything that needs to command attention; Switzer for everything read at length",
+      "Proof-first layout: real client numbers and case-study metrics get the same typographic weight as headlines, because results are the pitch",
+      "Soft, colored (never pure-black) ambient shadows \u2014 depth reads as considered, not heavy"
+    ],
+    "rules": [
+      {
+        "name": "The One Signal Rule",
+        "body": "Signal Blue is the only saturated color anywhere in the system. If a new element needs emphasis, it gets Signal Blue, weight, or size \u2014 never a second accent hue.",
+        "section": "colors"
+      },
+      {
+        "name": "The Warmth-Free Neutral Rule",
+        "body": "Every \"white\" and \"black\" in this system is tinted toward the brand's own hue (258\u2013264\u00b0), never toward cream/warm neutrals.",
+        "section": "colors"
+      },
+      {
+        "name": "The No-Shout Rule",
+        "body": "Display text never exceeds clamp(2.75rem, 6vw, 5rem) (~80px). This was deliberately reduced site-wide on 2026-07-02 after oversized headings read as \"shouting.\"",
+        "section": "typography"
+      },
+      {
+        "name": "The Functional Uppercase Rule",
+        "body": "Uppercase, letter-spaced text is reserved for two specific functional roles (nav sub-label, form-section labels) \u2014 never used as a decorative kicker above every section heading.",
+        "section": "typography"
+      },
+      {
+        "name": "The Ink-Tinted Shadow Rule",
+        "body": "No shadow in this system is pure black. Every shadow is oklch(20% 0.02 260 / alpha) \u2014 a near-black tinted toward the brand's own hue.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do keep Signal Blue (#2255d5) as the only saturated accent color anywhere on the site, including in any new marketing assets (social cards, ads, email headers).",
+      "Do tint every \"neutral\" black/white toward the brand's own hue (258\u2013264\u00b0) rather than defaulting to pure black/white or a warm cream.",
+      "Do lead with concrete numbers (client counts, days-to-result, revenue figures) at full typographic weight \u2014 proof is the design, not a footnote.",
+      "Do use the ink-tinted shadow formula (oklch(20% 0.02 260 / alpha)) for any new shadow, never a flat rgba(0,0,0,...).",
+      "Do cap display type at clamp(2.75rem, 6vw, 5rem) \u2014 this was deliberately reduced site-wide on 2026-07-02 after oversized headings read as \"shouting.\""
+    ],
+    "donts": [
+      "Don't revert to the pre-2026-07-02 look: light blue/white pastel gradients, rounded icon-in-a-box service cards, pastel badges, or a tiny uppercase tracked kicker above every section.",
+      "Don't introduce a second accent color. If something needs more emphasis than Signal Blue gives it, increase weight or size instead.",
+      "Don't use border-left/border-right as a colored accent stripe on cards or list items.",
+      "Don't apply background-clip: text gradient text anywhere.",
+      "Don't add uppercase tracked eyebrows above every section heading.",
+      "Don't give Ledger Black surfaces (case-cards, nav, mobile menu) a drop shadow \u2014 they're flat, full-bleed ink blocks by design."
+    ]
+  }
+}
