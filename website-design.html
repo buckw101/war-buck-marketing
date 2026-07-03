@@ -25,7 +25,7 @@
   <meta property="og:url" content="https://warbuckmarketing.com/website-design" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="War-Buck Marketing" />
-  <meta property="og:image" content="https://warbuckmarketing.com/og-image.svg" />
+  <meta property="og:image" content="https://warbuckmarketing.com/og-image.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
 
@@ -33,7 +33,7 @@
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Custom Website Design for Local Businesses | War-Buck Marketing" />
   <meta name="twitter:description" content="Custom, mobile-first websites built to build trust, rank on Google, and win more customers. Get a free website strategy session." />
-  <meta name="twitter:image" content="https://warbuckmarketing.com/og-image.svg" />
+  <meta name="twitter:image" content="https://warbuckmarketing.com/og-image.png" />
 
   <!-- Structured Data: Service -->
   <script type="application/ld+json">
@@ -112,273 +112,772 @@
   <link rel="icon" href="/favicon.ico" sizes="any" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://api.fontshare.com" />
+  <link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@800,700,500&f[]=switzer@400,500,600,700&display=swap" rel="stylesheet" />
 
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
     :root {
-      --black: #0a0a0a; --gray-900: #1a1a1a; --gray-700: #374151; --gray-500: #6b7280;
-      --gray-300: #d1d5db; --gray-100: #f3f4f6; --gray-50: #f9fafb; --white: #ffffff;
-      --accent: #2563eb; --accent-dark: #1d4ed8; --accent-light: #eff6ff; --accent-subtle: #dbeafe;
-      --radius: 12px; --radius-lg: 20px; --shadow: 0 4px 24px rgba(0,0,0,0.08); --shadow-lg: 0 8px 48px rgba(0,0,0,0.12);
+      /* ── Color tokens ── */
+      --ink: oklch(16% 0.02 260);
+      --ink-raised: oklch(21% 0.026 260);
+      --ink-raised-2: oklch(26% 0.03 260);
+      --ink-line: oklch(45% 0.04 260 / 0.35);
+      --ink-line-soft: oklch(45% 0.04 260 / 0.16);
+
+      --paper: oklch(97% 0.006 260);
+      --paper-2: oklch(93.5% 0.008 260);
+      --white: oklch(100% 0 0);
+
+      --text: oklch(19% 0.016 260);
+      --text-muted: oklch(43% 0.022 260);
+      --text-faint: oklch(58% 0.018 260);
+
+      --text-on-ink: oklch(96% 0.008 260);
+      --text-on-ink-muted: oklch(72% 0.02 260);
+      --text-on-ink-faint: oklch(52% 0.03 260);
+
+      --accent: oklch(50% 0.205 264);
+      --accent-hover: oklch(44% 0.205 264);
+      --accent-bright: oklch(74% 0.135 258);
+      --accent-deep: oklch(22% 0.075 264);
+      --accent-deep-2: oklch(27% 0.085 264);
+
+      --line: oklch(88% 0.01 260);
+      --line-strong: oklch(78% 0.014 260);
+
+      /* ── Scale ── */
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 26px;
+
+      --shadow-sm: 0 2px 10px oklch(20% 0.02 260 / 0.07);
+      --shadow-md: 0 14px 36px oklch(20% 0.02 260 / 0.12);
+      --shadow-lg: 0 28px 72px oklch(20% 0.02 260 / 0.20);
+
+      --ease: cubic-bezier(0.16, 1, 0.3, 1);
+
+      --z-nav: 40;
+      --z-menu: 30;
+      --z-backdrop: 50;
+      --z-modal: 60;
     }
+
     html { scroll-behavior: smooth; }
-    body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; background: var(--white); color: var(--black); line-height: 1.6; -webkit-font-smoothing: antialiased; }
-    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 20px 40px; background: rgba(255,255,255,0.9); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid rgba(0,0,0,0.06); transition: box-shadow 0.3s ease; }
-    nav.scrolled { box-shadow: 0 2px 20px rgba(0,0,0,0.08); }
-    .nav-brand { font-size: 17px; font-weight: 800; letter-spacing: -0.3px; color: var(--black); text-decoration: none; }
-    .nav-brand span { color: var(--accent); }
-    .nav-right { display: flex; align-items: center; gap: 16px; }
-    .nav-phone { display: inline-flex; align-items: center; gap: 6px; font-size: 14px; font-weight: 600; color: var(--gray-700); text-decoration: none; transition: color 0.2s ease; }
-    .nav-phone:hover { color: var(--accent); }
-    .nav-phone svg { flex-shrink: 0; }
-    .nav-cta { display: inline-flex; align-items: center; padding: 10px 22px; background: var(--black); color: var(--white); font-size: 14px; font-weight: 600; border-radius: 8px; text-decoration: none; transition: background 0.2s ease, transform 0.15s ease; cursor: pointer; border: none; }
-    .nav-cta:hover { background: var(--gray-900); transform: translateY(-1px); }
-    @media (max-width: 600px) { .nav-phone span { display: none; } }
-    .nav-links { display: flex; align-items: center; gap: 28px; }
-    .nav-link { font-size: 14px; font-weight: 600; color: var(--gray-700); text-decoration: none; transition: color 0.2s ease; }
-    .nav-link:hover { color: var(--accent); }
-    @media (max-width: 900px) { .nav-links { display: none; } }
-    section { padding: 96px 40px; }
-    .section-inner { max-width: 1080px; margin: 0 auto; }
-    .section-label { font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; }
-    .section-title { font-size: clamp(30px, 4.5vw, 48px); font-weight: 800; letter-spacing: -1px; line-height: 1.1; color: var(--black); margin-bottom: 16px; }
-    .section-sub { font-size: 18px; color: var(--gray-500); max-width: 560px; line-height: 1.6; }
-    .btn-primary { display: inline-flex; align-items: center; gap: 8px; padding: 16px 32px; background: var(--accent); color: var(--white); font-size: 16px; font-weight: 700; border-radius: var(--radius); text-decoration: none; border: none; cursor: pointer; transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease; box-shadow: 0 4px 20px rgba(37,99,235,0.3); }
-    .btn-primary:hover { background: var(--accent-dark); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(37,99,235,0.4); }
-    .btn-secondary { display: inline-flex; align-items: center; gap: 8px; padding: 16px 28px; background: transparent; color: var(--gray-700); font-size: 15px; font-weight: 600; border-radius: var(--radius); text-decoration: none; border: 1.5px solid var(--gray-300); cursor: pointer; transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease; }
-    .btn-secondary:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-light); }
-    #hero { min-height: 92vh; display: flex; align-items: center; padding: 120px 40px 80px; background: linear-gradient(135deg, #f8faff 0%, #f0f4ff 40%, #fafafa 100%); position: relative; overflow: hidden; }
-    .hero-inner { max-width: 900px; margin: 0 auto; text-align: center; position: relative; z-index: 1; }
-    .hero-badge { display: inline-flex; align-items: center; gap: 6px; padding: 6px 14px; background: var(--accent-light); border: 1px solid var(--accent-subtle); border-radius: 100px; font-size: 13px; font-weight: 500; color: var(--accent); margin-bottom: 32px; }
-    .hero-badge::before { content: '●'; font-size: 8px; }
-    h1 { font-size: clamp(38px, 6vw, 72px); font-weight: 900; letter-spacing: -2px; line-height: 1.05; color: var(--black); margin-bottom: 24px; }
-    h1 em { font-style: normal; color: var(--accent); }
-    .hero-sub { font-size: clamp(17px, 2.5vw, 20px); color: var(--gray-500); max-width: 640px; margin: 0 auto 40px; line-height: 1.6; }
-    .hero-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 56px; }
-    .hero-trust { display: flex; align-items: center; justify-content: center; gap: 32px; flex-wrap: wrap; }
-    .trust-item { display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 500; color: var(--gray-500); }
-    .trust-item svg { color: var(--accent); flex-shrink: 0; }
-    footer { background: var(--black); padding: 40px; }
-    .footer-inner { max-width: 1080px; margin: 0 auto; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 8px; }
-    .footer-brand-name { font-size: 16px; font-weight: 800; color: var(--white); }
-    .footer-brand-name span { color: var(--accent); }
-    .footer-links { display: flex; gap: 24px; flex-wrap: wrap; justify-content: center; }
-    .footer-link { font-size: 14px; font-weight: 500; color: rgba(255,255,255,0.55); text-decoration: none; transition: color 0.2s ease; }
-    .footer-link:hover { color: var(--white); }
-    .footer-copy { text-align: center; font-size: 12px; color: rgba(255,255,255,0.35); }
-    .reveal { opacity: 0; transform: translateY(32px); transition: opacity 0.65s ease, transform 0.65s ease; will-change: opacity, transform; }
-    .reveal.visible { opacity: 1; transform: translateY(0); will-change: auto; }
-    .reveal-delay-1 { transition-delay: 0.1s; } .reveal-delay-2 { transition-delay: 0.2s; } .reveal-delay-3 { transition-delay: 0.3s; }
-    @media (max-width: 768px) { nav { padding: 16px 20px; } section { padding: 72px 20px; } #hero { padding: 100px 20px 64px; } body { padding-bottom: 72px; } }
 
-    /* ── MOBILE STICKY BAR ── */
-    .mobile-sticky-bar { display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 200; background: var(--white); border-top: 1px solid var(--gray-100); padding: 10px 16px; gap: 10px; box-shadow: 0 -4px 20px rgba(0,0,0,0.1); }
-    @media (max-width: 768px) { .mobile-sticky-bar { display: flex; } }
-    .sticky-call { flex: 1; display: inline-flex; align-items: center; justify-content: center; gap: 7px; padding: 13px 16px; background: var(--black); color: var(--white); font-size: 15px; font-weight: 700; border-radius: 10px; text-decoration: none; }
-    .sticky-quote { flex: 1; display: inline-flex; align-items: center; justify-content: center; gap: 7px; padding: 13px 16px; background: var(--accent); color: var(--white); font-size: 15px; font-weight: 700; border-radius: 10px; text-decoration: none; }
-
-    /* ── MOBILE HERO: swap secondary btn ── */
-    .btn-hero-call-mobile { display: none; }
-    .btn-hero-view-work { display: inline-flex; }
-    @media (max-width: 640px) { .btn-hero-call-mobile { display: inline-flex; } .btn-hero-view-work { display: none; } }
-
-    /* ── URGENCY PILL ── */
-    .urgency-pill { display: inline-flex; align-items: center; gap: 7px; padding: 7px 16px; background: #fef2f2; border: 1px solid #fecaca; border-radius: 100px; font-size: 13px; font-weight: 700; color: #dc2626; margin-bottom: 14px; }
-
-    /* ── BENTO PORTFOLIO ── */
-    #portfolio { background: var(--gray-50); }
-
-    .bento-section-header { display: flex; align-items: center; gap: 12px; font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--gray-500); margin-top: 60px; margin-bottom: 24px; }
-    .bento-section-header::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: #22c55e; flex-shrink: 0; animation: b-pulse 2.5s ease-in-out infinite; }
-    .bento-section-header.demo::before { background: var(--accent); animation: none; }
-    @keyframes b-pulse { 0%,100% { box-shadow: 0 0 0 0 rgba(34,197,94,0.55); } 50% { box-shadow: 0 0 0 5px rgba(34,197,94,0); } }
-
-    /* Grids */
-    .bento-grid { display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: 360px auto; gap: 20px; }
-    .demo-grid  { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-top: 0; }
-
-    /* Base card */
-    .bento-card { display: flex; flex-direction: column; background: var(--white); border: 1px solid var(--gray-100); border-radius: 20px; overflow: hidden; position: relative; will-change: transform; transition: box-shadow 0.35s ease; }
-    .bento-card:hover { box-shadow: 0 20px 60px rgba(0,0,0,0.11), 0 4px 20px rgba(37,99,235,0.07); }
-
-    /* Hero — 2 cols wide, same row height as sibling */
-    .bento-hero { grid-column: 1 / 3; }
-
-    /* Full-width wide card */
-    .bento-wide { grid-column: 1 / -1; flex-direction: row; }
-    .bento-wide .bento-img-wrap { flex: 0 0 52%; aspect-ratio: unset; min-height: 260px; }
-    .bento-wide .bento-body { flex: 1; justify-content: center; padding: 36px 44px; }
-
-    /* Dark CTA card */
-    .bento-cta-card { background: var(--black); border-color: transparent; }
-    .bento-cta-card:hover { box-shadow: 0 20px 60px rgba(0,0,0,0.28); }
-    .bento-cta-card .bento-body { justify-content: center; }
-
-    /* Image wrap */
-    .bento-img-wrap { display: block; position: relative; overflow: hidden; aspect-ratio: 16 / 9; background: var(--gray-100); flex-shrink: 0; }
-    .bento-hero .bento-img-wrap { flex: 1; aspect-ratio: unset; min-height: 0; }
-    .bento-img-wrap img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; transition: transform 0.55s cubic-bezier(0.25,0.46,0.45,0.94); }
-    .bento-card:hover .bento-img-wrap img { transform: scale(1.06); }
-    a.bento-img-wrap:focus-visible { outline: 3px solid var(--accent); outline-offset: -3px; }
-
-    /* Badges */
-    .bento-live-badge { position: absolute; top: 10px; right: 10px; display: inline-flex; align-items: center; gap: 4px; background: rgba(10,10,10,0.72); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); color: #fff; font-size: 9px; font-weight: 700; letter-spacing: 0.6px; padding: 3px 8px; border-radius: 100px; pointer-events: none; }
-    .bento-live-badge::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: #22c55e; flex-shrink: 0; animation: b-dot 2.5s ease-in-out infinite; }
-    @keyframes b-dot { 0%,100%{opacity:1} 50%{opacity:.4} }
-    .bento-demo-badge { position: absolute; top: 10px; right: 10px; display: inline-flex; align-items: center; background: rgba(37,99,235,0.13); border: 1px solid rgba(37,99,235,0.25); color: var(--accent); font-size: 10px; font-weight: 700; letter-spacing: 1px; padding: 4px 10px; border-radius: 100px; pointer-events: none; }
-
-    /* Body */
-    .bento-body { flex: 1; display: flex; flex-direction: column; padding: 14px 18px 16px; }
-    .bento-hero .bento-body { flex: 0 0 auto; padding: 16px 20px 20px; }
-
-    .bento-tag { display: block; font-size: 10px; font-weight: 700; letter-spacing: 1.8px; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; }
-    .bento-cta-card .bento-tag { color: rgba(255,255,255,0.45); }
-
-    .bento-name { font-size: 17px; font-weight: 700; color: var(--black); letter-spacing: -0.2px; margin-bottom: 6px; line-height: 1.2; }
-    .bento-hero .bento-name { font-size: 18px; letter-spacing: -0.2px; margin-bottom: 5px; }
-    .bento-wide .bento-name { font-size: 22px; letter-spacing: -0.3px; margin-bottom: 10px; }
-    .bento-cta-card .bento-name { color: var(--white); font-size: 22px; letter-spacing: -0.4px; margin-bottom: 10px; }
-
-    .bento-desc { font-size: 14px; color: var(--gray-500); line-height: 1.6; margin-bottom: 0; }
-    .bento-hero .bento-desc { font-size: 13px; }
-    .bento-wide .bento-desc { font-size: 15px; }
-    .bento-cta-card .bento-desc { color: rgba(255,255,255,0.55); font-size: 14px; }
-
-    /* Demo card overrides */
-    .demo-card .bento-img-wrap { aspect-ratio: 16 / 7; }
-    .demo-card .bento-body { padding: 14px 18px 18px; }
-    .demo-card .bento-name { font-size: 15px; margin-bottom: 3px; }
-    .demo-card .bento-tag { margin-bottom: 5px; }
-    .demo-card .bento-desc { font-size: 13px; }
-
-    /* CTA button */
-    .bento-btn { display: inline-flex; align-items: center; gap: 8px; padding: 11px 22px; background: var(--accent); color: var(--white); font-size: 14px; font-weight: 600; border-radius: 9px; text-decoration: none; transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease; box-shadow: 0 2px 12px rgba(37,99,235,0.25); margin-top: auto; align-self: flex-start; }
-    .bento-btn:hover { background: var(--accent-dark); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(37,99,235,0.4); }
-    .bento-hero .bento-btn { font-size: 13px; padding: 9px 18px; margin-top: 12px; }
-    .bento-wide .bento-btn { margin-top: 20px; }
-    .bento-cta-card .bento-btn { background: var(--white); color: var(--black); box-shadow: none; margin-top: 22px; }
-    .bento-cta-card .bento-btn:hover { background: var(--gray-100); box-shadow: none; }
-
-    /* Responsive */
-    @media (max-width: 960px) {
-      .bento-grid { grid-template-columns: repeat(2, 1fr); grid-template-rows: auto; }
-      .bento-hero { grid-column: 1 / -1; }
-      .bento-hero .bento-img-wrap { height: auto; aspect-ratio: 16 / 7; }
-      .bento-wide { flex-direction: column; }
-      .bento-wide .bento-img-wrap { flex: none; min-height: 0; aspect-ratio: 16 / 7; }
-      .bento-wide .bento-body { padding: 24px 28px; }
-    }
-    @media (max-width: 600px) {
-      .bento-grid, .demo-grid { grid-template-columns: 1fr; gap: 16px; }
-      .bento-hero { grid-column: 1; }
-      .bento-section-header { margin-top: 44px; }
-    }
     @media (prefers-reduced-motion: reduce) {
-      .bento-card { transition: none; }
-      .bento-img-wrap img { transition: none; }
-      .bento-live-badge::before, .bento-section-header::before { animation: none; }
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
     }
 
-    /* ── BENEFITS ── */
-    .benefit-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-top: 48px; }
-    .benefit-card { padding: 36px 32px; border: 1px solid var(--gray-100); border-radius: var(--radius-lg); background: var(--white); position: relative; overflow: hidden; transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease; }
-    .benefit-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--accent); transform: scaleX(0); transform-origin: left; transition: transform 0.3s ease; }
-    .benefit-card:hover { border-color: var(--accent-subtle); box-shadow: var(--shadow-lg); transform: translateY(-4px); }
-    .benefit-card:hover::before { transform: scaleX(1); }
-    .benefit-icon { width: 48px; height: 48px; background: var(--accent-light); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 22px; color: var(--accent); }
-    .benefit-title { font-size: 19px; font-weight: 700; color: var(--black); margin-bottom: 10px; letter-spacing: -0.2px; }
-    .benefit-desc { font-size: 15px; color: var(--gray-500); line-height: 1.65; }
+    body {
+      font-family: 'Switzer', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--paper);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    body.lock { overflow: hidden; }
+
+    a { color: inherit; }
+
+    h1, h2, h3, h4 {
+      font-family: 'Cabinet Grotesk', 'Switzer', sans-serif;
+      color: var(--text);
+    }
+
+    img { display: block; max-width: 100%; }
+
+    /* ── NAV ── */
+    nav#navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: var(--z-nav);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 40px;
+      background: var(--ink);
+      border-bottom: 1px solid var(--ink-line-soft);
+      transition: box-shadow 0.3s var(--ease);
+    }
+
+    nav#navbar.scrolled { box-shadow: 0 6px 30px oklch(0% 0 0 / 0.25); }
+
+    .nav-brand { display: flex; flex-direction: column; gap: 1px; text-decoration: none; line-height: 1; }
+    .nav-brand-main { font-family: 'Cabinet Grotesk', sans-serif; font-size: 19px; font-weight: 800; letter-spacing: -0.02em; color: var(--text-on-ink); }
+    .nav-brand-sub { font-size: 10px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent-bright); }
+
+    .nav-right { display: flex; align-items: center; gap: 20px; }
+
+    .nav-phone {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-on-ink-muted);
+      text-decoration: none;
+      transition: color 0.2s var(--ease);
+    }
+
+    .nav-phone:hover { color: var(--accent-bright); }
+    .nav-phone svg { flex-shrink: 0; }
+
+    @media (max-width: 900px) {
+      #navbar .nav-phone,
+      #navbar .btn-primary { display: none; }
+    }
+
+    .nav-links { display: flex; align-items: center; gap: 30px; }
+
+    .nav-link { font-size: 14px; font-weight: 500; color: var(--text-on-ink-muted); text-decoration: none; transition: color 0.2s var(--ease); }
+    .nav-link:hover { color: var(--text-on-ink); }
+
+    @media (max-width: 900px) { .nav-links { display: none; } }
+
+    .nav-menu-btn {
+      display: none;
+      width: 40px;
+      height: 40px;
+      border-radius: var(--radius-sm);
+      background: transparent;
+      border: 1px solid var(--ink-line);
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: var(--text-on-ink);
+      flex-shrink: 0;
+    }
+
+    @media (max-width: 900px) { .nav-menu-btn { display: flex; } }
+
+    .icon-close { display: none; }
+    .nav-menu-btn.open .icon-menu { display: none; }
+    .nav-menu-btn.open .icon-close { display: block; }
+
+    /* ── MOBILE MENU ── */
+    .mobile-menu {
+      position: fixed;
+      inset: 0;
+      top: 0;
+      z-index: var(--z-menu);
+      background: var(--ink);
+      display: flex;
+      flex-direction: column;
+      padding: 96px 32px 40px;
+      transform: translateY(-100%);
+      transition: transform 0.4s var(--ease);
+    }
+
+    .mobile-menu.open { transform: translateY(0); }
+
+    .mobile-menu-links { display: flex; flex-direction: column; gap: 4px; margin-bottom: auto; }
+
+    .mobile-menu-links a {
+      font-family: 'Cabinet Grotesk', sans-serif;
+      font-size: 32px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--text-on-ink);
+      text-decoration: none;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--ink-line-soft);
+    }
+
+    .mobile-menu-foot { display: flex; flex-direction: column; gap: 16px; padding-top: 32px; }
+    .mobile-menu-foot .nav-phone { font-size: 18px; color: var(--text-on-ink); }
+
+    /* ── BUTTONS ── */
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 16px 30px;
+      background: var(--accent);
+      color: var(--white);
+      font-size: 15px;
+      font-weight: 700;
+      border-radius: var(--radius-sm);
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s var(--ease), transform 0.15s var(--ease);
+      white-space: nowrap;
+    }
+
+    .btn-primary:hover { background: var(--accent-hover); transform: translateY(-2px); }
+    .btn-primary svg { transition: transform 0.2s var(--ease); }
+    .btn-primary:hover svg { transform: translateX(3px); }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 16px 28px;
+      background: transparent;
+      color: var(--text);
+      font-size: 15px;
+      font-weight: 600;
+      border-radius: var(--radius-sm);
+      text-decoration: none;
+      border: 1.5px solid var(--line-strong);
+      cursor: pointer;
+      transition: border-color 0.2s var(--ease), background 0.2s var(--ease);
+      white-space: nowrap;
+    }
+
+    .btn-secondary:hover { border-color: var(--accent); background: oklch(50% 0.205 264 / 0.06); }
+    .btn-secondary.on-ink { color: var(--text-on-ink); border-color: var(--ink-line); }
+    .btn-secondary.on-ink:hover { border-color: var(--accent-bright); background: oklch(74% 0.135 258 / 0.08); }
+
+    .btn-lg { font-size: 17px !important; padding: 19px 38px !important; }
+
+    /* ── HERO ── */
+    #hero {
+      background: var(--ink);
+      padding: 156px 40px 96px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #hero::before {
+      content: '';
+      position: absolute;
+      top: -30%;
+      right: -10%;
+      width: 640px;
+      height: 640px;
+      background: radial-gradient(circle, oklch(50% 0.205 264 / 0.14) 0%, transparent 68%);
+      pointer-events: none;
+    }
+
+    .hero-inner { max-width: 780px; margin: 0 auto; text-align: center; position: relative; z-index: 1; }
+
+    h1 {
+      font-size: clamp(2.6rem, 5.6vw, 4.5rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.06;
+      color: var(--text-on-ink);
+      margin-bottom: 22px;
+      text-wrap: balance;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.7s var(--ease) forwards 0.1s;
+    }
+
+    h1 .accent { color: var(--accent-bright); }
+
+    .hero-sub {
+      font-size: clamp(16.5px, 1.7vw, 18.5px);
+      color: var(--text-on-ink-muted);
+      max-width: 600px;
+      margin: 0 auto 36px;
+      line-height: 1.65;
+      text-wrap: pretty;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.7s var(--ease) forwards 0.25s;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 36px;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.7s var(--ease) forwards 0.4s;
+    }
+
+    .hero-trust-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 26px;
+      flex-wrap: wrap;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.7s var(--ease) forwards 0.5s;
+    }
+
+    .hero-trust-row span, .hero-trust-row a {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 13.5px;
+      font-weight: 500;
+      color: var(--text-on-ink-faint);
+      text-decoration: none;
+    }
+
+    .hero-trust-row a:hover { color: var(--text-on-ink-muted); }
+    .hero-trust-row svg { color: var(--accent-bright); flex-shrink: 0; }
+
+    @media (prefers-reduced-motion: reduce) {
+      h1, .hero-sub, .hero-actions, .hero-trust-row { opacity: 1; transform: none; animation: none; }
+    }
+
+    /* ── SECTIONS COMMON ── */
+    section { padding: clamp(72px, 10vw, 120px) 40px; }
+
+    .section-inner { max-width: 1160px; margin: 0 auto; }
+
+    .section-head { max-width: 640px; margin-bottom: 56px; }
+
+    .section-title {
+      font-size: clamp(1.75rem, 3.2vw, 2.5rem);
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      line-height: 1.08;
+      color: var(--text);
+      margin-bottom: 16px;
+      text-wrap: balance;
+    }
+
+    .section-sub { font-size: 18px; color: var(--text-muted); line-height: 1.6; text-wrap: pretty; }
+
+    .on-ink .section-title { color: var(--text-on-ink); }
+    .on-ink .section-sub { color: var(--text-on-ink-muted); }
+
+    /* ── SPEC LIST (benefits) ── */
+    #benefits { background: var(--paper-2); }
+
+    .svc-list { border-top: 1px solid var(--line); }
+
+    .svc-row {
+      display: grid;
+      grid-template-columns: 250px 1fr;
+      gap: 32px;
+      padding: 30px 0;
+      border-bottom: 1px solid var(--line);
+      align-items: baseline;
+    }
+
+    @media (max-width: 720px) { .svc-row { grid-template-columns: 1fr; gap: 8px; padding: 22px 0; } }
+
+    .svc-title { font-size: clamp(1.05rem, 1.5vw, 1.25rem); font-weight: 700; color: var(--text); letter-spacing: -0.01em; }
+    .svc-desc { font-size: 16px; color: var(--text-muted); line-height: 1.65; max-width: 560px; }
+
+    /* ── PORTFOLIO ── */
+    #portfolio { background: var(--paper); }
+
+    .sites-label {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-faint);
+      margin-bottom: 24px;
+    }
+
+    .sites-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+
+    @media (max-width: 780px) { .sites-grid { grid-template-columns: 1fr; } }
+
+    .site-card { text-decoration: none; display: block; color: inherit; }
+
+    .site-frame {
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      background: var(--ink);
+      box-shadow: var(--shadow-md);
+      transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease);
+      position: relative;
+    }
+
+    .site-card:hover .site-frame { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+
+    .site-chrome { display: flex; align-items: center; gap: 6px; padding: 12px 14px; }
+    .site-chrome span { width: 8px; height: 8px; border-radius: 50%; background: var(--ink-line); }
+
+    .site-frame img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: cover; object-position: top; }
+
+    .site-live-badge {
+      position: absolute;
+      top: 44px;
+      right: 12px;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: oklch(10% 0.01 260 / 0.72);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      color: var(--white);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 100px;
+    }
+
+    .site-live-badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: oklch(75% 0.16 145); }
+
+    .site-meta { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin-top: 18px; }
+    .site-name { font-size: 17px; font-weight: 700; color: var(--text); letter-spacing: -0.01em; }
+    .site-industry { font-size: 13.5px; color: var(--text-faint); margin-top: 3px; }
+    .site-link { font-size: 13px; font-weight: 700; color: var(--accent); white-space: nowrap; }
+
+    .portfolio-cta {
+      margin-top: 28px;
+      background: var(--ink);
+      border-radius: var(--radius-lg);
+      padding: 36px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .portfolio-cta-text { font-family: 'Cabinet Grotesk', sans-serif; font-size: 22px; font-weight: 700; color: var(--text-on-ink); letter-spacing: -0.01em; }
+    .portfolio-cta-text span { color: var(--accent-bright); }
+
+    .demo-label { font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-faint); margin: 56px 0 24px; }
+
+    .demo-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+
+    @media (max-width: 960px) { .demo-grid { grid-template-columns: repeat(2, 1fr); } }
+
+    .demo-card { position: relative; border-radius: var(--radius-sm); overflow: hidden; aspect-ratio: 4 / 3; }
+    .demo-card img { width: 100%; height: 100%; object-fit: cover; }
+
+    .demo-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, oklch(16% 0.02 260 / 0.82) 0%, transparent 55%);
+    }
+
+    .demo-card-tag {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      z-index: 1;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: var(--white);
+      background: oklch(10% 0.01 260 / 0.55);
+      padding: 3px 8px;
+      border-radius: 100px;
+    }
+
+    .demo-card-label { position: absolute; left: 14px; bottom: 12px; z-index: 1; font-size: 13.5px; font-weight: 700; color: var(--white); letter-spacing: -0.01em; }
 
     /* ── PROCESS ── */
-    #process { background: linear-gradient(135deg, #f0f4ff 0%, #f8faff 100%); }
-    .step-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-top: 48px; }
-    .step { text-align: center; padding: 36px 26px; background: var(--white); border-radius: var(--radius-lg); border: 1px solid var(--gray-100); transition: box-shadow 0.25s ease, transform 0.25s ease; }
-    .step:hover { box-shadow: var(--shadow-lg); transform: translateY(-4px); }
-    .step-number { width: 52px; height: 52px; background: var(--accent); color: var(--white); font-size: 19px; font-weight: 800; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; }
-    .step-title { font-size: 19px; font-weight: 700; color: var(--black); margin-bottom: 10px; }
-    .step-desc { font-size: 15px; color: var(--gray-500); line-height: 1.65; }
-    @media (max-width: 900px) { .step-grid { grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 560px) { .step-grid { grid-template-columns: 1fr; } }
+    #process { background: var(--paper); }
 
-    /* ── PROOF ── */
-    #proof { background: var(--gray-50); }
-    .proof-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-top: 48px; }
-    .proof-card { display: flex; align-items: center; gap: 18px; background: var(--white); border: 1px solid var(--gray-100); border-radius: var(--radius-lg); padding: 26px 28px; text-decoration: none; transition: box-shadow 0.25s ease, transform 0.25s ease, border-color 0.25s ease; }
-    .proof-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-4px); border-color: var(--accent-subtle); }
-    .proof-logo { width: 52px; height: 52px; border-radius: 12px; background: var(--accent-light); color: var(--accent); display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 15px; letter-spacing: -0.5px; flex-shrink: 0; }
-    .proof-body { flex: 1; min-width: 0; }
-    .proof-name { font-size: 17px; font-weight: 700; color: var(--black); margin-bottom: 4px; letter-spacing: -0.2px; }
-    .proof-desc { font-size: 14px; color: var(--gray-500); }
-    .proof-arrow { color: var(--accent); flex-shrink: 0; transition: transform 0.2s ease; }
-    .proof-card:hover .proof-arrow { transform: translate(3px, -3px); }
-    .proof-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 40px; }
-    .proof-stat { text-align: center; padding: 26px 16px; background: var(--white); border: 1px solid var(--gray-100); border-radius: var(--radius-lg); }
-    .proof-stat-number { font-size: 32px; font-weight: 900; color: var(--accent); letter-spacing: -1px; margin-bottom: 6px; }
-    .proof-stat-label { font-size: 13px; color: var(--gray-500); font-weight: 600; line-height: 1.4; }
-    @media (max-width: 768px) { .proof-stats { grid-template-columns: repeat(2, 1fr); } }
+    .process-track { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px 8px; position: relative; }
+
+    .process-track.no-line::before { display: none; }
+
+    @media (max-width: 768px) { .process-track { grid-template-columns: 1fr; gap: 0; } }
+
+    .process-step { position: relative; padding-right: 20px; }
+
+    @media (max-width: 768px) {
+      .process-step { display: grid; grid-template-columns: 44px 1fr; gap: 20px; padding: 22px 0; border-bottom: 1px solid var(--line); }
+    }
+
+    .process-num {
+      position: relative;
+      z-index: 1;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--paper);
+      border: 2px solid var(--accent);
+      color: var(--accent);
+      font-family: 'Cabinet Grotesk', sans-serif;
+      font-weight: 800;
+      font-size: 17px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 24px;
+    }
+
+    @media (max-width: 768px) { .process-num { margin-bottom: 0; background: var(--paper-2); } }
+
+    .process-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-faint); margin-bottom: 8px; }
+    .process-title { font-size: 21px; font-weight: 700; color: var(--text); letter-spacing: -0.01em; margin-bottom: 10px; }
+    .process-desc { font-size: 15px; color: var(--text-muted); line-height: 1.65; max-width: 320px; }
+
+    /* ── PROOF (stats) ── */
+    #proof { background: var(--ink); }
+
+    .why-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+
+    @media (max-width: 768px) { .why-stats { grid-template-columns: 1fr 1fr; } }
+
+    .stat-card { padding: 30px 26px; border: 1px solid var(--ink-line); border-radius: var(--radius-md); text-align: center; }
+
+    .stat-number {
+      font-family: 'Cabinet Grotesk', sans-serif;
+      font-size: 38px;
+      font-weight: 800;
+      color: var(--text-on-ink);
+      letter-spacing: -0.02em;
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+
+    .stat-number span { color: var(--accent-bright); }
+    .stat-label { font-size: 13.5px; color: var(--text-on-ink-faint); line-height: 1.4; }
 
     /* ── FAQ ── */
-    #faq { background: var(--white); border-top: 1px solid var(--gray-100); }
-    .faq-list { max-width: 760px; margin: 48px auto 0; display: flex; flex-direction: column; gap: 0; border: 1px solid var(--gray-100); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow); }
-    .faq-item { border-bottom: 1px solid var(--gray-100); }
-    .faq-item:last-child { border-bottom: none; }
-    .faq-question { width: 100%; text-align: left; background: var(--white); border: none; padding: 24px 28px; font-size: 17px; font-weight: 600; color: var(--black); cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 16px; transition: background 0.2s ease, color 0.2s ease; font-family: 'Inter', sans-serif; }
-    .faq-question:hover { background: var(--gray-50); }
-    .faq-question.open { color: var(--accent); background: var(--accent-light); }
-    .faq-icon { width: 28px; height: 28px; border-radius: 50%; border: 2px solid var(--gray-300); display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: border-color 0.2s ease, background 0.2s ease, transform 0.3s ease; }
-    .faq-question.open .faq-icon { border-color: var(--accent); background: var(--accent); transform: rotate(45deg); }
-    .faq-icon svg { color: var(--gray-500); transition: color 0.2s ease; }
-    .faq-question.open .faq-icon svg { color: var(--white); }
-    .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.35s ease, padding 0.25s ease; padding: 0 28px; }
-    .faq-answer.open { max-height: 300px; padding: 0 28px 24px; }
-    .faq-answer p { font-size: 16px; color: var(--gray-500); line-height: 1.75; }
+    #faq { background: var(--paper); }
+
+    .faq-list { max-width: 760px; margin: 0 auto; border-top: 1px solid var(--line); }
+    .faq-item { border-bottom: 1px solid var(--line); }
+
+    .faq-question {
+      width: 100%;
+      text-align: left;
+      background: transparent;
+      border: none;
+      padding: 26px 4px;
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--text);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      transition: color 0.2s var(--ease);
+      font-family: 'Switzer', sans-serif;
+    }
+
+    .faq-question.open { color: var(--accent); }
+
+    .faq-icon {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      border: 1.5px solid var(--line-strong);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: border-color 0.2s var(--ease), background 0.2s var(--ease), transform 0.3s var(--ease);
+      color: var(--text-faint);
+    }
+
+    .faq-question.open .faq-icon { border-color: var(--accent); background: var(--accent); color: var(--white); transform: rotate(45deg); }
+
+    .faq-answer { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s var(--ease); }
+    .faq-answer.open { grid-template-rows: 1fr; }
+    .faq-answer-inner { overflow: hidden; padding: 0 4px; }
+    .faq-answer.open .faq-answer-inner { padding: 0 4px 24px; }
+    .faq-answer p { font-size: 16px; color: var(--text-muted); line-height: 1.75; max-width: 660px; }
     .faq-answer a { color: var(--accent); font-weight: 600; text-decoration: none; }
     .faq-answer a:hover { text-decoration: underline; }
 
-    /* ── QUOTE / FINAL CTA ── */
-    #quote { background: linear-gradient(135deg, #f8faff 0%, #f0f4ff 100%); }
-    .quote-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 56px; align-items: center; }
-    .quote-checklist { display: flex; flex-direction: column; gap: 14px; margin-top: 32px; }
-    .quote-form-card { background: var(--white); border-radius: var(--radius-lg); box-shadow: var(--shadow-lg); padding: 40px; }
+    /* ── QUOTE ── */
+    #quote { background: var(--paper-2); }
+
+    .quote-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
+    .quote-grid > * { min-width: 0; }
+
     @media (max-width: 900px) { .quote-grid { grid-template-columns: 1fr; gap: 40px; } }
+
+    .quote-highlight {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      padding: 22px 26px;
+      margin: 28px 0 32px;
+    }
+
+    .quote-highlight-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+
+    .quote-highlight-tag::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+
+    .quote-highlight-num { font-family: 'Cabinet Grotesk', sans-serif; font-size: 27px; font-weight: 800; color: var(--text); letter-spacing: -0.02em; line-height: 1.15; }
+    .quote-highlight-desc { font-size: 13.5px; color: var(--text-muted); margin-top: 6px; line-height: 1.5; }
+
+    .quote-checklist { display: flex; flex-direction: column; }
+
+    .quote-check-item {
+      display: flex;
+      gap: 12px;
+      font-size: 15.5px;
+      color: var(--text);
+      line-height: 1.5;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--line);
+      font-weight: 500;
+    }
+
+    .quote-check-item:last-child { border-bottom: none; }
+    .quote-check-mark { flex-shrink: 0; color: var(--accent); font-weight: 800; font-family: 'Cabinet Grotesk', sans-serif; }
+    .quote-check-text { flex: 1 1 auto; min-width: 0; }
+
+    .quote-form-card { background: var(--white); border-radius: var(--radius-lg); box-shadow: var(--shadow-lg); padding: 40px; }
+
     @media (max-width: 640px) { .quote-form-card { padding: 28px 22px; } }
 
     /* ── FORM ── */
     .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
     .form-group { display: flex; flex-direction: column; gap: 8px; }
     .form-group.full { grid-column: 1 / -1; }
-    .form-group label { font-size: 14px; font-weight: 600; color: var(--gray-700); }
+    .form-group label { font-size: 14px; font-weight: 600; color: var(--text); }
     .form-group label span { color: var(--accent); }
-    .form-group input, .form-group textarea, .form-group select { width: 100%; padding: 12px 16px; border: 1.5px solid var(--gray-300); border-radius: 10px; font-size: 15px; font-family: 'Inter', sans-serif; color: var(--black); background: var(--white); transition: border-color 0.2s ease, box-shadow 0.2s ease; outline: none; -webkit-appearance: none; }
-    .form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(37,99,235,0.1); }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1.5px solid var(--line-strong);
+      border-radius: 10px;
+      font-size: 15px;
+      font-family: 'Switzer', sans-serif;
+      color: var(--text);
+      background: var(--white);
+      transition: border-color 0.2s var(--ease), box-shadow 0.2s var(--ease);
+      outline: none;
+      -webkit-appearance: none;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px oklch(50% 0.205 264 / 0.14);
+    }
+
     .form-group textarea { resize: vertical; min-height: 90px; }
+
     .form-submit { grid-column: 1 / -1; margin-top: 8px; }
     .form-submit .btn-primary { width: 100%; justify-content: center; font-size: 17px; padding: 18px 32px; }
-    .form-note { text-align: center; font-size: 13px; color: var(--gray-500); margin-top: 16px; }
+    .form-note { text-align: center; font-size: 13px; color: var(--text-faint); margin-top: 16px; }
+
     .success-msg { display: none; text-align: center; padding: 24px 0; }
-    .success-msg h3 { font-size: 24px; font-weight: 800; color: var(--black); margin-bottom: 12px; }
-    .success-msg p { color: var(--gray-500); font-size: 16px; }
+    .success-msg h3 { font-size: 24px; font-weight: 800; color: var(--text); margin-bottom: 12px; }
+    .success-msg p { color: var(--text-muted); font-size: 16px; }
+
     @media (max-width: 640px) {
       .form-grid { grid-template-columns: 1fr; }
       .form-group.full { grid-column: 1; }
       .form-submit { grid-column: 1; }
     }
+
+    /* ── FOOTER ── */
+    footer { background: var(--ink); padding: 56px 40px 32px; }
+
+    .footer-inner { max-width: 1160px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 24px; }
+
+    .footer-brand-name { font-family: 'Cabinet Grotesk', sans-serif; font-size: 17px; font-weight: 800; color: var(--text-on-ink); letter-spacing: -0.02em; }
+    .footer-brand-name span { color: var(--accent-bright); }
+    .footer-tagline { font-size: 13px; color: var(--text-on-ink-faint); margin-top: 4px; }
+
+    .footer-links { display: flex; gap: 22px; align-items: center; flex-wrap: wrap; }
+    .footer-link { font-size: 14px; font-weight: 500; color: var(--text-on-ink-muted); text-decoration: none; transition: color 0.2s var(--ease); }
+    .footer-link:hover { color: var(--text-on-ink); }
+
+    .footer-industries {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+      width: 100%;
+      padding: 26px 0;
+      margin-top: 8px;
+      border-top: 1px solid var(--ink-line-soft);
+      font-size: 13px;
+      color: var(--text-on-ink-faint);
+    }
+
+    .footer-industry-link { color: var(--text-on-ink-faint); text-decoration: none; transition: color 0.2s var(--ease); }
+    .footer-industry-link:hover { color: var(--text-on-ink); }
+
+    .footer-copy {
+      width: 100%;
+      text-align: center;
+      font-size: 12px;
+      color: var(--text-on-ink-faint);
+      padding-top: 22px;
+      border-top: 1px solid var(--ink-line-soft);
+      margin-top: 4px;
+    }
+
+    @media (max-width: 768px) {
+      .footer-inner { flex-direction: column; text-align: center; align-items: center; }
+      .footer-industries { justify-content: center; text-align: center; }
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+
+    /* .reveal is visible by default — JS opts elements below the fold into
+       the hidden pre-state via .reveal-pending so a no-JS or failed-observer
+       page never ships blank. */
+    .reveal.reveal-pending {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.6s var(--ease), transform 0.6s var(--ease);
+      will-change: opacity, transform;
+    }
+
+    .reveal.reveal-pending.visible { opacity: 1; transform: translateY(0); will-change: auto; }
+
+    .reveal-delay-1 { transition-delay: 0.08s; }
+    .reveal-delay-2 { transition-delay: 0.16s; }
+    .reveal-delay-3 { transition-delay: 0.24s; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal.reveal-pending { opacity: 1; transform: none; }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav#navbar { padding: 16px 20px; }
+      #hero { padding: 128px 20px 64px; }
+      section { padding: clamp(56px, 12vw, 88px) 20px; }
+      .footer-copy { text-align: center; }
+    }
   </style>
 </head>
 <body>
 
-  <!-- Nav -->
+  <!-- ── NAV ── -->
   <nav id="navbar">
-    <a href="https://warbuckmarketing.com" class="nav-brand">War-Buck <span>Marketing</span></a>
+    <a href="/" class="nav-brand">
+      <span class="nav-brand-main">WAR-BUCK</span>
+      <span class="nav-brand-sub">Marketing</span>
+    </a>
     <div class="nav-links">
-      <a href="https://warbuckmarketing.com/#services" class="nav-link">Services</a>
-      <a href="https://warbuckmarketing.com/website-design" class="nav-link">Website Design</a>
-      <a href="https://warbuckmarketing.com/website-packages" class="nav-link">Pricing</a>
-      <a href="https://warbuckmarketing.com/blog" class="nav-link">Blog</a>
+      <a href="/#services" class="nav-link">Services</a>
+      <a href="/website-design" class="nav-link">Website Design</a>
+      <a href="/website-packages" class="nav-link">Pricing</a>
+      <a href="/blog" class="nav-link">Blog</a>
       <a href="https://calendly.com/buckwarnock101/free-strategy-call" class="nav-link" target="_blank" rel="noopener noreferrer">Book a Call</a>
     </div>
     <div class="nav-right">
@@ -386,361 +885,289 @@
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.42 2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6.18 6.18l.95-.95a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
         <span>(478) 361-5444</span>
       </a>
-      <a href="#quote" class="nav-cta">Get My Free Quote</a>
+      <a href="#quote" class="btn-primary">Get My Free Quote</a>
+      <button class="nav-menu-btn" id="menuBtn" onclick="toggleMenu()" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobileMenu">
+        <svg class="icon-menu" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        <svg class="icon-close" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
     </div>
   </nav>
 
-  <!-- Hero -->
+  <!-- ── MOBILE MENU ── -->
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu-links">
+      <a href="/#services" onclick="closeMenu()">Services</a>
+      <a href="/website-design" onclick="closeMenu()">Website Design</a>
+      <a href="/website-packages" onclick="closeMenu()">Pricing</a>
+      <a href="/blog" onclick="closeMenu()">Blog</a>
+      <a href="https://calendly.com/buckwarnock101/free-strategy-call" target="_blank" rel="noopener noreferrer">Book a Call</a>
+    </div>
+    <div class="mobile-menu-foot">
+      <a href="tel:4783615444" class="nav-phone">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.42 2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6.18 6.18l.95-.95a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <span>(478) 361-5444</span>
+      </a>
+      <a href="#quote" class="btn-primary btn-lg" onclick="closeMenu()">Get My Free Quote</a>
+    </div>
+  </div>
+
+  <main>
+
+  <!-- ── HERO ── -->
   <section id="hero">
     <div class="hero-inner">
-      <div id="urgency-pill" class="urgency-pill reveal">⚡ Summer Pricing Ends Tonight — Websites from $400</div>
-      <div class="hero-badge reveal">Website Design for Local Service Businesses</div>
-      <h1 class="reveal reveal-delay-1">A Website That Works As Hard As <em>You</em> Do.</h1>
-      <p class="hero-sub reveal reveal-delay-2">Custom-designed, mobile-first websites built to build trust, rank on Google, and turn visitors into calls, quotes, and booked jobs. Tell us about your business and get a free strategy session — no obligation.</p>
-      <div class="hero-actions reveal reveal-delay-3">
-        <a href="#quote" class="btn-primary">
+      <h1>A Website That Works As Hard As <span class="accent">You</span> Do.</h1>
+      <p class="hero-sub">Custom-designed, mobile-first websites built to build trust, rank on Google, and turn visitors into calls, quotes, and booked jobs. Tell us about your business and get a free strategy session, no obligation.</p>
+      <div class="hero-actions">
+        <a href="#quote" class="btn-primary btn-lg">
           Get My Free Website Strategy
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12l7 7 7-7" aria-hidden="true"/></svg>
         </a>
-        <a href="#portfolio" class="btn-secondary btn-hero-view-work">View Our Work</a>
-        <a href="tel:4783615444" class="btn-primary btn-hero-call-mobile">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.42 2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6.18 6.18l.95-.95a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-          Call Now
-        </a>
+        <a href="#portfolio" class="btn-secondary on-ink btn-lg">View Our Work</a>
       </div>
-      <div class="hero-trust reveal reveal-delay-3">
-        <div class="trust-item">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-          Custom Design, Not Templates
-        </div>
-        <div class="trust-item">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-          Mobile-First &amp; Built To Rank
-        </div>
-        <a href="tel:4783615444" class="trust-item" style="text-decoration:none; color:inherit;">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.42 2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6.18 6.18l.95-.95a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      <div class="hero-trust-row">
+        <span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Custom Design, Not Templates</span>
+        <span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Mobile-First &amp; Built To Rank</span>
+        <a href="tel:4783615444">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.42 2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6.18 6.18l.95-.95a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
           Call or Text: (478) 361-5444
         </a>
       </div>
     </div>
   </section>
 
-  <!-- Portfolio -->
+  <!-- ── PORTFOLIO ── -->
   <section id="portfolio">
     <div class="section-inner">
-      <div class="reveal" style="text-align:center;">
-        <p class="section-label" style="text-align:center;">Our Work</p>
-        <h2 class="section-title" style="text-align:center; margin: 0 auto 16px;">Built For Businesses<br />Like Yours.</h2>
-        <p class="section-sub" style="margin: 0 auto; text-align:center;">Every site is custom designed, mobile-first, and built to turn visitors into leads.</p>
+      <div class="section-head reveal" style="margin: 0 auto 48px; text-align: center;">
+        <h2 class="section-title">Built For Businesses Like Yours.</h2>
+        <p class="section-sub" style="margin: 0 auto;">Every site is custom designed, mobile-first, and built to turn visitors into leads.</p>
       </div>
 
-      <!-- Live Sites label -->
-      <div class="bento-section-header reveal">Live Client Sites</div>
-
-      <!-- Live Sites Bento Grid -->
-      <div class="bento-grid">
-
-        <!-- Hero: Attaboy (col 1–2) -->
-        <div class="bento-card bento-hero reveal" data-tilt>
-          <a href="https://www.attaboylawncare.com" target="_blank" rel="noopener noreferrer" class="bento-img-wrap">
-            <img src="/images/portfolio/lawn-care.jpg" alt="Attaboy Lawn Care website — custom lawn care company website" width="960" height="600" loading="lazy" />
-            <span class="bento-live-badge">Live Site</span>
-          </a>
-          <div class="bento-body">
-            <span class="bento-tag">Lawn Care</span>
-            <div class="bento-name">Attaboy Lawn Care</div>
-            <p class="bento-desc">Multi-page site for Macon, GA's fastest-growing lawn care company — 130 new clients in 90 days.</p>
-            <a href="https://www.attaboylawncare.com" target="_blank" rel="noopener noreferrer" class="bento-btn">
-              View Live Site
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-            </a>
+      <div class="sites-label reveal">Live Client Sites</div>
+      <div class="sites-grid">
+        <a href="https://www.attaboylawncare.com" target="_blank" rel="noopener noreferrer" class="site-card reveal">
+          <div class="site-frame">
+            <div class="site-chrome"><span></span><span></span><span></span></div>
+            <img src="/images/portfolio/lawn-care.jpg" alt="Attaboy Lawn Care website, live client site built by War-Buck Marketing" width="1400" height="875" loading="lazy" />
+            <span class="site-live-badge">Live Site</span>
           </div>
-        </div>
-
-        <!-- Side A: Glisson Tree Service (col 3) -->
-        <div class="bento-card reveal reveal-delay-1" data-tilt>
-          <a href="https://glissontreeservicellc.com" target="_blank" rel="noopener noreferrer" class="bento-img-wrap">
-            <img src="/images/portfolio/tree-service.jpg" alt="Glisson Tree Service website — custom tree service company website" width="960" height="600" loading="lazy" />
-            <span class="bento-live-badge">Live Site</span>
-          </a>
-          <div class="bento-body">
-            <span class="bento-tag">Tree Service</span>
-            <div class="bento-name">Glisson Tree Service</div>
-            <p class="bento-desc">10-page site with a built-in CRM, live in Macon, GA.</p>
-            <a href="https://glissontreeservicellc.com" target="_blank" rel="noopener noreferrer" class="bento-btn">
-              View Live Site
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-            </a>
+          <div class="site-meta">
+            <div>
+              <div class="site-name">Attaboy Lawn Care</div>
+              <div class="site-industry">Lawn Care, Macon GA · 130 new clients in 90 days</div>
+            </div>
+            <div class="site-link">Visit Site &rarr;</div>
           </div>
-        </div>
-
-        <!-- Row 2: T Square -->
-        <div class="bento-card reveal reveal-delay-1" data-tilt>
-          <a href="https://tsquareremodel.com" target="_blank" rel="noopener noreferrer" class="bento-img-wrap">
-            <img src="/images/portfolio/remodeling.jpg" alt="T Square Remodeling website — custom construction company website" width="960" height="600" loading="lazy" />
-            <span class="bento-live-badge">Live Site</span>
-          </a>
-          <div class="bento-body">
-            <span class="bento-tag">Remodeling &amp; Construction</span>
-            <div class="bento-name">T Square Remodeling</div>
-            <p class="bento-desc">14-page site built to win commercial and residential bids, live in Macon, GA.</p>
-            <a href="https://tsquareremodel.com" target="_blank" rel="noopener noreferrer" class="bento-btn">
-              View Live Site
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-            </a>
+        </a>
+        <a href="https://glissontreeservicellc.com" target="_blank" rel="noopener noreferrer" class="site-card reveal reveal-delay-1">
+          <div class="site-frame">
+            <div class="site-chrome"><span></span><span></span><span></span></div>
+            <img src="/images/portfolio/client-glisson.jpg" alt="Glisson Tree Service website, live client site built by War-Buck Marketing" width="1400" height="875" loading="lazy" />
+            <span class="site-live-badge">Live Site</span>
           </div>
-        </div>
-
-        <!-- Row 2: Dirt Hurts -->
-        <div class="bento-card reveal reveal-delay-2" data-tilt>
-          <a href="https://dirthurts.llc" target="_blank" rel="noopener noreferrer" class="bento-img-wrap">
-            <img src="/images/portfolio/pressure-washing.jpg" alt="Dirt Hurts website — custom exterior cleaning company website" width="960" height="600" loading="lazy" />
-            <span class="bento-live-badge">Live Site</span>
-          </a>
-          <div class="bento-body">
-            <span class="bento-tag">Pressure Washing &amp; Exterior Cleaning</span>
-            <div class="bento-name">Dirt Hurts</div>
-            <p class="bento-desc">4-page site with a built-in CRM and instant lead alerts, live in North Carolina.</p>
-            <a href="https://dirthurts.llc" target="_blank" rel="noopener noreferrer" class="bento-btn">
-              View Live Site
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-            </a>
+          <div class="site-meta">
+            <div>
+              <div class="site-name">Glisson Tree Service</div>
+              <div class="site-industry">Tree Service, Macon GA · 10-page site with built-in CRM</div>
+            </div>
+            <div class="site-link">Visit Site &rarr;</div>
           </div>
-        </div>
-
-        <!-- Row 2: Dark CTA card -->
-        <div class="bento-card bento-cta-card reveal reveal-delay-3">
-          <div class="bento-body">
-            <span class="bento-tag">Get Started</span>
-            <div class="bento-name">Your business<br />could be next.</div>
-            <p class="bento-desc">We build custom sites for local businesses that get real results — fast.</p>
-            <a href="#quote" class="bento-btn">
-              Get a Free Quote
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            </a>
+        </a>
+        <a href="https://tsquareremodel.com" target="_blank" rel="noopener noreferrer" class="site-card reveal reveal-delay-1">
+          <div class="site-frame">
+            <div class="site-chrome"><span></span><span></span><span></span></div>
+            <img src="/images/portfolio/client-tsquare.jpg" alt="T Square Remodeling website, live client site built by War-Buck Marketing" width="1400" height="875" loading="lazy" />
+            <span class="site-live-badge">Live Site</span>
           </div>
-        </div>
-
+          <div class="site-meta">
+            <div>
+              <div class="site-name">T Square Remodeling</div>
+              <div class="site-industry">Remodeling &amp; Construction, Macon GA · 14-page site</div>
+            </div>
+            <div class="site-link">Visit Site &rarr;</div>
+          </div>
+        </a>
+        <a href="https://dirthurts.llc" target="_blank" rel="noopener noreferrer" class="site-card reveal reveal-delay-2">
+          <div class="site-frame">
+            <div class="site-chrome"><span></span><span></span><span></span></div>
+            <img src="/images/portfolio/pressure-washing.jpg" alt="Dirt Hurts website, live client site built by War-Buck Marketing" width="1400" height="875" loading="lazy" />
+            <span class="site-live-badge">Live Site</span>
+          </div>
+          <div class="site-meta">
+            <div>
+              <div class="site-name">Dirt Hurts</div>
+              <div class="site-industry">Pressure Washing, North Carolina · CRM + instant lead alerts</div>
+            </div>
+            <div class="site-link">Visit Site &rarr;</div>
+          </div>
+        </a>
       </div>
 
-      <!-- Design Examples label -->
-      <div class="bento-section-header demo reveal" style="margin-top:56px;">Design Examples</div>
+      <div class="portfolio-cta reveal">
+        <div class="portfolio-cta-text">Your business could be <span>next</span>.</div>
+        <a href="#quote" class="btn-primary">
+          Get a Free Quote
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
 
-      <!-- Demo 2×2 Grid -->
+      <div class="demo-label reveal">Design Examples</div>
       <div class="demo-grid">
-
-        <div class="bento-card demo-card reveal" data-tilt>
-          <div class="bento-img-wrap">
-            <img src="/images/portfolio/landscaping.jpg" alt="Custom website design example for a landscaping company" width="960" height="600" loading="lazy" />
-            <span class="bento-demo-badge">DEMO</span>
-          </div>
-          <div class="bento-body">
-            <span class="bento-tag">Landscaping &amp; Lawn Care</span>
-            <div class="bento-name">Landscaping &amp; Lawn Care</div>
-            <p class="bento-desc">Bold hero, service highlights, and a quote form built to fill the schedule.</p>
-          </div>
+        <div class="demo-card reveal">
+          <img src="/images/portfolio/landscaping.jpg" alt="Custom website design example for a landscaping company" width="960" height="720" loading="lazy" />
+          <span class="demo-card-tag">Demo</span>
+          <span class="demo-card-label">Landscaping &amp; Lawn Care</span>
         </div>
-
-        <div class="bento-card demo-card reveal reveal-delay-1" data-tilt>
-          <div class="bento-img-wrap">
-            <img src="/images/portfolio/concrete.jpg" alt="Custom website design example for a concrete and hardscaping contractor" width="960" height="600" loading="lazy" />
-            <span class="bento-demo-badge">DEMO</span>
-          </div>
-          <div class="bento-body">
-            <span class="bento-tag">Concrete &amp; Hardscaping</span>
-            <div class="bento-name">Concrete &amp; Hardscaping</div>
-            <p class="bento-desc">Project stats and trust signals up front to win bigger jobs.</p>
-          </div>
+        <div class="demo-card reveal reveal-delay-1">
+          <img src="/images/portfolio/concrete.jpg" alt="Custom website design example for a concrete and hardscaping contractor" width="960" height="720" loading="lazy" />
+          <span class="demo-card-tag">Demo</span>
+          <span class="demo-card-label">Concrete &amp; Hardscaping</span>
         </div>
-
-        <div class="bento-card demo-card reveal reveal-delay-1" data-tilt>
-          <div class="bento-img-wrap">
-            <img src="/images/portfolio/hvac.jpg" alt="Custom website design example for an HVAC company" width="960" height="600" loading="lazy" />
-            <span class="bento-demo-badge">DEMO</span>
-          </div>
-          <div class="bento-body">
-            <span class="bento-tag">HVAC &amp; Home Comfort</span>
-            <div class="bento-name">HVAC &amp; Home Comfort</div>
-            <p class="bento-desc">Reviews and guarantees front and center to build instant trust.</p>
-          </div>
+        <div class="demo-card reveal reveal-delay-2">
+          <img src="/images/portfolio/hvac.jpg" alt="Custom website design example for an HVAC company" width="960" height="720" loading="lazy" />
+          <span class="demo-card-tag">Demo</span>
+          <span class="demo-card-label">HVAC &amp; Home Comfort</span>
         </div>
-
-        <div class="bento-card demo-card reveal reveal-delay-2" data-tilt>
-          <div class="bento-img-wrap">
-            <img src="/images/portfolio/auto-detailing.jpg" alt="Custom website design example for an auto detailing business" width="960" height="600" loading="lazy" />
-            <span class="bento-demo-badge">DEMO</span>
-          </div>
-          <div class="bento-body">
-            <span class="bento-tag">Auto Detailing</span>
-            <div class="bento-name">Auto Detailing</div>
-            <p class="bento-desc">Premium look and feel with online booking to fill the calendar.</p>
-          </div>
+        <div class="demo-card reveal reveal-delay-3">
+          <img src="/images/portfolio/auto-detailing.jpg" alt="Custom website design example for an auto detailing business" width="960" height="720" loading="lazy" />
+          <span class="demo-card-tag">Demo</span>
+          <span class="demo-card-label">Auto Detailing</span>
         </div>
-
       </div>
-
     </div>
   </section>
 
-  <!-- Benefits -->
+  <!-- ── BENEFITS ── -->
   <section id="benefits">
     <div class="section-inner">
-      <div class="reveal" style="text-align:center;">
-        <p class="section-label" style="text-align:center;">Why It Matters</p>
-        <h2 class="section-title" style="text-align:center; margin: 0 auto 16px;">More Than A Website.<br />Your Hardest-Working Employee.</h2>
-        <p class="section-sub" style="margin: 0 auto; text-align:center;">A professional website does more than look good — it builds trust, ranks on Google, and turns visitors into paying customers. Here's what that looks like.</p>
+      <div class="section-head reveal">
+        <h2 class="section-title">More Than a Website. Your Hardest-Working Employee.</h2>
+        <p class="section-sub">A professional website does more than look good. It builds trust, ranks on Google, and turns visitors into paying customers. Here's what that looks like.</p>
       </div>
-      <div class="benefit-grid">
-
-        <div class="benefit-card reveal reveal-delay-1">
-          <div class="benefit-icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
-          </div>
-          <div class="benefit-title">Mobile-First Design</div>
-          <p class="benefit-desc">More than half of your visitors are on a phone. Every page is designed and tested to look great and work perfectly on every screen size — not just desktop.</p>
+      <div class="svc-list">
+        <div class="svc-row reveal">
+          <div class="svc-title">Mobile-First Design</div>
+          <p class="svc-desc">More than half of your visitors are on a phone. Every page is designed and tested to look great and work perfectly on every screen size, not just desktop.</p>
         </div>
-
-        <div class="benefit-card reveal reveal-delay-2">
-          <div class="benefit-icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-          </div>
-          <div class="benefit-title">Built For Speed</div>
-          <p class="benefit-desc">Slow sites lose customers before they even load. We build lean, fast-loading pages that keep visitors around long enough to take action.</p>
+        <div class="svc-row reveal">
+          <div class="svc-title">Built for Speed</div>
+          <p class="svc-desc">Slow sites lose customers before they even load. We build lean, fast-loading pages that keep visitors around long enough to take action.</p>
         </div>
-
-        <div class="benefit-card reveal reveal-delay-3">
-          <div class="benefit-icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.5 8.5-.3.1-.7.1-1 0C7.5 20.5 4 18 4 13V6l8-3 8 3v7Z"/></svg>
-          </div>
-          <div class="benefit-title">Professional Branding &amp; Trust</div>
-          <p class="benefit-desc">A clean, modern design signals credibility the moment someone lands on your site — before they ever pick up the phone.</p>
+        <div class="svc-row reveal">
+          <div class="svc-title">Professional Branding &amp; Trust</div>
+          <p class="svc-desc">A clean, modern design signals credibility the moment someone lands on your site, before they ever pick up the phone.</p>
         </div>
-
-        <div class="benefit-card reveal reveal-delay-1">
-          <div class="benefit-icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-          </div>
-          <div class="benefit-title">SEO-Friendly Structure</div>
-          <p class="benefit-desc">Clean code, proper headings, and local SEO basics baked in from day one — so Google can find you and put you in front of nearby customers.</p>
+        <div class="svc-row reveal">
+          <div class="svc-title">SEO-Friendly Structure</div>
+          <p class="svc-desc">Clean code, proper headings, and local SEO basics baked in from day one, so Google can find you and put you in front of nearby customers.</p>
         </div>
-
-        <div class="benefit-card reveal reveal-delay-2">
-          <div class="benefit-icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
-          </div>
-          <div class="benefit-title">Built-In Lead Capture</div>
-          <p class="benefit-desc">Every page is designed to turn visitors into calls, quote requests, and bookings — not just page views.</p>
+        <div class="svc-row reveal">
+          <div class="svc-title">Built-In Lead Capture</div>
+          <p class="svc-desc">Every page is designed to turn visitors into calls, quote requests, and bookings, not just page views.</p>
         </div>
-
-        <div class="benefit-card reveal reveal-delay-3">
-          <div class="benefit-icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 15-6.7L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-15 6.7L3 16"/><path d="M3 21v-5h5"/></svg>
-          </div>
-          <div class="benefit-title">Easy To Update</div>
-          <p class="benefit-desc">Need a new service, photo, or promotion added? We keep your site current so it never goes stale or starts feeling outdated.</p>
+        <div class="svc-row reveal">
+          <div class="svc-title">Easy to Update</div>
+          <p class="svc-desc">Need a new service, photo, or promotion added? We keep your site current so it never goes stale or starts feeling outdated.</p>
         </div>
-
       </div>
     </div>
   </section>
 
-  <!-- Process -->
+  <!-- ── PROCESS ── -->
   <section id="process">
     <div class="section-inner">
-      <div class="reveal" style="text-align:center;">
-        <p class="section-label" style="text-align:center;">Our Process</p>
-        <h2 class="section-title" style="text-align:center; margin: 0 auto 16px;">From First Conversation<br />To Live Website.</h2>
-        <p class="section-sub" style="margin: 0 auto; text-align:center;">A clear, guided process — so you always know what's happening and what's coming next.</p>
+      <div class="section-head reveal">
+        <h2 class="section-title">From First Conversation to Live Website.</h2>
+        <p class="section-sub">A clear, guided process, so you always know what's happening and what's coming next.</p>
       </div>
-      <div class="step-grid">
-        <div class="step reveal reveal-delay-1">
-          <div class="step-number">1</div>
-          <div class="step-title">Discovery</div>
-          <p class="step-desc">We learn about your business, goals, customers, and competitors — so your site is built around what actually matters to your market.</p>
+      <div class="process-track no-line">
+        <div class="process-step reveal">
+          <div class="process-num">1</div>
+          <div>
+            <div class="process-eyebrow">Step One</div>
+            <div class="process-title">Discovery</div>
+            <p class="process-desc">We learn about your business, goals, customers, and competitors, so your site is built around what actually matters to your market.</p>
+          </div>
         </div>
-        <div class="step reveal reveal-delay-2">
-          <div class="step-number">2</div>
-          <div class="step-title">Design</div>
-          <p class="step-desc">We design a custom layout and visual style around your brand — colors, photos, and messaging that feel like you, not a template.</p>
+        <div class="process-step reveal reveal-delay-1">
+          <div class="process-num">2</div>
+          <div>
+            <div class="process-eyebrow">Step Two</div>
+            <div class="process-title">Design</div>
+            <p class="process-desc">We design a custom layout and visual style around your brand: colors, photos, and messaging that feel like you, not a template.</p>
+          </div>
         </div>
-        <div class="step reveal reveal-delay-3">
-          <div class="step-number">3</div>
-          <div class="step-title">Development</div>
-          <p class="step-desc">Your design comes to life as a fast, responsive, fully functional website — built clean, and built to last.</p>
+        <div class="process-step reveal reveal-delay-2">
+          <div class="process-num">3</div>
+          <div>
+            <div class="process-eyebrow">Step Three</div>
+            <div class="process-title">Development</div>
+            <p class="process-desc">Your design comes to life as a fast, responsive, fully functional website, built clean, and built to last.</p>
+          </div>
         </div>
-        <div class="step reveal reveal-delay-1">
-          <div class="step-number">4</div>
-          <div class="step-title">Review &amp; Revisions</div>
-          <p class="step-desc">You review everything before it goes live, and we make adjustments until it's exactly right — no detail too small.</p>
+        <div class="process-step reveal">
+          <div class="process-num">4</div>
+          <div>
+            <div class="process-eyebrow">Step Four</div>
+            <div class="process-title">Review &amp; Revisions</div>
+            <p class="process-desc">You review everything before it goes live, and we make adjustments until it's exactly right. No detail too small.</p>
+          </div>
         </div>
-        <div class="step reveal reveal-delay-2">
-          <div class="step-number">5</div>
-          <div class="step-title">Launch</div>
-          <p class="step-desc">We connect your domain, configure hosting, and take your new site live — typically within 7-10 business days from kickoff.</p>
+        <div class="process-step reveal reveal-delay-1">
+          <div class="process-num">5</div>
+          <div>
+            <div class="process-eyebrow">Step Five</div>
+            <div class="process-title">Launch</div>
+            <p class="process-desc">We connect your domain, configure hosting, and take your new site live, typically within 7-10 business days from kickoff.</p>
+          </div>
         </div>
-        <div class="step reveal reveal-delay-3">
-          <div class="step-number">6</div>
-          <div class="step-title">Ongoing Support</div>
-          <p class="step-desc">Need an update, a new page, or a seasonal promo? We're here after launch to keep your site current and working hard.</p>
+        <div class="process-step reveal reveal-delay-2">
+          <div class="process-num">6</div>
+          <div>
+            <div class="process-eyebrow">Step Six</div>
+            <div class="process-title">Ongoing Support</div>
+            <p class="process-desc">Need an update, a new page, or a seasonal promo? We're here after launch to keep your site current and working hard.</p>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Social Proof -->
+  <!-- ── PROOF ── -->
   <section id="proof">
     <div class="section-inner">
-      <div class="reveal" style="text-align:center;">
-        <p class="section-label" style="text-align:center;">Trusted Locally</p>
-        <h2 class="section-title" style="text-align:center; margin: 0 auto 16px;">Real Businesses.<br />Real Websites, Live Right Now.</h2>
-        <p class="section-sub" style="margin: 0 auto; text-align:center;">We don't just design mockups — see live sites we've built and launched for local businesses.</p>
+      <div class="section-head on-ink reveal" style="margin: 0 auto 48px; text-align: center;">
+        <h2 class="section-title">Real Businesses. Real Websites, Live Right Now.</h2>
+        <p class="section-sub" style="margin: 0 auto;">We don't just design mockups. Every site above is live, launched, and working for a real local business.</p>
       </div>
-      <div class="proof-grid">
-        <a href="https://tsquareremodel.com" target="_blank" rel="noopener noreferrer" class="proof-card reveal reveal-delay-1">
-          <div class="proof-logo">TS</div>
-          <div class="proof-body">
-            <div class="proof-name">T Square Remodeling</div>
-            <div class="proof-desc">Construction &amp; remodeling website — Macon, GA</div>
-          </div>
-          <svg class="proof-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-        </a>
-        <a href="https://glissontreeservicellc.com" target="_blank" rel="noopener noreferrer" class="proof-card reveal reveal-delay-2">
-          <div class="proof-logo">GT</div>
-          <div class="proof-body">
-            <div class="proof-name">Glisson Tree Service</div>
-            <div class="proof-desc">Tree service website with online booking — Macon, GA</div>
-          </div>
-          <svg class="proof-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-        </a>
-      </div>
-      <div class="proof-stats">
-        <div class="proof-stat reveal reveal-delay-1">
-          <div class="proof-stat-number">7+</div>
-          <div class="proof-stat-label">Industries<br />Served</div>
+      <div class="why-stats">
+        <div class="stat-card reveal">
+          <div class="stat-number">7<span>+</span></div>
+          <div class="stat-label">Industries Served</div>
         </div>
-        <div class="proof-stat reveal reveal-delay-2">
-          <div class="proof-stat-number">100%</div>
-          <div class="proof-stat-label">Mobile<br />Optimized</div>
+        <div class="stat-card reveal reveal-delay-1">
+          <div class="stat-number"><span>100</span>%</div>
+          <div class="stat-label">Mobile Optimized</div>
         </div>
-        <div class="proof-stat reveal reveal-delay-3">
-          <div class="proof-stat-number">~10</div>
-          <div class="proof-stat-label">Day Average<br />Launch Time</div>
+        <div class="stat-card reveal reveal-delay-2">
+          <div class="stat-number">~<span>10</span></div>
+          <div class="stat-label">Day Average Launch Time</div>
         </div>
-        <div class="proof-stat reveal reveal-delay-1">
-          <div class="proof-stat-number">24hr</div>
-          <div class="proof-stat-label">Response<br />Time</div>
+        <div class="stat-card reveal reveal-delay-3">
+          <div class="stat-number"><span>24</span>hr</div>
+          <div class="stat-label">Response Time</div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- FAQ -->
+  <!-- ── FAQ ── -->
   <section id="faq">
     <div class="section-inner">
-      <div class="reveal" style="text-align:center;">
-        <p class="section-label" style="text-align:center;">FAQ</p>
-        <h2 class="section-title" style="text-align:center; margin: 0 auto 16px;">Questions we hear<br />all the time.</h2>
-        <p class="section-sub" style="margin: 0 auto; text-align:center;">Straight answers. No fluff.</p>
+      <div class="section-head reveal" style="margin: 0 auto 56px; text-align: center;">
+        <h2 class="section-title">Questions We Hear All the Time.</h2>
+        <p class="section-sub" style="margin: 0 auto;">Straight answers. No fluff.</p>
       </div>
       <div class="faq-list reveal">
 
@@ -749,9 +1176,7 @@
             How long does it take to build my website?
             <span class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
           </button>
-          <div class="faq-answer">
-            <p>Most websites are designed, built, and launched within 7-10 business days from our kickoff call. Larger, multi-page builds may take a bit longer — we'll give you an exact timeline before we start.</p>
-          </div>
+          <div class="faq-answer"><div class="faq-answer-inner"><p>Most websites are designed, built, and launched within 7-10 business days from our kickoff call. Larger, multi-page builds may take a bit longer. We'll give you an exact timeline before we start.</p></div></div>
         </div>
 
         <div class="faq-item">
@@ -759,9 +1184,7 @@
             Will my website work well on phones and tablets, not just computers?
             <span class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
           </button>
-          <div class="faq-answer">
-            <p>Yes — every website we build is mobile-first. More than half of your visitors will be on a phone, so we design and test every page to look great and load fast on phones, tablets, laptops, and desktops.</p>
-          </div>
+          <div class="faq-answer"><div class="faq-answer-inner"><p>Yes. Every website we build is mobile-first. More than half of your visitors will be on a phone, so we design and test every page to look great and load fast on phones, tablets, laptops, and desktops.</p></div></div>
         </div>
 
         <div class="faq-item">
@@ -769,9 +1192,7 @@
             Can you redesign my existing website?
             <span class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
           </button>
-          <div class="faq-answer">
-            <p>Absolutely. Whether your current site is outdated, hard to update, or doesn't reflect your business anymore, we can rebuild it from the ground up with a brand-new look and better performance.</p>
-          </div>
+          <div class="faq-answer"><div class="faq-answer-inner"><p>Absolutely. Whether your current site is outdated, hard to update, or doesn't reflect your business anymore, we can rebuild it from the ground up with a brand-new look and better performance.</p></div></div>
         </div>
 
         <div class="faq-item">
@@ -779,9 +1200,7 @@
             Can I request changes or revisions before it goes live?
             <span class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
           </button>
-          <div class="faq-answer">
-            <p>Yes. You'll review the full site before launch and we'll make adjustments until you're happy with it. We want it to feel exactly like your business — not a generic template.</p>
-          </div>
+          <div class="faq-answer"><div class="faq-answer-inner"><p>Yes. You'll review the full site before launch and we'll make adjustments until you're happy with it. We want it to feel exactly like your business, not a generic template.</p></div></div>
         </div>
 
         <div class="faq-item">
@@ -789,9 +1208,7 @@
             Is it built to help my business show up on Google?
             <span class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
           </button>
-          <div class="faq-answer">
-            <p>Yes. Every site is built with clean code, proper headings, fast load times, and local SEO basics — like your city and service areas — baked in from day one, so search engines can find and rank you.</p>
-          </div>
+          <div class="faq-answer"><div class="faq-answer-inner"><p>Yes. Every site is built with clean code, proper headings, fast load times, and local SEO basics, like your city and service areas, baked in from day one, so search engines can find and rank you.</p></div></div>
         </div>
 
         <div class="faq-item">
@@ -799,9 +1216,7 @@
             Can you help generate leads, not just build a site?
             <span class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
           </button>
-          <div class="faq-answer">
-            <p>That's the whole point. Every page is designed around getting visitors to call, request a quote, or book a job. If you also want ongoing help with ads or social media after launch, that's our core specialty too — <a href="https://warbuckmarketing.com/#contact">learn more here</a>.</p>
-          </div>
+          <div class="faq-answer"><div class="faq-answer-inner"><p>That's the whole point. Every page is designed around getting visitors to call, request a quote, or book a job. If you also want ongoing help with ads or social media after launch, that's our core specialty too, <a href="https://warbuckmarketing.com/#contact">learn more here</a>.</p></div></div>
         </div>
 
         <div class="faq-item">
@@ -809,49 +1224,39 @@
             What does a website like this cost?
             <span class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
           </button>
-          <div class="faq-answer">
-            <p>It depends on the size and features you need. We offer a few packages to fit different budgets and goals — <a href="/website-packages">see current pricing here</a> — or just request your free strategy below and we'll recommend the right fit.</p>
-          </div>
+          <div class="faq-answer"><div class="faq-answer-inner"><p>It depends on the size and features you need. We offer a few packages to fit different budgets and goals, <a href="/website-packages">see current pricing here</a>, or just request your free strategy below and we'll recommend the right fit.</p></div></div>
         </div>
 
       </div>
     </div>
   </section>
 
-  <!-- Quote Form / Final CTA -->
+  <!-- ── QUOTE FORM / FINAL CTA ── -->
   <section id="quote">
     <div class="section-inner">
       <div class="quote-grid">
-        <div class="quote-info reveal">
-          <p class="section-label">Get Started — Free</p>
-          <h2 class="section-title">Ready For A Website<br />That Works As Hard<br />As You Do?</h2>
-          <p class="section-sub" style="max-width:480px;">Tell us a bit about your business. We'll personally review it and follow up within 24 hours with a free strategy breakdown — what we'd build, what it would cost, and how it could help your business grow.</p>
+        <div class="reveal">
+          <div class="section-head" style="margin-bottom: 0;">
+            <h2 class="section-title">Ready for a Website That Works As Hard As You Do?</h2>
+            <p class="section-sub">Tell us a bit about your business. We'll personally review it and follow up within 24 hours with a free strategy breakdown: what we'd build, what it would cost, and how it could help your business grow.</p>
+          </div>
 
-          <div style="background:var(--accent-light);border:1px solid var(--accent-subtle);border-radius:var(--radius);padding:20px 24px;margin-top:28px;margin-bottom:4px;">
-            <div style="font-size:11px;font-weight:700;color:var(--accent);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:8px;">Real Client Result</div>
-            <div style="font-size:26px;font-weight:900;color:var(--black);letter-spacing:-0.5px;line-height:1.15;">130 new clients<br>in 90 days.</div>
-            <div style="font-size:13px;color:var(--gray-500);margin-top:6px;line-height:1.5;">Attaboy Lawn Care — from a War-Buck website. 12.6x return on their investment.</div>
+          <div class="quote-highlight">
+            <div class="quote-highlight-tag">Real Client Result</div>
+            <div class="quote-highlight-num">130 new clients in 90 days.</div>
+            <div class="quote-highlight-desc">Attaboy Lawn Care, from a War-Buck website. 12.6x return on their investment.</div>
           </div>
 
           <div class="quote-checklist">
-            <div class="trust-item">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-              Free, no-obligation strategy session
-            </div>
-            <div class="trust-item">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-              Personal response within 24 hours
-            </div>
-            <div class="trust-item">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-              Custom recommendations, never a generic pitch
-            </div>
+            <div class="quote-check-item"><span class="quote-check-mark">&check;</span><span class="quote-check-text">Free, no-obligation strategy session</span></div>
+            <div class="quote-check-item"><span class="quote-check-mark">&check;</span><span class="quote-check-text">Personal response within 24 hours</span></div>
+            <div class="quote-check-item"><span class="quote-check-mark">&check;</span><span class="quote-check-text">Custom recommendations, never a generic pitch</span></div>
           </div>
         </div>
 
         <div class="quote-form-card reveal reveal-delay-1">
           <div id="successMsg" class="success-msg">
-            <h3>Got it — thanks!</h3>
+            <h3>Got it, thanks!</h3>
             <p>We'll personally review your info and follow up within 24 hours with your free website strategy.</p>
           </div>
           <form id="leadForm" action="https://formsubmit.co/buckwarnock101@gmail.com" method="POST" onsubmit="handleSubmit(event)">
@@ -871,15 +1276,15 @@
                 <input type="tel" name="Phone Number" placeholder="(478) 000-0000" autocomplete="tel" required />
               </div>
               <div class="form-group full">
-                <label>Email Address <span style="font-weight:400;color:var(--gray-500);">(optional)</span></label>
+                <label>Email Address <span style="font-weight:400;color:var(--text-faint);">(optional)</span></label>
                 <input type="email" name="Email Address" placeholder="you@example.com" autocomplete="email" />
               </div>
               <div class="form-group full">
-                <label>Type of Business <span style="font-weight:400;color:var(--gray-500);">(optional)</span></label>
+                <label>Type of Business <span style="font-weight:400;color:var(--text-faint);">(optional)</span></label>
                 <input type="text" name="Type of Business" placeholder="e.g. Landscaping, HVAC, Roofing, Cleaning..." />
               </div>
               <div class="form-group full">
-                <label>When are you looking to get started? <span style="font-weight:400;color:var(--gray-500);">(optional)</span></label>
+                <label>When are you looking to get started? <span style="font-weight:400;color:var(--text-faint);">(optional)</span></label>
                 <select name="Timeline">
                   <option value="">Select a timeline...</option>
                   <option value="ASAP">Ready to start ASAP</option>
@@ -889,7 +1294,7 @@
                 </select>
               </div>
               <div class="form-group full">
-                <label>Anything you want us to know? <span style="font-weight:400;color:var(--gray-500);">(optional)</span></label>
+                <label>Anything you want us to know? <span style="font-weight:400;color:var(--text-faint);">(optional)</span></label>
                 <textarea name="Project Details" placeholder="Do you have a current site? What's your biggest goal with a new one?"></textarea>
               </div>
               <div class="form-submit">
@@ -897,7 +1302,7 @@
                   Get My Free Website Strategy
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                 </button>
-                <p class="form-note">Or call/text us directly: <a href="tel:4783615444" style="color:var(--accent);font-weight:600;">(478) 361-5444</a> — we respond within 24 hrs.</p>
+                <p class="form-note">Or call/text us directly: <a href="tel:4783615444" style="color:var(--accent);font-weight:600;">(478) 361-5444</a>. We respond within 24 hrs.</p>
               </div>
             </div>
           </form>
@@ -906,12 +1311,17 @@
     </div>
   </section>
 
-  <!-- Footer -->
+  </main>
+
+  <!-- ── FOOTER ── -->
   <footer>
     <div class="footer-inner">
-      <div class="footer-brand-name">War-Buck <span>Marketing</span></div>
+      <div>
+        <div class="footer-brand-name">War-Buck <span>Marketing</span></div>
+        <div class="footer-tagline">Local Business Marketing Agency</div>
+      </div>
       <div class="footer-links">
-        <a href="/" class="footer-link">Marketing Services</a>
+        <a href="/website-design" class="footer-link">Website Design</a>
         <a href="/website-packages" class="footer-link">Website Packages</a>
         <a href="/blog" class="footer-link">Resources</a>
         <a href="https://www.instagram.com/buckscales/" class="footer-link" target="_blank" rel="noopener noreferrer">Instagram</a>
@@ -919,64 +1329,79 @@
         <a href="https://calendly.com/buckwarnock101/free-strategy-call" class="footer-link" target="_blank" rel="noopener noreferrer">Book a Call</a>
         <a href="/leave-a-review" class="footer-link">Leave a Review</a>
       </div>
+    </div>
+    <div class="footer-inner footer-industries">
+      <span style="font-weight:700;color:var(--text-on-ink-muted);">Industries We Serve:</span>
+      <a href="/contractor-marketing" class="footer-industry-link">Contractors</a>·
+      <a href="/roofing-marketing" class="footer-industry-link">Roofing</a>·
+      <a href="/car-detailing-marketing" class="footer-industry-link">Car Detailers</a>·
+      <a href="/landscaping-marketing" class="footer-industry-link">Landscapers</a>·
+      <a href="/lawn-care-marketing" class="footer-industry-link">Lawn Care</a>·
+      <a href="/window-cleaning-marketing" class="footer-industry-link">Window Cleaning</a>·
+      <a href="/ecommerce-marketing" class="footer-industry-link">Ecommerce</a>·
+      <a href="/clothing-brand-marketing" class="footer-industry-link">Clothing Brands</a>
+    </div>
+    <div class="footer-inner">
       <p class="footer-copy">&copy; 2026 War-Buck Marketing. All rights reserved.</p>
     </div>
   </footer>
 
-  <!-- Mobile Sticky Bar -->
-  <div class="mobile-sticky-bar">
-    <a href="tel:4783615444" class="sticky-call">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.42 2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6.18 6.18l.95-.95a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-      Call Now
-    </a>
-    <a href="https://calendly.com/buckwarnock101/free-strategy-call" target="_blank" rel="noopener noreferrer" class="sticky-quote">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-      Book Free Call
-    </a>
-  </div>
-
   <script>
+    // ── Nav shadow on scroll (rAF throttled) ──
     const navbar = document.getElementById('navbar');
     let rafPending = false;
     window.addEventListener('scroll', () => {
-      if (!rafPending) { rafPending = true; requestAnimationFrame(() => { navbar.classList.toggle('scrolled', window.scrollY > 20); rafPending = false; }); }
-    }, { passive: true });
-    const revealEls = document.querySelectorAll('.reveal');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); } });
-    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-    revealEls.forEach(el => observer.observe(el));
-
-    // ── Bento tilt (RAF-throttled) ──
-    (function () {
-      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-      if (window.matchMedia('(hover: none)').matches) return;
-      document.querySelectorAll('[data-tilt]').forEach(function (card) {
-        var rafId = null, tx = 0, ty = 0;
-        card.addEventListener('mouseenter', function () {
-          card.style.willChange = 'transform';
-          card.style.transition = 'box-shadow 0.35s ease';
+      if (!rafPending) {
+        rafPending = true;
+        requestAnimationFrame(() => {
+          navbar.classList.toggle('scrolled', window.scrollY > 20);
+          rafPending = false;
         });
-        card.addEventListener('mousemove', function (e) {
-          if (!card.classList.contains('visible')) return;
-          var r = card.getBoundingClientRect();
-          tx = (e.clientX - r.left) / r.width  - 0.5;
-          ty = (e.clientY - r.top)  / r.height - 0.5;
-          if (!rafId) {
-            rafId = requestAnimationFrame(function () {
-              card.style.transform = 'perspective(900px) rotateX(' + (-ty * 7) + 'deg) rotateY(' + (tx * 7) + 'deg) translateZ(5px)';
-              rafId = null;
-            });
+      }
+    }, { passive: true });
+
+    // ── Scroll reveal ──
+    // Elements are visible by default (see .reveal CSS). Only elements
+    // below the fold get opted into the hidden pre-state here, so a
+    // failed observer or disabled JS never leaves content invisible.
+    if ('IntersectionObserver' in window) {
+      const revealEls = document.querySelectorAll('.reveal');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
           }
         });
-        card.addEventListener('mouseleave', function () {
-          if (rafId) { cancelAnimationFrame(rafId); rafId = null; }
-          card.style.transition = 'box-shadow 0.35s ease, transform 0.6s cubic-bezier(0.23,1,0.32,1)';
-          card.style.transform  = '';
-          card.style.willChange = 'auto';
-        });
+      }, { threshold: 0, rootMargin: '400px 0px 400px 0px' });
+
+      revealEls.forEach(el => {
+        if (el.getBoundingClientRect().top > window.innerHeight * 0.9) {
+          el.classList.add('reveal-pending');
+        }
+        observer.observe(el);
       });
-    }());
+    }
+
+    // ── Mobile menu ──
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    function toggleMenu() {
+      const isOpen = mobileMenu.classList.toggle('open');
+      menuBtn.classList.toggle('open', isOpen);
+      menuBtn.setAttribute('aria-expanded', isOpen);
+      document.body.classList.toggle('lock', isOpen);
+    }
+
+    function closeMenu() {
+      mobileMenu.classList.remove('open');
+      menuBtn.classList.remove('open');
+      menuBtn.setAttribute('aria-expanded', 'false');
+      document.body.classList.remove('lock');
+    }
+
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
 
     // ── FAQ accordion ──
     function toggleFaq(btn) {
@@ -1083,14 +1508,6 @@
         btn.disabled = false;
       }
     }
-
-    // Auto-hide urgency pill after June 30
-    (function() {
-      if (new Date() > new Date('2026-07-01T00:00:00')) {
-        const el = document.getElementById('urgency-pill');
-        if (el) el.style.display = 'none';
-      }
-    })();
   </script>
 
 </body>
