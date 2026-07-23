@@ -403,20 +403,36 @@
     /* ── HERO ── */
     #hero {
       background: var(--ink);
-      padding: 156px 40px 96px;
+      padding: 108px 40px 56px;
       position: relative;
-      overflow: hidden;
     }
 
-    #hero::before {
+    .hero-glow {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 460px;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .hero-glow::before {
       content: '';
       position: absolute;
-      top: -30%;
+      top: -190px;
       right: -10%;
       width: 640px;
       height: 640px;
-      background: radial-gradient(circle, oklch(50% 0.205 264 / 0.14) 0%, transparent 68%);
-      pointer-events: none;
+      background-image: url('images/hero-glow.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+
+    .hero-grid {
+      position: relative;
+      z-index: 1;
     }
 
     .hero-grid {
@@ -440,7 +456,7 @@
       letter-spacing: -0.03em;
       line-height: 1.03;
       color: var(--text-on-ink);
-      margin-bottom: 24px;
+      margin-bottom: 16px;
       text-wrap: balance;
       opacity: 0;
       transform: translateY(20px);
@@ -453,7 +469,7 @@
       font-size: clamp(17px, 1.7vw, 19px);
       color: var(--text-on-ink-muted);
       max-width: 520px;
-      margin-bottom: 36px;
+      margin-bottom: 24px;
       line-height: 1.65;
       text-wrap: pretty;
       opacity: 0;
@@ -1524,7 +1540,7 @@
     /* ── RESPONSIVE ── */
     @media (max-width: 768px) {
       nav#navbar { padding: 16px 20px; }
-      #hero { padding: 128px 20px 64px; }
+      #hero { padding: 100px 20px 48px; }
       section { padding: clamp(56px, 12vw, 88px) 20px; }
       .footer-copy { text-align: center; }
     }
@@ -1580,6 +1596,7 @@
 
   <!-- ── HERO ── -->
   <section id="hero">
+    <div class="hero-glow" aria-hidden="true"></div>
     <div class="hero-grid">
       <div>
         <h1>Stop Chasing Work.<br />Start <span class="accent">Turning It Away.</span></h1>
