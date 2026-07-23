@@ -14,13 +14,13 @@
   <meta charset="UTF-8" />
   <link rel="manifest" href="/manifest.json" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Custom Website Design for Local Businesses | War-Buck Marketing</title>
-  <meta name="description" content="Custom, mobile-first websites for local service businesses — built to build trust, rank on Google, and win more customers. Get a free website strategy session, no obligation." />
+  <title>Custom Website Design for Local Businesses | War-Buck</title>
+  <meta name="description" content="Custom, mobile-first websites for local service businesses, built to build trust, rank on Google, and win more customers. Get a free strategy session." />
   <link rel="canonical" href="https://warbuckmarketing.com/website-design" />
   <meta name="robots" content="index, follow" />
 
   <!-- OG Meta Tags -->
-  <meta property="og:title" content="Custom Website Design for Local Businesses | War-Buck Marketing" />
+  <meta property="og:title" content="Custom Website Design for Local Businesses | War-Buck" />
   <meta property="og:description" content="Custom, mobile-first websites built to build trust, rank on Google, and win more customers. See our work and get a free website strategy session." />
   <meta property="og:url" content="https://warbuckmarketing.com/website-design" />
   <meta property="og:type" content="website" />
@@ -31,7 +31,7 @@
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Custom Website Design for Local Businesses | War-Buck Marketing" />
+  <meta name="twitter:title" content="Custom Website Design for Local Businesses | War-Buck" />
   <meta name="twitter:description" content="Custom, mobile-first websites built to build trust, rank on Google, and win more customers. Get a free website strategy session." />
   <meta name="twitter:image" content="https://warbuckmarketing.com/og-image.png" />
 
@@ -42,7 +42,7 @@
     "@type": "Service",
     "serviceType": "Website Design & Development",
     "name": "Custom Website Design for Local Businesses",
-    "description": "Custom-designed, mobile-first websites for local service businesses — landscapers, contractors, HVAC companies, detailers, tree services, and more.",
+    "description": "Custom-designed, mobile-first websites for local service businesses like landscapers, contractors, HVAC companies, detailers, and tree services.",
     "provider": {
       "@type": "ProfessionalService",
       "name": "War-Buck Marketing",
@@ -71,7 +71,7 @@
       {
         "@type": "Question",
         "name": "How long does it take to build my website?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Most websites are designed, built, and launched within 7-10 business days from our kickoff call. Larger, multi-page builds may take a bit longer — we'll give you an exact timeline before we start." }
+        "acceptedAnswer": { "@type": "Answer", "text": "Most websites are designed, built, and launched within 7-10 business days from our kickoff call. Larger, multi-page builds may take a bit longer, and we'll give you an exact timeline before we start." }
       },
       {
         "@type": "Question",
@@ -86,12 +86,12 @@
       {
         "@type": "Question",
         "name": "Can I request changes or revisions before it goes live?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Yes. You'll review the full site before launch and we'll make adjustments until you're happy with it. We want it to feel exactly like your business — not a generic template." }
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. You'll review the full site before launch and we'll make adjustments until you're happy with it. We want it to feel exactly like your business, not a generic template." }
       },
       {
         "@type": "Question",
         "name": "Is it built to help my business show up on Google?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Yes. Every site is built with clean code, proper headings, fast load times, and local SEO basics — like your city and service areas — baked in from day one, so search engines can find and rank you." }
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. Every site is built with clean code, proper headings, fast load times, and local SEO basics (your city and service areas) baked in from day one, so search engines can find and rank you." }
       },
       {
         "@type": "Question",
@@ -836,7 +836,7 @@
     /* ── ANIMATIONS ── */
     @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
 
-    /* .reveal is visible by default — JS opts elements below the fold into
+    /* .reveal is visible by default. JS opts elements below the fold into
        the hidden pre-state via .reveal-pending so a no-JS or failed-observer
        page never ships blank. */
     .reveal.reveal-pending {
@@ -1260,7 +1260,7 @@
             <p>We'll personally review your info and follow up within 24 hours with your free website strategy.</p>
           </div>
           <form id="leadForm" action="https://formsubmit.co/buckwarnock101@gmail.com" method="POST" onsubmit="handleSubmit(event)">
-            <input type="hidden" name="_subject" value="New Website Design Lead — War-Buck Marketing" />
+            <input type="hidden" name="_subject" value="New Website Design Lead: War-Buck Marketing" />
             <input type="hidden" name="_captcha" value="false" />
             <input type="hidden" name="_template" value="table" />
             <input type="hidden" name="_cc" value="4783615444@vtext.com" />
@@ -1449,7 +1449,7 @@
       const form = document.getElementById('leadForm');
       const btn = form.querySelector('button[type="submit"]');
 
-      // Phone validation — block fake/garbage numbers
+      // Phone validation: block fake/garbage numbers
       const phoneInput = form.querySelector('[name="Phone Number"]');
       const digits = phoneInput.value.replace(/\D/g, '');
       const isAllSame = digits.length > 0 && /^(.)\1+$/.test(digits);
@@ -1473,7 +1473,7 @@
       const hint = form.querySelector('#phone-hint');
       if (hint) hint.remove();
 
-      // Dynamic conversion value — higher quality signals = higher value
+      // Dynamic conversion value: higher quality signals = higher value
       // Trains Google smart bidding to favor serious buyers
       const data = new FormData(form);
       let convValue = 1.0;
