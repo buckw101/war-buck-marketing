@@ -607,13 +607,15 @@
     .on-ink .section-sub { color: var(--text-on-ink-muted); }
 
     /* ── SPEC LIST (services) ── */
-    #services, #website-design { background: var(--paper); padding-top: 48px; padding-bottom: 48px; }
-    #services .section-head, #website-design .section-head { margin-bottom: 24px; }
-    #services .section-title, #website-design .section-title { font-size: clamp(1.5rem, 2.6vw, 2.1rem); }
-    #services .section-sub, #website-design .section-sub { font-size: 15px; }
-    #services .svc-row, #website-design .svc-row { padding: 18px 0; gap: 24px; }
-    #services .svc-title, #website-design .svc-title { font-size: clamp(0.95rem, 1.3vw, 1.1rem); }
-    #services .svc-desc, #website-design .svc-desc { font-size: 14px; line-height: 1.5; }
+    #services, #website-design {
+      background: var(--paper);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding-top: 90px;
+      padding-bottom: 56px;
+    }
+    #services .section-inner, #website-design .section-inner { width: 100%; }
 
     .svc-list { border-top: 1px solid var(--line); }
 
@@ -1086,16 +1088,17 @@
 
     /* ── FAQ ── */
     #faq { background: var(--paper); }
-    #faq { padding-top: 52px; padding-bottom: 56px; }
-    #faq .section-head { margin-bottom: 28px; }
-    #faq .section-title { font-size: clamp(1.6rem, 2.8vw, 2.2rem); }
-    #faq .section-sub { font-size: 15.5px; }
+    #faq {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding-top: 90px;
+      padding-bottom: 56px;
+    }
+    #faq .section-inner { width: 100%; }
     #faq .faq-list { max-width: 980px; display: grid; grid-template-columns: 1fr 1fr; gap: 0 48px; border-top: none; }
     #faq .faq-col { border-top: 1px solid var(--line); }
     @media (max-width: 780px) { #faq .faq-list { grid-template-columns: 1fr; } }
-    #faq .faq-question { padding: 20px 4px; font-size: 16px; }
-    #faq .faq-answer p { font-size: 15px; line-height: 1.65; }
-    #faq .faq-answer.open .faq-answer-inner { padding: 0 4px 20px; }
 
     .faq-list {
       max-width: 760px;
