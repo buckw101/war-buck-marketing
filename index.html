@@ -607,7 +607,13 @@
     .on-ink .section-sub { color: var(--text-on-ink-muted); }
 
     /* ── SPEC LIST (services) ── */
-    #services, #website-design { background: var(--paper); }
+    #services, #website-design { background: var(--paper); padding-top: 48px; padding-bottom: 48px; }
+    #services .section-head, #website-design .section-head { margin-bottom: 24px; }
+    #services .section-title, #website-design .section-title { font-size: clamp(1.5rem, 2.6vw, 2.1rem); }
+    #services .section-sub, #website-design .section-sub { font-size: 15px; }
+    #services .svc-row, #website-design .svc-row { padding: 18px 0; gap: 24px; }
+    #services .svc-title, #website-design .svc-title { font-size: clamp(0.95rem, 1.3vw, 1.1rem); }
+    #services .svc-desc, #website-design .svc-desc { font-size: 14px; line-height: 1.5; }
 
     .svc-list { border-top: 1px solid var(--line); }
 
@@ -1080,13 +1086,16 @@
 
     /* ── FAQ ── */
     #faq { background: var(--paper); }
-    #faq { padding-top: 40px; padding-bottom: 48px; }
-    #faq .section-head { margin-bottom: 24px; }
-    #faq .section-title { font-size: clamp(1.5rem, 2.6vw, 2.1rem); }
-    #faq .section-sub { font-size: 15px; }
-    #faq .faq-question { padding: 16px 4px; font-size: 15px; }
-    #faq .faq-answer p { font-size: 14px; line-height: 1.55; }
-    #faq .faq-answer.open .faq-answer-inner { padding: 0 4px 16px; }
+    #faq { padding-top: 52px; padding-bottom: 56px; }
+    #faq .section-head { margin-bottom: 28px; }
+    #faq .section-title { font-size: clamp(1.6rem, 2.8vw, 2.2rem); }
+    #faq .section-sub { font-size: 15.5px; }
+    #faq .faq-list { max-width: 980px; display: grid; grid-template-columns: 1fr 1fr; gap: 0 48px; border-top: none; }
+    #faq .faq-col { border-top: 1px solid var(--line); }
+    @media (max-width: 780px) { #faq .faq-list { grid-template-columns: 1fr; } }
+    #faq .faq-question { padding: 20px 4px; font-size: 16px; }
+    #faq .faq-answer p { font-size: 15px; line-height: 1.65; }
+    #faq .faq-answer.open .faq-answer-inner { padding: 0 4px 20px; }
 
     .faq-list {
       max-width: 760px;
@@ -1896,54 +1905,61 @@
       </div>
       <div class="faq-list reveal">
 
+        <div class="faq-col">
+
         <div class="faq-item">
-          <button class="faq-question" onclick="toggleFaq(this)">
-            How fast will I see results?
-            <span class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
-          </button>
-          <div class="faq-answer"><div class="faq-answer-inner"><p>Most clients start seeing leads within the first 1–2 weeks of launching ads. Organic growth takes a little longer, typically 30–60 days to build real momentum. Our fastest result so far was Attaboy Lawn Care hitting 130 monthly paying clients in under 90 days.</p></div></div>
+        <button class="faq-question" onclick="toggleFaq(this)">
+        How fast will I see results?
+        <span class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner"><p>Most clients start seeing leads within the first 1–2 weeks of launching ads. Organic growth takes a little longer, typically 30–60 days to build real momentum. Our fastest result so far was Attaboy Lawn Care hitting 130 monthly paying clients in under 90 days.</p></div></div>
         </div>
 
         <div class="faq-item">
-          <button class="faq-question" onclick="toggleFaq(this)">
-            What platforms do you run ads on?
-            <span class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
-          </button>
-          <div class="faq-answer"><div class="faq-answer-inner"><p>Primarily Meta (Facebook and Instagram) and Google Ads, these two platforms drive the most ROI for local service businesses. We also build organic presence on TikTok, Instagram, and Facebook depending on your business type and where your customers spend time.</p></div></div>
+        <button class="faq-question" onclick="toggleFaq(this)">
+        What platforms do you run ads on?
+        <span class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner"><p>Primarily Meta (Facebook and Instagram) and Google Ads, these two platforms drive the most ROI for local service businesses. We also build organic presence on TikTok, Instagram, and Facebook depending on your business type and where your customers spend time.</p></div></div>
         </div>
 
         <div class="faq-item">
-          <button class="faq-question" onclick="toggleFaq(this)">
-            Do I need a big budget to get started?
-            <span class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
-          </button>
-          <div class="faq-answer"><div class="faq-answer-inner"><p>No, we've gotten strong results for clients starting with modest ad budgets. The key is how the money is spent, not just how much. We'll tell you during the application call exactly what we'd recommend based on your goals and market.</p></div></div>
+        <button class="faq-question" onclick="toggleFaq(this)">
+        Do I need a big budget to get started?
+        <span class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner"><p>No, we've gotten strong results for clients starting with modest ad budgets. The key is how the money is spent, not just how much. We'll tell you during the application call exactly what we'd recommend based on your goals and market.</p></div></div>
+        </div>
+
+        </div>
+
+        <div class="faq-col">
+
+        <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+        What industries do you work with?
+        <span class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner"><p>We focus on local service businesses, lawn care, landscaping, contractors, car detailers, painters, cleaners, pressure washers, HVAC, plumbing, and similar trades. These are the businesses we know best and consistently get results for.</p></div></div>
         </div>
 
         <div class="faq-item">
-          <button class="faq-question" onclick="toggleFaq(this)">
-            What industries do you work with?
-            <span class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
-          </button>
-          <div class="faq-answer"><div class="faq-answer-inner"><p>We focus on local service businesses, lawn care, landscaping, contractors, car detailers, painters, cleaners, pressure washers, HVAC, plumbing, and similar trades. These are the businesses we know best and consistently get results for.</p></div></div>
+        <button class="faq-question" onclick="toggleFaq(this)">
+        How is this different from hiring a big agency?
+        <span class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner"><p>At a big agency you're account #247 and talking to a junior rep. At War-Buck, you work directly with us, the people who built the strategy and run your ads. We only take on clients we're confident we can grow, and we stay involved in the results week over week.</p></div></div>
         </div>
 
         <div class="faq-item">
-          <button class="faq-question" onclick="toggleFaq(this)">
-            How is this different from hiring a big agency?
-            <span class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
-          </button>
-          <div class="faq-answer"><div class="faq-answer-inner"><p>At a big agency you're account #247 and talking to a junior rep. At War-Buck, you work directly with us, the people who built the strategy and run your ads. We only take on clients we're confident we can grow, and we stay involved in the results week over week.</p></div></div>
+        <button class="faq-question" onclick="toggleFaq(this)">
+        What does working together actually look like?
+        <span class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner"><p>You apply, we review your application and hop on a short strategy call. If it's a fit, we build your ads and content system, launch within about a week, and optimize from there. You'll always know what's running, what's working, and where your money is going.</p></div></div>
         </div>
 
-        <div class="faq-item">
-          <button class="faq-question" onclick="toggleFaq(this)">
-            What does working together actually look like?
-            <span class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
-          </button>
-          <div class="faq-answer"><div class="faq-answer-inner"><p>You apply, we review your application and hop on a short strategy call. If it's a fit, we build your ads and content system, launch within about a week, and optimize from there. You'll always know what's running, what's working, and where your money is going.</p></div></div>
         </div>
-
       </div>
     </div>
   </section>

@@ -1064,13 +1064,16 @@
 
     /* ── FAQ ── */
     #faq { background: var(--paper); }
-    #faq { padding-top: 40px; padding-bottom: 48px; }
-    #faq .section-head { margin-bottom: 24px; }
-    #faq .section-title { font-size: clamp(1.5rem, 2.6vw, 2.1rem); }
-    #faq .section-sub { font-size: 15px; }
-    #faq .faq-question { padding: 16px 4px; font-size: 15px; }
-    #faq .faq-answer p { font-size: 14px; line-height: 1.55; }
-    #faq .faq-answer.open .faq-answer-inner { padding: 0 4px 16px; }
+    #faq { padding-top: 52px; padding-bottom: 56px; }
+    #faq .section-head { margin-bottom: 28px; }
+    #faq .section-title { font-size: clamp(1.6rem, 2.8vw, 2.2rem); }
+    #faq .section-sub { font-size: 15.5px; }
+    #faq .faq-list { max-width: 980px; display: grid; grid-template-columns: 1fr 1fr; gap: 0 48px; border-top: none; }
+    #faq .faq-col { border-top: 1px solid var(--line); }
+    @media (max-width: 780px) { #faq .faq-list { grid-template-columns: 1fr; } }
+    #faq .faq-question { padding: 20px 4px; font-size: 16px; }
+    #faq .faq-answer p { font-size: 15px; line-height: 1.65; }
+    #faq .faq-answer.open .faq-answer-inner { padding: 0 4px 20px; }
 
     .faq-list {
       max-width: 760px;
@@ -1700,33 +1703,44 @@
       </div>
       <div class="faq-list reveal">
 
+        <div class="faq-col">
+
         <div class="faq-item">
-          <button class="faq-question" onclick="toggleFaq(this)">
-            Is ecommerce a core focus for War-Buck?
-            <span class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
-          </button>
-          <div class="faq-answer"><div class="faq-answer-inner"><p>Our core focus is local service businesses. We work with a select number of ecommerce brands where we're confident our paid-media and content approach can move real revenue, we won't take you on otherwise.</p></div></div>
+        <button class="faq-question" onclick="toggleFaq(this)">
+        Is ecommerce a core focus for War-Buck?
+        <span class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner"><p>Our core focus is local service businesses. We work with a select number of ecommerce brands where we're confident our paid-media and content approach can move real revenue, we won't take you on otherwise.</p></div></div>
         </div>
+
         <div class="faq-item">
-          <button class="faq-question" onclick="toggleFaq(this)">
-            What platforms do you run ads on?
-            <span class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
-          </button>
-          <div class="faq-answer"><div class="faq-answer-inner"><p>Primarily Meta and TikTok, with Google Shopping in the mix depending on your catalog and margins.</p></div></div>
+        <button class="faq-question" onclick="toggleFaq(this)">
+        What platforms do you run ads on?
+        <span class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner"><p>Primarily Meta and TikTok, with Google Shopping in the mix depending on your catalog and margins.</p></div></div>
         </div>
-        <div class="faq-item">
-          <button class="faq-question" onclick="toggleFaq(this)">
-            How do you handle rising ad costs?
-            <span class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
-          </button>
-          <div class="faq-answer"><div class="faq-answer-inner"><p>We lean on creative testing and audience refinement rather than just raising budget. Cheaper clicks don't matter if they don't convert, we optimize for cost per purchase, not cost per click.</p></div></div>
+
         </div>
+
+        <div class="faq-col">
+
         <div class="faq-item">
-          <button class="faq-question" onclick="toggleFaq(this)">
-            What's the minimum budget to work with you?
-            <span class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
-          </button>
-          <div class="faq-answer"><div class="faq-answer-inner"><p>It depends on your margins and goals. We'll tell you exactly what we'd recommend during the strategy call, no guessing.</p></div></div>
+        <button class="faq-question" onclick="toggleFaq(this)">
+        How do you handle rising ad costs?
+        <span class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner"><p>We lean on creative testing and audience refinement rather than just raising budget. Cheaper clicks don't matter if they don't convert, we optimize for cost per purchase, not cost per click.</p></div></div>
+        </div>
+
+        <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+        What's the minimum budget to work with you?
+        <span class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner"><p>It depends on your margins and goals. We'll tell you exactly what we'd recommend during the strategy call, no guessing.</p></div></div>
+        </div>
+
         </div>
       </div>
     </div>

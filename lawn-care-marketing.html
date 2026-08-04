@@ -1066,13 +1066,16 @@
 
     /* ── FAQ ── */
     #faq { background: var(--paper); }
-    #faq { padding-top: 40px; padding-bottom: 48px; }
-    #faq .section-head { margin-bottom: 24px; }
-    #faq .section-title { font-size: clamp(1.5rem, 2.6vw, 2.1rem); }
-    #faq .section-sub { font-size: 15px; }
-    #faq .faq-question { padding: 16px 4px; font-size: 15px; }
-    #faq .faq-answer p { font-size: 14px; line-height: 1.55; }
-    #faq .faq-answer.open .faq-answer-inner { padding: 0 4px 16px; }
+    #faq { padding-top: 52px; padding-bottom: 56px; }
+    #faq .section-head { margin-bottom: 28px; }
+    #faq .section-title { font-size: clamp(1.6rem, 2.8vw, 2.2rem); }
+    #faq .section-sub { font-size: 15.5px; }
+    #faq .faq-list { max-width: 980px; display: grid; grid-template-columns: 1fr 1fr; gap: 0 48px; border-top: none; }
+    #faq .faq-col { border-top: 1px solid var(--line); }
+    @media (max-width: 780px) { #faq .faq-list { grid-template-columns: 1fr; } }
+    #faq .faq-question { padding: 20px 4px; font-size: 16px; }
+    #faq .faq-answer p { font-size: 15px; line-height: 1.65; }
+    #faq .faq-answer.open .faq-answer-inner { padding: 0 4px 20px; }
 
     .faq-list {
       max-width: 760px;
@@ -1701,33 +1704,44 @@
       </div>
       <div class="faq-list reveal">
 
+        <div class="faq-col">
+
         <div class="faq-item">
-          <button class="faq-question" onclick="toggleFaq(this)">
-            How fast will I start booking recurring clients?
-            <span class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
-          </button>
-          <div class="faq-answer"><div class="faq-answer-inner"><p>Most lawn care clients see their first inquiries within 1-2 weeks of ads going live. It typically takes 30-60 days for the content and targeting to build real momentum, but the goal from day one is recurring clients, not one-off mows.</p></div></div>
+        <button class="faq-question" onclick="toggleFaq(this)">
+        How fast will I start booking recurring clients?
+        <span class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner"><p>Most lawn care clients see their first inquiries within 1-2 weeks of ads going live. It typically takes 30-60 days for the content and targeting to build real momentum, but the goal from day one is recurring clients, not one-off mows.</p></div></div>
         </div>
+
         <div class="faq-item">
-          <button class="faq-question" onclick="toggleFaq(this)">
-            How do you make sure new clients are actually near my existing routes?
-            <span class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
-          </button>
-          <div class="faq-answer"><div class="faq-answer-inner"><p>We target ads by neighborhood, not a broad radius around your business. New leads land close to the routes you already drive, so you're adding density to your schedule instead of scattering one-off stops across the county.</p></div></div>
+        <button class="faq-question" onclick="toggleFaq(this)">
+        How do you make sure new clients are actually near my existing routes?
+        <span class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner"><p>We target ads by neighborhood, not a broad radius around your business. New leads land close to the routes you already drive, so you're adding density to your schedule instead of scattering one-off stops across the county.</p></div></div>
         </div>
-        <div class="faq-item">
-          <button class="faq-question" onclick="toggleFaq(this)">
-            What if I don't have a big marketing budget yet?
-            <span class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
-          </button>
-          <div class="faq-answer"><div class="faq-answer-inner"><p>We've gotten strong results for lawn care businesses starting with modest ad budgets. We'll tell you exactly what we'd recommend for your area and goals during the strategy call.</p></div></div>
+
         </div>
+
+        <div class="faq-col">
+
         <div class="faq-item">
-          <button class="faq-question" onclick="toggleFaq(this)">
-            Do you only work with lawn care companies, or other local trades too?
-            <span class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
-          </button>
-          <div class="faq-answer"><div class="faq-answer-inner"><p>We specialize in local service businesses broadly: lawn care, landscaping, contractors, detailers, and similar trades. Lawn care is one of our core niches, in fact Attaboy Lawn Care is our flagship client result.</p></div></div>
+        <button class="faq-question" onclick="toggleFaq(this)">
+        What if I don't have a big marketing budget yet?
+        <span class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner"><p>We've gotten strong results for lawn care businesses starting with modest ad budgets. We'll tell you exactly what we'd recommend for your area and goals during the strategy call.</p></div></div>
+        </div>
+
+        <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+        Do you only work with lawn care companies, or other local trades too?
+        <span class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner"><p>We specialize in local service businesses broadly: lawn care, landscaping, contractors, detailers, and similar trades. Lawn care is one of our core niches, in fact Attaboy Lawn Care is our flagship client result.</p></div></div>
+        </div>
+
         </div>
       </div>
     </div>

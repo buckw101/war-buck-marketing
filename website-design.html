@@ -491,7 +491,7 @@
       margin-bottom: 24px;
     }
 
-    .sites-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; max-width: 780px; margin: 0 auto; }
+    .sites-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; max-width: 980px; margin: 0 auto; }
 
     @media (max-width: 780px) { .sites-grid { grid-template-columns: 1fr; } }
 
@@ -656,13 +656,16 @@
 
     /* ── FAQ ── */
     #faq { background: var(--paper); }
-    #faq { padding-top: 40px; padding-bottom: 48px; }
-    #faq .section-head { margin-bottom: 24px; }
-    #faq .section-title { font-size: clamp(1.5rem, 2.6vw, 2.1rem); }
-    #faq .section-sub { font-size: 15px; }
-    #faq .faq-question { padding: 16px 4px; font-size: 15px; }
-    #faq .faq-answer p { font-size: 14px; line-height: 1.55; }
-    #faq .faq-answer.open .faq-answer-inner { padding: 0 4px 16px; }
+    #faq { padding-top: 52px; padding-bottom: 56px; }
+    #faq .section-head { margin-bottom: 28px; }
+    #faq .section-title { font-size: clamp(1.6rem, 2.8vw, 2.2rem); }
+    #faq .section-sub { font-size: 15.5px; }
+    #faq .faq-list { max-width: 980px; display: grid; grid-template-columns: 1fr 1fr; gap: 0 48px; border-top: none; }
+    #faq .faq-col { border-top: 1px solid var(--line); }
+    @media (max-width: 780px) { #faq .faq-list { grid-template-columns: 1fr; } }
+    #faq .faq-question { padding: 20px 4px; font-size: 16px; }
+    #faq .faq-answer p { font-size: 15px; line-height: 1.65; }
+    #faq .faq-answer.open .faq-answer-inner { padding: 0 4px 20px; }
 
     .faq-list { max-width: 760px; margin: 0 auto; border-top: 1px solid var(--line); }
     .faq-item { border-bottom: 1px solid var(--line); }
@@ -1237,62 +1240,69 @@
       </div>
       <div class="faq-list reveal">
 
+        <div class="faq-col">
+
         <div class="faq-item">
-          <button class="faq-question" onclick="toggleFaq(this)">
-            How long does it take to build my website?
-            <span class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
-          </button>
-          <div class="faq-answer"><div class="faq-answer-inner"><p>Most websites are designed, built, and launched within 7-10 business days from our kickoff call. Larger, multi-page builds may take a bit longer. We'll give you an exact timeline before we start.</p></div></div>
+        <button class="faq-question" onclick="toggleFaq(this)">
+        How long does it take to build my website?
+        <span class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner"><p>Most websites are designed, built, and launched within 7-10 business days from our kickoff call. Larger, multi-page builds may take a bit longer. We'll give you an exact timeline before we start.</p></div></div>
         </div>
 
         <div class="faq-item">
-          <button class="faq-question" onclick="toggleFaq(this)">
-            Will my website work well on phones and tablets, not just computers?
-            <span class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
-          </button>
-          <div class="faq-answer"><div class="faq-answer-inner"><p>Yes. Every website we build is mobile-first. More than half of your visitors will be on a phone, so we design and test every page to look great and load fast on phones, tablets, laptops, and desktops.</p></div></div>
+        <button class="faq-question" onclick="toggleFaq(this)">
+        Will my website work well on phones and tablets, not just computers?
+        <span class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner"><p>Yes. Every website we build is mobile-first. More than half of your visitors will be on a phone, so we design and test every page to look great and load fast on phones, tablets, laptops, and desktops.</p></div></div>
         </div>
 
         <div class="faq-item">
-          <button class="faq-question" onclick="toggleFaq(this)">
-            Can you redesign my existing website?
-            <span class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
-          </button>
-          <div class="faq-answer"><div class="faq-answer-inner"><p>Absolutely. Whether your current site is outdated, hard to update, or doesn't reflect your business anymore, we can rebuild it from the ground up with a brand-new look and better performance.</p></div></div>
+        <button class="faq-question" onclick="toggleFaq(this)">
+        Can you redesign my existing website?
+        <span class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner"><p>Absolutely. Whether your current site is outdated, hard to update, or doesn't reflect your business anymore, we can rebuild it from the ground up with a brand-new look and better performance.</p></div></div>
         </div>
 
         <div class="faq-item">
-          <button class="faq-question" onclick="toggleFaq(this)">
-            Can I request changes or revisions before it goes live?
-            <span class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
-          </button>
-          <div class="faq-answer"><div class="faq-answer-inner"><p>Yes. You'll review the full site before launch and we'll make adjustments until you're happy with it. We want it to feel exactly like your business, not a generic template.</p></div></div>
+        <button class="faq-question" onclick="toggleFaq(this)">
+        Can I request changes or revisions before it goes live?
+        <span class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner"><p>Yes. You'll review the full site before launch and we'll make adjustments until you're happy with it. We want it to feel exactly like your business, not a generic template.</p></div></div>
+        </div>
+
+        </div>
+
+        <div class="faq-col">
+
+        <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+        Is it built to help my business show up on Google?
+        <span class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner"><p>Yes. Every site is built with clean code, proper headings, fast load times, and local SEO basics, like your city and service areas, baked in from day one, so search engines can find and rank you.</p></div></div>
         </div>
 
         <div class="faq-item">
-          <button class="faq-question" onclick="toggleFaq(this)">
-            Is it built to help my business show up on Google?
-            <span class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
-          </button>
-          <div class="faq-answer"><div class="faq-answer-inner"><p>Yes. Every site is built with clean code, proper headings, fast load times, and local SEO basics, like your city and service areas, baked in from day one, so search engines can find and rank you.</p></div></div>
+        <button class="faq-question" onclick="toggleFaq(this)">
+        Can you help generate leads, not just build a site?
+        <span class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner"><p>That's the whole point. Every page is designed around getting visitors to call, request a quote, or book a job. If you also want ongoing help with ads or social media after launch, that's our core specialty too, <a href="https://warbuckmarketing.com/#contact">learn more here</a>.</p></div></div>
         </div>
 
         <div class="faq-item">
-          <button class="faq-question" onclick="toggleFaq(this)">
-            Can you help generate leads, not just build a site?
-            <span class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
-          </button>
-          <div class="faq-answer"><div class="faq-answer-inner"><p>That's the whole point. Every page is designed around getting visitors to call, request a quote, or book a job. If you also want ongoing help with ads or social media after launch, that's our core specialty too, <a href="https://warbuckmarketing.com/#contact">learn more here</a>.</p></div></div>
+        <button class="faq-question" onclick="toggleFaq(this)">
+        What does a website like this cost?
+        <span class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner"><p>It depends on the size and features you need. We offer a few packages to fit different budgets and goals, <a href="/website-packages">see current pricing here</a>, or just request your free strategy below and we'll recommend the right fit.</p></div></div>
         </div>
 
-        <div class="faq-item">
-          <button class="faq-question" onclick="toggleFaq(this)">
-            What does a website like this cost?
-            <span class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
-          </button>
-          <div class="faq-answer"><div class="faq-answer-inner"><p>It depends on the size and features you need. We offer a few packages to fit different budgets and goals, <a href="/website-packages">see current pricing here</a>, or just request your free strategy below and we'll recommend the right fit.</p></div></div>
         </div>
-
       </div>
     </div>
   </section>
