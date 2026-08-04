@@ -1074,9 +1074,8 @@
       padding-bottom: 56px;
     }
     #faq .section-inner { width: 100%; }
-    #faq .faq-list { max-width: 980px; display: grid; grid-template-columns: 1fr 1fr; gap: 0 48px; border-top: none; }
-    #faq .faq-col { border-top: 1px solid var(--line); }
-    @media (max-width: 780px) { #faq .faq-list { grid-template-columns: 1fr; } }
+    #faq .faq-list { max-width: 980px; display: grid; grid-template-columns: 1fr 1fr; grid-auto-flow: column; grid-template-rows: repeat(2, auto); gap: 0 48px; border-top: 1px solid var(--line); align-items: start; }
+    @media (max-width: 780px) { #faq .faq-list { grid-template-columns: 1fr; grid-auto-flow: row; grid-template-rows: none; } }
 
     .faq-list {
       max-width: 760px;
@@ -1705,8 +1704,6 @@
       </div>
       <div class="faq-list reveal">
 
-        <div class="faq-col">
-
         <div class="faq-item">
         <button class="faq-question" onclick="toggleFaq(this)">
         How fast will I start getting roofing leads?
@@ -1723,10 +1720,6 @@
         <div class="faq-answer"><div class="faq-answer-inner"><p>We tell you exactly what to capture on a finished roof, most of it takes a few minutes on your phone. We edit it, write the captions, and get it in front of the right homeowners. Some clients just send us raw footage and we handle the rest.</p></div></div>
         </div>
 
-        </div>
-
-        <div class="faq-col">
-
         <div class="faq-item">
         <button class="faq-question" onclick="toggleFaq(this)">
         What if I don't have a big marketing budget yet?
@@ -1741,8 +1734,6 @@
         <span class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
         </button>
         <div class="faq-answer"><div class="faq-answer-inner"><p>We specialize in local service businesses broadly: roofers, contractors, landscapers, detailers, and similar trades. Roofing is one of our core niches because the feast-or-famine, storm-driven demand is exactly the problem consistent ads solve.</p></div></div>
-        </div>
-
         </div>
       </div>
     </div>
