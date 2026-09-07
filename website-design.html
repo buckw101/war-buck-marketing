@@ -903,6 +903,37 @@
     }
       .footer-copy-link { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
     .footer-copy-link:hover { color: var(--text-on-ink); }
+  
+    /* ── GRAIN (8-bit de-banding) ──
+       The hero/contact glows only span ~25 levels of 8-bit colour over ~300px,
+       so quantisation puts a flat contour ring every ~12px. Phones hide it
+       (3x DPR + panel dithering); desktop panels don't. A mean-neutral noise
+       tile in `overlay` dithers each step boundary so the ramp reads smooth.
+       Paints above the glow, below the content (which sits at z-index 1). */
+    #hero,
+    #contact { isolation: isolate; }
+
+    #hero::after,
+    #contact::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background-image: url('images/grain.png');
+      background-size: 128px 128px;
+      mix-blend-mode: overlay;
+      opacity: 0.5;
+    }
+
+    /* the contact glow already spans ~50 levels, so it needs less dither */
+    #contact::after { opacity: 0.35; }
+
+    /* keep the tile at 1:1 device pixels so the dither isn't smoothed away */
+    @media (min-resolution: 2dppx) {
+      #hero::after,
+      #contact::after { background-size: 64px 64px; }
+    }
   </style>
 </head>
 <body>
