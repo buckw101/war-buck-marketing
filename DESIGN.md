@@ -10,10 +10,11 @@ colors:
   cool-paper-deep: "#e6eaef"
   white: "#ffffff"
   ink-text: "#10141b"
-  ink-text-muted: "#747b85"
+  ink-text-muted: "#49505c"
+  ink-text-faint: "#636974"
   paper-text-on-ink: "#eff2f7"
-  paper-text-on-ink-muted: "#9da5b1"
-  paper-text-on-ink-faint: "#5f6a7b"
+  paper-text-on-ink-muted: "#9da5b2"
+  paper-text-on-ink-faint: "#798496"
   signal-blue: "#2255d5"
   signal-blue-hover: "#1241c1"
   signal-blue-light: "#74acff"
@@ -120,12 +121,14 @@ A two-surface system (near-black "ledger" sections, off-white "paper" sections) 
 - **Ledger Black Raised** (#111824) / **Raised 2** (#1b2433): stacked-surface steps on top of Ledger Black, for cards or panels that need to read as "above" the base ink without introducing a new hue.
 - **Cool Paper** (#f3f5f9 / `oklch(97% 0.006 260)`): the primary light surface for body sections. A true cool off-white, not a warm cream — chroma is tinted toward the brand's own blue hue, not toward warmth.
 - **Cool Paper Deep** (#e6eaef): the secondary light surface, used to separate adjacent light sections (e.g. the portfolio section sits on Cool Paper Deep against a Cool Paper page background).
-- **Ink Text** (#10141b) / **Ink Text Muted** (#747b85): body copy and secondary copy on Cool Paper surfaces.
-- **Paper Text on Ink** (#eff2f7) / **Muted** (#9da5b1) / **Faint** (#5f6a7b): the corresponding text ramp for Ledger Black surfaces — never pure white, always a soft paper tone so it doesn't glare against near-black.
+- **Ink Text** (#10141b, 16.9:1) / **Muted** (#49505c, 7.4:1) / **Faint** (#636974, 5.1:1): the three-step text ramp for Cool Paper surfaces. Every step clears 4.5:1 on both Cool Paper and Cool Paper Deep.
+- **Paper Text on Ink** (#eff2f7, 17.3:1) / **Muted** (#9da5b2, 7.8:1) / **Faint** (#798496, 5.1:1): the corresponding ramp for Ledger Black surfaces — never pure white, always a soft paper tone so it doesn't glare against near-black. Faint also clears 4.5:1 on Ledger Black Raised (4.7:1).
 - **Hairline** (#d4d8de) / **Hairline Strong** (#b2b8c1): dividers and input borders on light surfaces (FAQ separators, form fields, section rules).
 
 ### Named Rules
 **The One Signal Rule.** Signal Blue is the only saturated color anywhere in the system. If a new element needs emphasis, it gets Signal Blue, weight, or size — never a second accent hue.
+
+**The Readable Faint Rule.** The faint tier is the bottom of each ramp, not a licence to go lighter. Both faint tokens were re-tuned on 2026-09-07 (`--text-faint` 58%→52% L, `--text-on-ink-faint` 52%→61% L) because they measured 3.9:1 and 3.6:1 — under AA. Any new text color must clear **4.5:1 against every surface it lands on**, measured against the real rendered color, not estimated by eye. Verify before shipping; a lighter gray "for elegance" is the single most common way this system degrades.
 
 **The Warmth-Free Neutral Rule.** Every "white" and "black" in this system is tinted toward the brand's own blue (hue 258–264), never toward cream/warm neutrals. Cool Paper is not off-white-by-default; it's off-white-by-formula.
 
@@ -175,15 +178,22 @@ Shadows are soft, warm-tinted-toward-ink (never pure black: `oklch(20% 0.02 260 
 
 ### Inputs / Fields
 - **Style:** white background, 1.5px Hairline Strong border, 10px radius, Switzer 15px text.
-- **Focus:** border shifts to Signal Blue with a soft 3px Signal-Blue glow ring (`0 0 0 3px oklch(50% 0.205 264 / 0.14)`).
+- **Focus:** border shifts to Signal Blue with a soft 3px Signal-Blue glow ring (`0 0 0 3px oklch(50% 0.205 264 / 0.14)`). This is the one place that overrides the global focus ring below, via specificity.
+- **Labels:** every field carries a real `for`/`id` pair (or wraps its input, as the checkbox rows do). Never a bare `<label>` sitting next to an unassociated input — a placeholder is not an accessible name.
 - **Checkboxes / radios:** custom-styled 18px squares/circles, Hairline Strong border at rest, fill solid Signal Blue with a white checkmark/dot when checked. The parent label row also gets a Signal Blue border + 6%-tint background when its input is checked.
 - **Section label:** small 12.5px uppercase Signal Blue label above each form section (Your Information / About Your Business / Your Marketing) — the input system's one deliberate use of the Functional Uppercase Rule.
 
 ### Navigation
-- **Style:** fixed, full-width Ledger Black bar, 18px/40px padding, 1px soft ink hairline at the bottom edge; gains a soft shadow only once the page scrolls.
+- **Style:** fixed, full-width Ledger Black bar, 18px/40px padding, 1px soft ink hairline at the bottom edge. **No drop shadow, scrolled or not** — the bar's background is Ledger Black, the same token as the dark hero/why/footer sections, so over those the bar itself is invisible and a shadow reads as an unexplained dark band with a hard 1px edge across the section. The hairline is the separator. (Removed 2026-09-07.)
 - **Brand lockup:** Cabinet Grotesk wordmark (19px, 800 weight) stacked over a tiny Signal-Blue-Light uppercase tagline (10px, letter-spacing 0.18em) — the nav's only uppercase-label usage.
 - **Links:** Paper Text on Ink Muted at rest, brightening to full Paper Text on Ink on hover; no underline, no pill background.
 - **Mobile:** collapses to a hamburger under 900px, which opens a full-screen Ledger Black takeover with oversized (32px) Cabinet Grotesk links, each row divided by a soft ink hairline.
+
+### Focus (global)
+Every focusable element except form fields gets `:focus-visible { outline: 2px solid Signal Blue; outline-offset: 2px; box-shadow: 0 0 0 2px white; }`. The accent ring carries the contrast on light surfaces (5.8:1) and the white halo carries it on ink (17:1), so one ring works everywhere without enumerating which sections are dark — `#proof` is light on index.html and dark on website-design.html, so a selector list would be wrong. Chrome's default ring is not acceptable here: it measures 2.9:1 on Signal Blue Deep, under the 3:1 minimum for non-text.
+
+### Grain (de-banding layer)
+`#hero` and `#contact` carry a `::after` tiled with `images/grain.png` (128px mean-neutral noise) in `mix-blend-mode: overlay`, over an `isolation: isolate` parent. The glows on those sections span only ~26 of 256 blue levels, so 8-bit quantisation leaves visible contour rings on desktop panels (phones hide it via 3x DPR + panel dithering). The grain dithers the ramp. Mid-grey under `overlay` is mean-neutral, so flat areas keep their exact color and no seam appears against the adjacent flat ink. `images/hero-glow.png` also has dither baked into its alpha. Don't "clean up" either asset.
 
 ### FAQ Accordion (signature component)
 Hairline-divided list (`.faq-item`), each question a full-width button that turns Signal Blue and rotates its trailing icon when open; the answer panel animates open via `grid-template-rows` (0fr → 1fr) rather than height/max-height, keeping the transition smooth without a fixed pixel guess.
@@ -195,6 +205,8 @@ Hairline-divided list (`.faq-item`), each question a full-width button that turn
 - **Do** tint every "neutral" black/white toward the brand's own hue (258–264°) rather than defaulting to pure black/white or a warm cream.
 - **Do** lead with concrete numbers (client counts, days-to-result, revenue figures) at full typographic weight — proof is the design, not a footnote.
 - **Do** use the ink-tinted shadow formula (`oklch(20% 0.02 260 / alpha)`) for any new shadow, never a flat `rgba(0,0,0,...)`.
+- **Do** size every grid track as `minmax(0, 1fr)`, never bare `1fr`. Bare `1fr` means `minmax(auto, 1fr)`, so children can't shrink below min-content and push past the viewport in a narrow band of widths — this has caused a stray horizontal scrollbar on this site twice.
+- **Do** verify contrast against the real rendered color before shipping a new text or border color, and disable CSS transitions first — reading a computed style mid-transition returns the pre-transition value and produces false results.
 - **Do** cap display type at `clamp(2.75rem, 6vw, 5rem)` — this was deliberately reduced site-wide on 2026-07-02 after oversized headings read as "shouting."
 
 ### Don't:
@@ -203,4 +215,5 @@ Hairline-divided list (`.faq-item`), each question a full-width button that turn
 - **Don't** use `border-left`/`border-right` as a colored accent stripe on cards or list items.
 - **Don't** apply `background-clip: text` gradient text anywhere — emphasis comes from weight/size/color, never a text gradient.
 - **Don't** add uppercase tracked eyebrows above every section heading. Uppercase-tracked text is reserved for the nav tagline and form-section labels only (see The Functional Uppercase Rule).
+- **Don't** put a drop shadow on the fixed nav. Its background is the same token as the dark sections, so the shadow becomes a floating dark band across them rather than a bar edge.
 - **Don't** give Ledger Black surfaces (case-cards, nav, mobile menu) a drop shadow — they're flat, full-bleed ink blocks by design; shadow is reserved for elements that should read as physically floating (portfolio preview cards).
