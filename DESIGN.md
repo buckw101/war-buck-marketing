@@ -2,9 +2,9 @@
 name: War-Buck Marketing
 description: Marketing agency site for local service businesses — paid ads, organic social, and website builds
 colors:
-  ledger-black: "#080d16"
-  ledger-black-raised: "#111824"
-  ledger-black-raised-2: "#1b2433"
+  ledger-black: "#000026"
+  ledger-black-raised: "#000026"
+  ledger-black-raised-2: "#000026"
   ink-hairline: "#48566c"
   cool-paper: "#f3f5f9"
   cool-paper-deep: "#e6eaef"
@@ -13,12 +13,12 @@ colors:
   ink-text-muted: "#49505c"
   ink-text-faint: "#636974"
   paper-text-on-ink: "#eff2f7"
-  paper-text-on-ink-muted: "#9da5b2"
+  paper-text-on-ink-muted: "#9da5b1"
   paper-text-on-ink-faint: "#798496"
   signal-blue: "#2255d5"
   signal-blue-hover: "#1241c1"
-  signal-blue-light: "#74acff"
-  signal-blue-deep: "#08173d"
+  signal-blue-light: "#427afe"
+  signal-blue-deep: "#000026"
   hairline: "#d4d8de"
   hairline-strong: "#b2b8c1"
 typography:
@@ -96,7 +96,7 @@ components:
 
 **Creative North Star: "The Operator's Ledger"**
 
-War-Buck Marketing's interface reads like the private ledger of an operator who's actually closing deals, not a SaaS company's marketing deck. The canvas is near-black — Ledger Black (#080d16), not a "dark mode" gray — because the brand personality is a serious operator, not a scrappy freelancer and not a faceless corporate SaaS vendor. Against that black, exactly one color is allowed to matter: Signal Blue (#2255d5), used decisively wherever there's a number, a result, or a call to act. Everything else is near-black ink, off-white paper, or quiet gray text — no secondary or tertiary accent colors competing for attention.
+War-Buck Marketing's interface reads like the private ledger of an operator who's actually closing deals, not a SaaS company's marketing deck. The canvas is near-black — Ledger Black (#000026), not a "dark mode" gray — because the brand personality is a serious operator, not a scrappy freelancer and not a faceless corporate SaaS vendor. Against that black, exactly one color is allowed to matter: Signal Blue (#2255d5), used decisively wherever there's a number, a result, or a call to act. Everything else is near-black ink, off-white paper, or quiet gray text — no secondary or tertiary accent colors competing for attention.
 
 This system explicitly rejects the pastel-blue, light-background, icon-in-rounded-box "corporate SaaS" register the site shipped with before its 2026-07-02 redesign. That look reads as generic B2B software; this audience — lawn care, roofing, HVAC, tree service, detailing, and contractor owners evaluating an agency from their phone between jobs — needs to feel "these people know what they're doing," not "here's another tool."
 
@@ -109,26 +109,47 @@ This system explicitly rejects the pastel-blue, light-background, icon-in-rounde
 
 ## 2. Colors
 
-A two-surface system (near-black "ledger" sections, off-white "paper" sections) with one saturated blue doing all accent work across both.
+A two-surface system (near-black "ledger" sections, off-white "paper" sections) with one saturated blue doing all accent work across both. **There are exactly two surfaces — there is no third.** Every dark surface in the system is the same single value; see The One Dark Surface Rule.
 
 ### Primary
 - **Signal Blue** (#2255d5 / `oklch(50% 0.205 264)`): every CTA, link hover, active state, highlighted metric digit, and form-focus ring. This is the only saturated color in the system.
-- **Signal Blue Light** (#74acff / `oklch(74% 0.135 258)`): Signal Blue's on-ink counterpart — used for accents, kickers, and highlighted numbers when they sit on the Ledger Black surface, where full-saturation Signal Blue would lose contrast.
-- **Signal Blue Deep** (#08173d / `oklch(22% 0.075 264)`): a near-black tint of the accent hue, reserved for subtle ink-surface variation, never for text or borders.
+- **Signal Blue Light** (#427afe / `oklch(61.5% 0.205 264)`): Signal Blue's on-ink counterpart — accents, kickers, and highlighted numbers sitting on the Ledger Black surface, where full-saturation Signal Blue drops to 3.2:1. Measures 5.30:1 on Ledger Black. **It differs from Signal Blue in lightness only** — identical chroma (0.205) and hue (264); see The On-Dark Lightness Rule.
+- **Signal Blue Deep** (#000026): retained as a token name (`--accent-deep`, `--accent-deep-2`) but **no longer a distinct colour** — it resolves to Ledger Black like every other dark surface. Kept only so existing call sites keep reading semantically; do not give it a separate value again.
 
 ### Neutral
-- **Ledger Black** (#080d16 / `oklch(16% 0.02 260)`): the primary dark surface — nav, hero, mobile menu, case-study cards, footer. Not a neutral gray; carries a whisper of the accent's blue hue.
-- **Ledger Black Raised** (#111824) / **Raised 2** (#1b2433): stacked-surface steps on top of Ledger Black, for cards or panels that need to read as "above" the base ink without introducing a new hue.
+- **Ledger Black** (#000026 / `oklch(12.14% 0.084 264)`): the *only* dark surface — nav (scrolled), hero, `#why`, mobile menu, case-study cards, `#contact`, footer, and `website-design.html`'s `#proof`. Not a neutral gray: it is pure blue (`R=G=0`), which puts it at exactly hue 264, the brand hue.
+- **Ledger Black Raised** / **Raised 2** (both #000026): these tokens (`--ink-raised`, `--ink-raised-2`) still exist but hold the **same value** as Ledger Black. The stacked-surface idea was deliberately removed on 2026-09-08 — see The One Dark Surface Rule.
 - **Cool Paper** (#f3f5f9 / `oklch(97% 0.006 260)`): the primary light surface for body sections. A true cool off-white, not a warm cream — chroma is tinted toward the brand's own blue hue, not toward warmth.
 - **Cool Paper Deep** (#e6eaef): the secondary light surface, used to separate adjacent light sections (e.g. the portfolio section sits on Cool Paper Deep against a Cool Paper page background).
-- **Ink Text** (#10141b, 16.9:1) / **Muted** (#49505c, 7.4:1) / **Faint** (#636974, 5.1:1): the three-step text ramp for Cool Paper surfaces. Every step clears 4.5:1 on both Cool Paper and Cool Paper Deep.
-- **Paper Text on Ink** (#eff2f7, 17.3:1) / **Muted** (#9da5b2, 7.8:1) / **Faint** (#798496, 5.1:1): the corresponding ramp for Ledger Black surfaces — never pure white, always a soft paper tone so it doesn't glare against near-black. Faint also clears 4.5:1 on Ledger Black Raised (4.7:1).
+- **Ink Text** (#10141b, 16.93:1) / **Muted** (#49505c, 7.43:1) / **Faint** (#636974, 5.05:1): the three-step text ramp for Cool Paper surfaces. Every step clears 4.5:1 on both Cool Paper and Cool Paper Deep (Faint is tightest at 4.55:1 on Cool Paper Deep).
+- **Paper Text on Ink** (#eff2f7, 18.19:1) / **Muted** (#9da5b1, 8.24:1) / **Faint** (#798496, 5.39:1): the corresponding ramp for Ledger Black — never pure white, always a soft paper tone so it doesn't glare against near-black. Ratios measured against #000026; because there is now only one dark surface, each token has exactly one on-ink ratio to satisfy.
 - **Hairline** (#d4d8de) / **Hairline Strong** (#b2b8c1): dividers and input borders on light surfaces (FAQ separators, form fields, section rules).
 
 ### Named Rules
 **The One Signal Rule.** Signal Blue is the only saturated color anywhere in the system. If a new element needs emphasis, it gets Signal Blue, weight, or size — never a second accent hue.
 
 **The Readable Faint Rule.** The faint tier is the bottom of each ramp, not a licence to go lighter. Both faint tokens were re-tuned on 2026-09-07 (`--text-faint` 58%→52% L, `--text-on-ink-faint` 52%→61% L) because they measured 3.9:1 and 3.6:1 — under AA. Any new text color must clear **4.5:1 against every surface it lands on**, measured against the real rendered color, not estimated by eye. Verify before shipping; a lighter gray "for elegance" is the single most common way this system degrades.
+
+**The One Dark Surface Rule.** There is exactly one dark value in this system: #000026. Nav,
+hero, `#why`, cards, `#contact`, footers and `#proof` all use it, and `--ink`, `--ink-raised`,
+`--ink-raised-2`, `--accent-deep` and `--accent-deep-2` all resolve to it. This replaced five
+different darks (#080d16 / #111824 / #1b2433 / #08173d plus a grain overlay on two sections only),
+which produced visible seams wherever two of them met — Buck's report was "it should be polished
+and one clean color not have these seperations." **Do not reintroduce a raised or stepped dark
+surface to make a card read as elevated.** Separation on ink comes from hairlines
+(`--ink-line`, `--ink-line-soft`), radius, and spacing — never from a second dark value. If a
+future change appears to need one, the seam it creates is the thing being asked for, and the
+answer is no.
+
+**The On-Dark Lightness Rule.** Signal Blue Light must differ from Signal Blue in **lightness
+only** — same chroma (0.205), same hue (264). It was originally `oklch(74% 0.135 258)`, which was
+both desaturated and 6° off-hue, so every on-ink accent read as pale periwinkle while buttons on
+light surfaces stayed properly saturated. If this token is ever retuned, move L and nothing else.
+The floor is ~61.5% L: below that the `.hero-proof-tag` on ink drops under 4.5:1.
+
+**The Pure-Blue Dark Rule.** The dark surface is constructed as `R=G=0`, which pins it to hue 264 —
+the brand hue — at any lightness. To make it lighter or darker, change only the blue channel; the
+hue cannot drift. This is why the 2026-09-08 #000033 → #000026 change needed no hue re-check.
 
 **The Warmth-Free Neutral Rule.** Every "white" and "black" in this system is tinted toward the brand's own blue (hue 258–264), never toward cream/warm neutrals. Cool Paper is not off-white-by-default; it's off-white-by-formula.
 
@@ -174,7 +195,7 @@ Shadows are soft, warm-tinted-toward-ink (never pure black: `oklch(20% 0.02 260 
 
 ### Cards
 - **Case-study card:** Ledger Black background, 26px radius (`--radius-lg`), no shadow — a full-bleed ink block. Contains a small Signal-Blue-Light tag (dot + uppercase label), a large Cabinet Grotesk client name, and a 4-column metrics grid (2-column on mobile) separated by 1px hairlines on an ink-line-soft background, each metric a big Cabinet Grotesk number (accent-highlighted digits in Signal Blue Light) over a small caption.
-- **Portfolio preview card (`.site-frame`):** 14px radius (`--radius-md`), Ledger Black background, browser-chrome dots header, 16:10 image at `object-position: top`. Carries Ambient Medium shadow at rest, promotes to Ambient Large + 6px lift on hover. This is the system's one "card that behaves like a physical object" — everything else stays flat.
+- **Portfolio preview card (`.site-frame`):** 14px radius (`--radius-md`), Ledger Black background (same value as the section behind it — the shadow, not a lighter fill, is what makes it read as raised), browser-chrome dots header, 16:10 image at `object-position: top`. Carries Ambient Medium shadow at rest, promotes to Ambient Large + 6px lift on hover. This is the system's one "card that behaves like a physical object" — everything else stays flat.
 
 ### Inputs / Fields
 - **Style:** white background, 1.5px Hairline Strong border, 10px radius, Switzer 15px text.
@@ -184,16 +205,20 @@ Shadows are soft, warm-tinted-toward-ink (never pure black: `oklch(20% 0.02 260 
 - **Section label:** small 12.5px uppercase Signal Blue label above each form section (Your Information / About Your Business / Your Marketing) — the input system's one deliberate use of the Functional Uppercase Rule.
 
 ### Navigation
-- **Style:** fixed, full-width Ledger Black bar, 18px/40px padding, 1px soft ink hairline at the bottom edge. **No drop shadow, scrolled or not** — the bar's background is Ledger Black, the same token as the dark hero/why/footer sections, so over those the bar itself is invisible and a shadow reads as an unexplained dark band with a hard 1px edge across the section. The hairline is the separator. (Removed 2026-09-07.)
+- **Style:** fixed, full-width, 18px/40px padding. **Transparent until scrolled** — both the background *and* the bottom border are `transparent` at rest, switching to Ledger Black + a soft ink hairline once `.scrolled` is toggled at `scrollY > 20`. At the top of every page the bar floats directly over the dark hero with no edge at all; the hairline exists only to separate the bar from light content once the page has moved. (Transparent-at-rest added 2026-09-08.)
+- **No drop shadow, scrolled or not** — the scrolled background is Ledger Black, the same token as the dark hero/why/footer sections, so over those a shadow reads as an unexplained dark band with a hard 1px edge across the section. The hairline is the separator. (Removed 2026-09-07.)
+- **Validating the transparent state:** a DOM-ancestor contrast audit is *wrong* for this bar — it composites the nav against `body` (light Cool Paper) rather than against the dark hero it actually floats over, and reports a false failure for every nav element on every page. Screenshot the nav strip at scroll 0 with the nav's own text forced `color: transparent`, and measure real pixel luminance instead. Current: mean luminance 0.0048 across the 17 pages that carry the bar, worst nav text 4.94:1.
 - **Brand lockup:** Cabinet Grotesk wordmark (19px, 800 weight) stacked over a tiny Signal-Blue-Light uppercase tagline (10px, letter-spacing 0.18em) — the nav's only uppercase-label usage.
 - **Links:** Paper Text on Ink Muted at rest, brightening to full Paper Text on Ink on hover; no underline, no pill background.
 - **Mobile:** collapses to a hamburger under 900px, which opens a full-screen Ledger Black takeover with oversized (32px) Cabinet Grotesk links, each row divided by a soft ink hairline.
 
 ### Focus (global)
-Every focusable element except form fields gets `:focus-visible { outline: 2px solid Signal Blue; outline-offset: 2px; box-shadow: 0 0 0 2px white; }`. The accent ring carries the contrast on light surfaces (5.8:1) and the white halo carries it on ink (17:1), so one ring works everywhere without enumerating which sections are dark — `#proof` is light on index.html and dark on website-design.html, so a selector list would be wrong. Chrome's default ring is not acceptable here: it measures 2.9:1 on Signal Blue Deep, under the 3:1 minimum for non-text.
+Every focusable element except form fields gets `:focus-visible { outline: 2px solid Signal Blue; outline-offset: 2px; box-shadow: 0 0 0 2px white; }`. The accent ring carries the contrast on light surfaces (5.8:1) and the white halo carries it on ink (17:1), so one ring works everywhere without enumerating which sections are dark — `#proof` is light on index.html and dark on website-design.html, so a selector list would be wrong. Chrome's default ring (#005fcc) is not used here: it measures 3.41:1 on Ledger Black — technically over the 3:1 non-text minimum since the surface darkened on 2026-09-08, but with almost no margin, against 20.43:1 for the white halo. (Before that change it measured 2.9:1 and genuinely failed; the custom ring is now kept for the margin, not because the default fails outright.)
 
 ### Grain (de-banding layer)
-`#hero` and `#contact` carry a `::after` tiled with `images/grain.png` (128px mean-neutral noise) in `mix-blend-mode: overlay`, over an `isolation: isolate` parent. The glows on those sections span only ~26 of 256 blue levels, so 8-bit quantisation leaves visible contour rings on desktop panels (phones hide it via 3x DPR + panel dithering). The grain dithers the ramp. Mid-grey under `overlay` is mean-neutral, so flat areas keep their exact color and no seam appears against the adjacent flat ink. `images/hero-glow.png` also has dither baked into its alpha. Don't "clean up" either asset.
+`#hero` carries a `::after` tiled with `images/grain.png` (128px mean-neutral noise) in `mix-blend-mode: overlay`, over an `isolation: isolate` parent. The hero glow spans only ~26 of 256 blue levels, so 8-bit quantisation leaves visible contour rings on desktop panels (phones hide it via 3x DPR + panel dithering). The grain dithers the ramp. Mid-grey under `overlay` is mean-neutral, so flat areas keep their exact color and no seam appears against the adjacent flat ink. `images/hero-glow.png` also has dither baked into its alpha. Don't "clean up" either asset.
+
+**`#contact` no longer carries grain or a glow** (removed 2026-09-08). Its background is now flat Ledger Black, identical to the footer beneath it, so the two run together with nothing to band and no seam to hide. Re-adding a glow there would reintroduce both problems. **Verify banding by measuring, not by eye:** scan a vertical line of pixels through the gradient and record the longest run of identical blue values. The hero currently sits at a 6px worst flat run. When re-checking against a past figure, re-measure the old state too — a recorded number from a different sampling method is not comparable.
 
 ### FAQ Accordion (signature component)
 Hairline-divided list (`.faq-item`), each question a full-width button that turns Signal Blue and rotates its trailing icon when open; the answer panel animates open via `grid-template-rows` (0fr → 1fr) rather than height/max-height, keeping the transition smooth without a fixed pixel guess.
@@ -207,6 +232,8 @@ Hairline-divided list (`.faq-item`), each question a full-width button that turn
 - **Do** use the ink-tinted shadow formula (`oklch(20% 0.02 260 / alpha)`) for any new shadow, never a flat `rgba(0,0,0,...)`.
 - **Do** size every grid track as `minmax(0, 1fr)`, never bare `1fr`. Bare `1fr` means `minmax(auto, 1fr)`, so children can't shrink below min-content and push past the viewport in a narrow band of widths — this has caused a stray horizontal scrollbar on this site twice.
 - **Do** verify contrast against the real rendered color before shipping a new text or border color, and disable CSS transitions first — reading a computed style mid-transition returns the pre-transition value and produces false results.
+- **Do** measure by pixel, not by DOM, for anything whose background comes from a gradient, an image, or a `position: fixed` ancestor — the fixed nav and the gradient-scrim image labels (`.proof-strip-label`, `.demo-card-label`) both report false contrast failures under an ancestor walk, because `getComputedStyle().backgroundColor` cannot see what is actually behind them.
+- **Do** render a 4–5 step ladder on the real page when changing an existing colour's lightness or saturation, and pick from that — injected via a Playwright `!important` override, no file edits. Guessing a single value cost three rounds on the accent blue; the ladder settled the surface darkening in one.
 - **Do** cap display type at `clamp(2.75rem, 6vw, 5rem)` — this was deliberately reduced site-wide on 2026-07-02 after oversized headings read as "shouting."
 
 ### Don't:
@@ -215,5 +242,7 @@ Hairline-divided list (`.faq-item`), each question a full-width button that turn
 - **Don't** use `border-left`/`border-right` as a colored accent stripe on cards or list items.
 - **Don't** apply `background-clip: text` gradient text anywhere — emphasis comes from weight/size/color, never a text gradient.
 - **Don't** add uppercase tracked eyebrows above every section heading. Uppercase-tracked text is reserved for the nav tagline and form-section labels only (see The Functional Uppercase Rule).
+- **Don't** introduce a second dark surface value to create elevation, separation, or a "raised" card. See The One Dark Surface Rule — this was explicitly undone once already and the seams were the reason.
+- **Don't** change Signal Blue Light's chroma or hue when adjusting it, only its lightness (The On-Dark Lightness Rule).
 - **Don't** put a drop shadow on the fixed nav. Its background is the same token as the dark sections, so the shadow becomes a floating dark band across them rather than a bar edge.
 - **Don't** give Ledger Black surfaces (case-cards, nav, mobile menu) a drop shadow — they're flat, full-bleed ink blocks by design; shadow is reserved for elements that should read as physically floating (portfolio preview cards).
