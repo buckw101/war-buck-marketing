@@ -139,11 +139,11 @@
 
       --text: oklch(19% 0.016 260);
       --text-muted: oklch(43% 0.022 260);
-      --text-faint: oklch(58% 0.018 260);
+      --text-faint: oklch(52% 0.018 260);   /* was 58%: 3.91:1 on --paper, under AA */
 
       --text-on-ink: oklch(96% 0.008 260);
       --text-on-ink-muted: oklch(72% 0.02 260);
-      --text-on-ink-faint: oklch(52% 0.03 260);
+      --text-on-ink-faint: oklch(61% 0.03 260);  /* was 52%: 3.55:1 on --ink, under AA */
 
       --accent: oklch(50% 0.205 264);
       --accent-hover: oklch(44% 0.205 264);
@@ -219,7 +219,12 @@
       transition: box-shadow 0.3s var(--ease);
     }
 
-    nav#navbar.scrolled { box-shadow: 0 6px 30px oklch(0% 0 0 / 0.25); }
+    /* No drop shadow on the scrolled nav. Its background is var(--ink), the same
+       token as the dark #hero / #why sections, so over those the bar itself is
+       invisible and the shadow reads as an unexplained 30px dark band with a hard
+       1px edge across the section. Over the light sections the dark bar already has
+       ample contrast without it. The border-bottom stays as the separator. */
+    nav#navbar.scrolled { box-shadow: none; }
 
     .nav-brand { display: flex; flex-direction: column; gap: 1px; text-decoration: none; line-height: 1; }
     .nav-brand-main { font-family: 'Cabinet Grotesk', sans-serif; font-size: 19px; font-weight: 800; letter-spacing: -0.02em; color: var(--text-on-ink); }
@@ -255,8 +260,8 @@
 
     .nav-menu-btn {
       display: none;
-      width: 40px;
-      height: 40px;
+      width: 44px;
+      height: 44px;
       border-radius: var(--radius-sm);
       background: transparent;
       border: 1px solid var(--ink-line);
@@ -479,7 +484,7 @@
       align-items: baseline;
     }
 
-    @media (max-width: 720px) { .svc-row { grid-template-columns: 1fr; gap: 8px; padding: 22px 0; } }
+    @media (max-width: 720px) { .svc-row { grid-template-columns: minmax(0, 1fr); gap: 8px; padding: 22px 0; } }
 
     .svc-title { font-size: clamp(1.05rem, 1.5vw, 1.25rem); font-weight: 700; color: var(--text); letter-spacing: -0.01em; }
     .svc-desc { font-size: 16px; color: var(--text-muted); line-height: 1.65; max-width: 560px; }
@@ -496,9 +501,9 @@
       margin-bottom: 24px;
     }
 
-    .sites-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; max-width: 980px; margin: 0 auto; }
+    .sites-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 24px; max-width: 980px; margin: 0 auto; }
 
-    @media (max-width: 780px) { .sites-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 780px) { .sites-grid { grid-template-columns: minmax(0, 1fr); } }
 
     .site-card { text-decoration: none; display: block; color: inherit; }
 
@@ -561,9 +566,9 @@
 
     .demo-label { font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-faint); margin: 56px 0 24px; }
 
-    .demo-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    .demo-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
 
-    @media (max-width: 960px) { .demo-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 960px) { .demo-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 
     .demo-card { position: relative; border-radius: var(--radius-sm); overflow: hidden; aspect-ratio: 4 / 3; }
     .demo-card img { width: 100%; height: 100%; object-fit: cover; }
@@ -596,11 +601,11 @@
     #process .section-head { margin-bottom: 28px; }
     #process .section-title { font-size: clamp(1.5rem, 2.6vw, 2.1rem); }
 
-    .process-track { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px 8px; position: relative; }
+    .process-track { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px 8px; position: relative; }
 
     .process-track.no-line::before { display: none; }
 
-    @media (max-width: 768px) { .process-track { grid-template-columns: 1fr; gap: 0; } }
+    @media (max-width: 768px) { .process-track { grid-template-columns: minmax(0, 1fr); gap: 0; } }
 
     .process-step { position: relative; padding-right: 20px; }
 
@@ -640,9 +645,9 @@
     /* ── PROOF (stats) ── */
     #proof { background: var(--ink); }
 
-    .why-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+    .why-stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
 
-    @media (max-width: 768px) { .why-stats { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 768px) { .why-stats { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); } }
 
     .stat-card { padding: 30px 26px; border: 1px solid var(--ink-line); border-radius: var(--radius-md); text-align: center; }
 
@@ -669,8 +674,8 @@
       padding-bottom: 56px;
     }
     #faq .section-inner { width: 100%; }
-    #faq .faq-list { max-width: 980px; display: grid; grid-template-columns: 1fr 1fr; grid-auto-flow: column; grid-template-rows: repeat(4, auto); gap: 0 48px; border-top: 1px solid var(--line); align-items: start; }
-    @media (max-width: 780px) { #faq .faq-list { grid-template-columns: 1fr; grid-auto-flow: row; grid-template-rows: none; } }
+    #faq .faq-list { max-width: 980px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); grid-auto-flow: column; grid-template-rows: repeat(4, auto); gap: 0 48px; border-top: 1px solid var(--line); align-items: start; }
+    @media (max-width: 780px) { #faq .faq-list { grid-template-columns: minmax(0, 1fr); grid-auto-flow: row; grid-template-rows: none; } }
 
     .faq-list { max-width: 760px; margin: 0 auto; border-top: 1px solid var(--line); }
     .faq-item { border-bottom: 1px solid var(--line); }
@@ -730,10 +735,10 @@
     }
     #quote .section-inner { width: 100%; }
 
-    .quote-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
+    .quote-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 56px; align-items: start; }
     .quote-grid > * { min-width: 0; }
 
-    @media (max-width: 900px) { .quote-grid { grid-template-columns: 1fr; gap: 40px; } }
+    @media (max-width: 900px) { .quote-grid { grid-template-columns: minmax(0, 1fr); gap: 40px; } }
 
     .quote-highlight {
       background: var(--white);
@@ -782,7 +787,7 @@
     @media (max-width: 640px) { .quote-form-card { padding: 28px 22px; } }
 
     /* ── FORM ── */
-    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .form-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 20px; }
     .form-group { display: flex; flex-direction: column; gap: 8px; }
     .form-group.full { grid-column: 1 / -1; }
     .form-group label { font-size: 14px; font-weight: 600; color: var(--text); }
@@ -822,7 +827,7 @@
     .success-msg p { color: var(--text-muted); font-size: 16px; }
 
     @media (max-width: 640px) {
-      .form-grid { grid-template-columns: 1fr; }
+      .form-grid { grid-template-columns: minmax(0, 1fr); }
       .form-group.full { grid-column: 1; }
       .form-submit { grid-column: 1; }
     }
@@ -934,6 +939,37 @@
       #hero::after,
       #contact::after { background-size: 64px 64px; }
     }
+  
+    /* Very narrow phones: the CTA labels are long and the buttons are
+       `white-space: nowrap` with wide padding, so they push past the viewport.
+       Let them wrap and tighten the padding. .btn-lg's own rule uses
+       !important, so the override has to match it. */
+    @media (max-width: 380px) {
+      .btn-primary,
+      .btn-secondary {
+        white-space: normal;
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+      .btn-lg { padding-left: 22px !important; padding-right: 22px !important; }
+    }
+  
+    /* Keyboard focus. Chrome's default ring is #005fcc, which measures 3.25:1 on
+       --ink and 2.92:1 on --accent-deep, under the 3:1 minimum for non-text. This
+       pairs an accent ring (5.8:1 on the light surfaces) with a white halo (17:1
+       on the dark ones), so one of the two always carries the contrast without
+       having to enumerate which sections are dark, which varies per page. */
+    :focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+      box-shadow: 0 0 0 2px var(--white);
+    }
+
+    /* Form fields already have a deliberate focus treatment (accent border +
+       glow) from their own :focus rule, which outranks this on specificity. */
+    .form-group input:focus-visible,
+    .form-group textarea:focus-visible,
+    .form-group select:focus-visible { outline: none; }
   </style>
 </head>
 <body>
@@ -1387,24 +1423,24 @@
             <input type="hidden" name="Source Page" value="Website Design Landing Page" />
             <div class="form-grid">
               <div class="form-group">
-                <label>Your Name <span>*</span></label>
-                <input type="text" name="Full Name" placeholder="John Smith" autocomplete="name" required />
+                <label for="full-name">Your Name <span>*</span></label>
+                <input type="text" name="Full Name" placeholder="John Smith" autocomplete="name" required id="full-name"/>
               </div>
               <div class="form-group">
-                <label>Phone Number <span>*</span></label>
-                <input type="tel" name="Phone Number" placeholder="(478) 000-0000" autocomplete="tel" required />
+                <label for="phone-number">Phone Number <span>*</span></label>
+                <input type="tel" name="Phone Number" placeholder="(478) 000-0000" autocomplete="tel" required id="phone-number"/>
               </div>
               <div class="form-group">
-                <label>Email <span style="font-weight:400;color:var(--text-faint);">(optional)</span></label>
-                <input type="email" name="Email Address" placeholder="you@example.com" autocomplete="email" />
+                <label for="email-address">Email <span style="font-weight:400;color:var(--text-faint);">(optional)</span></label>
+                <input type="email" name="Email Address" placeholder="you@example.com" autocomplete="email" id="email-address"/>
               </div>
               <div class="form-group">
-                <label>Business Type <span style="font-weight:400;color:var(--text-faint);">(optional)</span></label>
-                <input type="text" name="Type of Business" placeholder="e.g. Landscaping, HVAC..." />
+                <label for="type-of-business">Business Type <span style="font-weight:400;color:var(--text-faint);">(optional)</span></label>
+                <input type="text" name="Type of Business" placeholder="e.g. Landscaping, HVAC..." id="type-of-business"/>
               </div>
               <div class="form-group full">
-                <label>When are you looking to get started? <span style="font-weight:400;color:var(--text-faint);">(optional)</span></label>
-                <select name="Timeline">
+                <label for="timeline">When are you looking to get started? <span style="font-weight:400;color:var(--text-faint);">(optional)</span></label>
+                <select name="Timeline" id="timeline">
                   <option value="">Select a timeline...</option>
                   <option value="ASAP">Ready to start ASAP</option>
                   <option value="Within 30 days">Within the next 30 days</option>
@@ -1413,8 +1449,8 @@
                 </select>
               </div>
               <div class="form-group full">
-                <label>Anything you want us to know? <span style="font-weight:400;color:var(--text-faint);">(optional)</span></label>
-                <textarea name="Project Details" placeholder="Do you have a current site? What's your biggest goal with a new one?"></textarea>
+                <label for="project-details">Anything you want us to know? <span style="font-weight:400;color:var(--text-faint);">(optional)</span></label>
+                <textarea name="Project Details" placeholder="Do you have a current site? What's your biggest goal with a new one?" id="project-details"></textarea>
               </div>
               <div class="form-submit">
                 <button type="submit" class="btn-primary">

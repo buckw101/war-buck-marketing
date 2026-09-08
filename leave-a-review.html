@@ -57,11 +57,11 @@
 
       --text: oklch(19% 0.016 260);
       --text-muted: oklch(43% 0.022 260);
-      --text-faint: oklch(58% 0.018 260);
+      --text-faint: oklch(52% 0.018 260);   /* was 58%: 3.91:1 on --paper, under AA */
 
       --text-on-ink: oklch(96% 0.008 260);
       --text-on-ink-muted: oklch(72% 0.02 260);
-      --text-on-ink-faint: oklch(52% 0.03 260);
+      --text-on-ink-faint: oklch(61% 0.03 260);  /* was 52%: 3.55:1 on --ink, under AA */
 
       --accent: oklch(50% 0.205 264);
       --accent-hover: oklch(44% 0.205 264);
@@ -137,9 +137,12 @@
       transition: box-shadow 0.3s var(--ease);
     }
 
-    nav#navbar.scrolled {
-      box-shadow: 0 6px 30px oklch(0% 0 0 / 0.25);
-    }
+    /* No drop shadow on the scrolled nav. Its background is var(--ink), the same
+       token as the dark #hero / #why sections, so over those the bar itself is
+       invisible and the shadow reads as an unexplained 30px dark band with a hard
+       1px edge across the section. Over the light sections the dark bar already has
+       ample contrast without it. The border-bottom stays as the separator. */
+    nav#navbar.scrolled { box-shadow: none; }
 
     .nav-brand {
       display: flex;
@@ -212,8 +215,8 @@
 
     .nav-menu-btn {
       display: none;
-      width: 40px;
-      height: 40px;
+      width: 44px;
+      height: 44px;
       border-radius: var(--radius-sm);
       background: transparent;
       border: 1px solid var(--ink-line);
@@ -536,6 +539,37 @@
     }
       .footer-copy-link { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
     .footer-copy-link:hover { color: var(--text-on-ink); }
+  
+    /* Very narrow phones: the CTA labels are long and the buttons are
+       `white-space: nowrap` with wide padding, so they push past the viewport.
+       Let them wrap and tighten the padding. .btn-lg's own rule uses
+       !important, so the override has to match it. */
+    @media (max-width: 380px) {
+      .btn-primary,
+      .btn-secondary {
+        white-space: normal;
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+      .btn-lg { padding-left: 22px !important; padding-right: 22px !important; }
+    }
+  
+    /* Keyboard focus. Chrome's default ring is #005fcc, which measures 3.25:1 on
+       --ink and 2.92:1 on --accent-deep, under the 3:1 minimum for non-text. This
+       pairs an accent ring (5.8:1 on the light surfaces) with a white halo (17:1
+       on the dark ones), so one of the two always carries the contrast without
+       having to enumerate which sections are dark, which varies per page. */
+    :focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+      box-shadow: 0 0 0 2px var(--white);
+    }
+
+    /* Form fields already have a deliberate focus treatment (accent border +
+       glow) from their own :focus rule, which outranks this on specificity. */
+    .form-group input:focus-visible,
+    .form-group textarea:focus-visible,
+    .form-group select:focus-visible { outline: none; }
   </style>
 </head>
 <body>
@@ -597,28 +631,28 @@
         <fieldset class="star-rating" id="starRating">
           <legend class="sr-only">Rate your experience from 1 to 5 stars</legend>
 
-          <input type="radio" id="star5" name="rating" value="5" />
-          <label for="star5" aria-label="5 stars">
+          <input type="radio" id="star5" name="rating" value="5" aria-label="5 stars" />
+          <label for="star5">
             <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"/></svg>
           </label>
 
-          <input type="radio" id="star4" name="rating" value="4" />
-          <label for="star4" aria-label="4 stars">
+          <input type="radio" id="star4" name="rating" value="4" aria-label="4 stars" />
+          <label for="star4">
             <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"/></svg>
           </label>
 
-          <input type="radio" id="star3" name="rating" value="3" />
-          <label for="star3" aria-label="3 stars">
+          <input type="radio" id="star3" name="rating" value="3" aria-label="3 stars" />
+          <label for="star3">
             <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"/></svg>
           </label>
 
-          <input type="radio" id="star2" name="rating" value="2" />
-          <label for="star2" aria-label="2 stars">
+          <input type="radio" id="star2" name="rating" value="2" aria-label="2 stars" />
+          <label for="star2">
             <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"/></svg>
           </label>
 
-          <input type="radio" id="star1" name="rating" value="1" />
-          <label for="star1" aria-label="1 star">
+          <input type="radio" id="star1" name="rating" value="1" aria-label="1 star" />
+          <label for="star1">
             <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"/></svg>
           </label>
         </fieldset>
@@ -660,18 +694,18 @@
             <input type="hidden" id="ratingField" name="Rating Given" value="" />
 
             <div class="form-group">
-              <label>Name</label>
-              <input type="text" name="Name" placeholder="Your name" autocomplete="name" />
+              <label for="name">Name</label>
+              <input type="text" name="Name" placeholder="Your name" autocomplete="name" id="name"/>
             </div>
 
             <div class="form-group">
-              <label>Email <span>*</span></label>
-              <input type="email" name="Email" placeholder="you@example.com" autocomplete="email" required />
+              <label for="email">Email <span>*</span></label>
+              <input type="email" name="Email" placeholder="you@example.com" autocomplete="email" required id="email"/>
             </div>
 
             <div class="form-group">
-              <label>What happened? <span>*</span></label>
-              <textarea name="Feedback" placeholder="Tell us what went wrong and how we can make it right..." required></textarea>
+              <label for="feedback">What happened? <span>*</span></label>
+              <textarea name="Feedback" placeholder="Tell us what went wrong and how we can make it right..." required id="feedback"></textarea>
             </div>
 
             <div class="review-actions">

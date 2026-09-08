@@ -111,11 +111,11 @@
 
       --text: oklch(19% 0.016 260);
       --text-muted: oklch(43% 0.022 260);
-      --text-faint: oklch(58% 0.018 260);
+      --text-faint: oklch(52% 0.018 260);   /* was 58%: 3.91:1 on --paper, under AA */
 
       --text-on-ink: oklch(96% 0.008 260);
       --text-on-ink-muted: oklch(72% 0.02 260);
-      --text-on-ink-faint: oklch(52% 0.03 260);
+      --text-on-ink-faint: oklch(61% 0.03 260);  /* was 52%: 3.55:1 on --ink, under AA */
 
       --accent: oklch(50% 0.205 264);
       --accent-hover: oklch(44% 0.205 264);
@@ -200,9 +200,12 @@
       transition: box-shadow 0.3s var(--ease);
     }
 
-    nav#navbar.scrolled {
-      box-shadow: 0 6px 30px oklch(0% 0 0 / 0.25);
-    }
+    /* No drop shadow on the scrolled nav. Its background is var(--ink), the same
+       token as the dark #hero / #why sections, so over those the bar itself is
+       invisible and the shadow reads as an unexplained 30px dark band with a hard
+       1px edge across the section. Over the light sections the dark bar already has
+       ample contrast without it. The border-bottom stays as the separator. */
+    nav#navbar.scrolled { box-shadow: none; }
 
     .nav-brand {
       display: flex;
@@ -275,8 +278,8 @@
 
     .nav-menu-btn {
       display: none;
-      width: 40px;
-      height: 40px;
+      width: 44px;
+      height: 44px;
       border-radius: var(--radius-sm);
       background: transparent;
       border: 1px solid var(--ink-line);
@@ -432,7 +435,7 @@
     }
 
     @media (max-width: 960px) {
-      .hero-grid { grid-template-columns: 1fr; gap: 48px; }
+      .hero-grid { grid-template-columns: minmax(0, 1fr); gap: 48px; }
     }
 
     h1 {
@@ -524,7 +527,7 @@
 
     .hero-proof-stats {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 16px;
       margin-bottom: 24px;
       padding-bottom: 24px;
@@ -606,7 +609,7 @@
     }
 
     @media (max-width: 720px) {
-      .svc-row { grid-template-columns: 1fr; gap: 10px; padding: 26px 0; }
+      .svc-row { grid-template-columns: minmax(0, 1fr); gap: 10px; padding: 26px 0; }
     }
 
     .svc-title {
@@ -633,13 +636,13 @@
     /* ── PROOF STRIP (who section imagery) ── */
     .proof-strip {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 10px;
       margin-bottom: 48px;
     }
 
     @media (max-width: 640px) {
-      .proof-strip { grid-template-columns: repeat(2, 1fr); }
+      .proof-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     }
 
     .proof-strip-item {
@@ -678,7 +681,7 @@
 
     .process-track {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 8px;
       position: relative;
     }
@@ -694,7 +697,7 @@
     }
 
     @media (max-width: 768px) {
-      .process-track { grid-template-columns: 1fr; gap: 0; }
+      .process-track { grid-template-columns: minmax(0, 1fr); gap: 0; }
       .process-track::before { display: none; }
     }
 
@@ -759,13 +762,13 @@
 
     .who-body {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
       gap: 72px;
       align-items: start;
     }
 
     @media (max-width: 860px) {
-      .who-body { grid-template-columns: 1fr; gap: 44px; }
+      .who-body { grid-template-columns: minmax(0, 1fr); gap: 44px; }
     }
 
     .who-label {
@@ -845,7 +848,7 @@
     }
 
     @media (max-width: 860px) {
-      .why-grid { grid-template-columns: 1fr; gap: 40px; }
+      .why-grid { grid-template-columns: minmax(0, 1fr); gap: 40px; }
     }
 
     .why-bullets {
@@ -877,7 +880,7 @@
       line-height: 1.55;
     }
 
-    .why-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .why-stats { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 12px; }
 
     .stat-card {
       padding: 28px 26px;
@@ -941,7 +944,7 @@
 
     .case-metrics {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 1px;
       background: var(--ink-line-soft);
       border-radius: 14px;
@@ -949,7 +952,7 @@
       margin-bottom: 34px;
     }
 
-    @media (max-width: 640px) { .case-metrics { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 640px) { .case-metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 
     .cs-metric { padding: 24px 16px; background: var(--ink); text-align: left; }
 
@@ -990,11 +993,11 @@
 
     .sites-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
       gap: 28px;
     }
 
-    @media (max-width: 780px) { .sites-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 780px) { .sites-grid { grid-template-columns: minmax(0, 1fr); } }
 
     .site-card {
       text-decoration: none;
@@ -1072,8 +1075,8 @@
       padding-bottom: 56px;
     }
     #faq .section-inner { width: 100%; }
-    #faq .faq-list { max-width: 980px; display: grid; grid-template-columns: 1fr 1fr; grid-auto-flow: column; grid-template-rows: repeat(2, auto); gap: 0 48px; border-top: 1px solid var(--line); align-items: start; }
-    @media (max-width: 780px) { #faq .faq-list { grid-template-columns: 1fr; grid-auto-flow: row; grid-template-rows: none; } }
+    #faq .faq-list { max-width: 980px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); grid-auto-flow: column; grid-template-rows: repeat(2, auto); gap: 0 48px; border-top: 1px solid var(--line); align-items: start; }
+    @media (max-width: 780px) { #faq .faq-list { grid-template-columns: minmax(0, 1fr); grid-auto-flow: row; grid-template-rows: none; } }
 
     .faq-list {
       max-width: 760px;
@@ -1280,7 +1283,7 @@
 
     .modal-body { padding: 32px 36px 40px; }
 
-    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .form-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 20px; }
 
     .form-group { display: flex; flex-direction: column; gap: 8px; }
     .form-group.full { grid-column: 1 / -1; }
@@ -1427,7 +1430,7 @@
     @media (max-width: 640px) {
       .modal-header { padding: 20px 20px 16px; }
       .modal-body { padding: 24px 20px 32px; }
-      .form-grid { grid-template-columns: 1fr; }
+      .form-grid { grid-template-columns: minmax(0, 1fr); }
       .form-group.full { grid-column: 1; }
       .form-submit { grid-column: 1; }
       .form-section-title { grid-column: 1; }
@@ -1572,6 +1575,37 @@
       #hero::after,
       #contact::after { background-size: 64px 64px; }
     }
+  
+    /* Very narrow phones: the CTA labels are long and the buttons are
+       `white-space: nowrap` with wide padding, so they push past the viewport.
+       Let them wrap and tighten the padding. .btn-lg's own rule uses
+       !important, so the override has to match it. */
+    @media (max-width: 380px) {
+      .btn-primary,
+      .btn-secondary {
+        white-space: normal;
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+      .btn-lg { padding-left: 22px !important; padding-right: 22px !important; }
+    }
+  
+    /* Keyboard focus. Chrome's default ring is #005fcc, which measures 3.25:1 on
+       --ink and 2.92:1 on --accent-deep, under the 3:1 minimum for non-text. This
+       pairs an accent ring (5.8:1 on the light surfaces) with a white halo (17:1
+       on the dark ones), so one of the two always carries the contrast without
+       having to enumerate which sections are dark, which varies per page. */
+    :focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+      box-shadow: 0 0 0 2px var(--white);
+    }
+
+    /* Form fields already have a deliberate focus treatment (accent border +
+       glow) from their own :focus rule, which outranks this on specificity. */
+    .form-group input:focus-visible,
+    .form-group textarea:focus-visible,
+    .form-group select:focus-visible { outline: none; }
   </style>
 
 </head>
@@ -1864,20 +1898,20 @@
           <div class="form-grid">
             <div class="form-section-title">Your Information</div>
             <div class="form-group">
-              <label>Full Name <span>*</span></label>
-              <input type="text" name="Full Name" placeholder="John Smith" autocomplete="name" required />
+              <label for="full-name">Full Name <span>*</span></label>
+              <input type="text" name="Full Name" placeholder="John Smith" autocomplete="name" required id="full-name"/>
             </div>
             <div class="form-group">
-              <label>Business Name <span>*</span></label>
-              <input type="text" name="Business Name" placeholder="Acme Co." autocomplete="organization" required />
+              <label for="business-name">Business Name <span>*</span></label>
+              <input type="text" name="Business Name" placeholder="Acme Co." autocomplete="organization" required id="business-name"/>
             </div>
             <div class="form-group">
-              <label>Email Address <span>*</span></label>
-              <input type="email" name="Email Address" placeholder="you@example.com" autocomplete="email" required />
+              <label for="email-address">Email Address <span>*</span></label>
+              <input type="email" name="Email Address" placeholder="you@example.com" autocomplete="email" required id="email-address"/>
             </div>
             <div class="form-group">
-              <label>Phone Number <span>*</span></label>
-              <input type="tel" name="Phone Number" placeholder="+1 (555) 000-0000" autocomplete="tel" required />
+              <label for="phone-number">Phone Number <span>*</span></label>
+              <input type="tel" name="Phone Number" placeholder="+1 (555) 000-0000" autocomplete="tel" required id="phone-number"/>
             </div>
             <hr class="form-divider" />
             <div class="form-section-title">About Your Business</div>
@@ -1887,17 +1921,17 @@
                 <label><input type="radio" name="Business Type" value="Lead Generation" required /> A. Lead Generation</label>
                 <label><input type="radio" name="Business Type" value="Ecommerce" /> B. Ecommerce</label>
                 <label><input type="radio" name="Business Type" value="Clothing Brand" /> C. Clothing Brand</label>
-                <label><input type="radio" name="Business Type" value="Other" onclick="toggleOther('businessOther')" /> D. Other (please specify)</label>
+                <label for="businessOther"><input type="radio" name="Business Type" value="Other" onclick="toggleOther('businessOther')" /> D. Other (please specify)</label>
               </div>
               <input type="text" id="businessOther" name="Business Type (Other)" placeholder="Please specify..." class="other-input" />
             </div>
             <div class="form-group full">
-              <label>What products or services do you offer? <span>*</span></label>
-              <textarea name="Products or Services" placeholder="Describe what you sell or offer..." required></textarea>
+              <label for="products-or-services">What products or services do you offer? <span>*</span></label>
+              <textarea name="Products or Services" placeholder="Describe what you sell or offer..." required id="products-or-services"></textarea>
             </div>
             <div class="form-group full">
-              <label>Monthly Marketing Budget <span>*</span></label>
-              <select name="Monthly Marketing Budget" required>
+              <label for="monthly-marketing-budget">Monthly Marketing Budget <span>*</span></label>
+              <select name="Monthly Marketing Budget" required id="monthly-marketing-budget">
                 <option value="" disabled selected>Select range</option>
                 <option>Under $500/mo</option>
                 <option>$500 – $2,000/mo</option>
@@ -1932,8 +1966,8 @@
               </div>
             </div>
             <div class="form-group full">
-              <label>What is your biggest struggle with social media marketing? <span>*</span></label>
-              <textarea name="Biggest Struggle" placeholder="Be as specific as you'd like..." required></textarea>
+              <label for="biggest-struggle">What is your biggest struggle with social media marketing? <span>*</span></label>
+              <textarea name="Biggest Struggle" placeholder="Be as specific as you'd like..." required id="biggest-struggle"></textarea>
             </div>
             <div class="form-submit">
               <button type="submit" class="btn-primary">

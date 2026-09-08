@@ -66,6 +66,23 @@
       color: var(--muted);
       font-size: 13px;
     }
+  
+    /* Keyboard focus. Chrome's default ring is #005fcc, which measures 3.25:1 on
+       --ink and 2.92:1 on --accent-deep, under the 3:1 minimum for non-text. This
+       pairs an accent ring (5.8:1 on the light surfaces) with a white halo (17:1
+       on the dark ones), so one of the two always carries the contrast without
+       having to enumerate which sections are dark, which varies per page. */
+    :focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+      box-shadow: 0 0 0 2px var(--white);
+    }
+
+    /* Form fields already have a deliberate focus treatment (accent border +
+       glow) from their own :focus rule, which outranks this on specificity. */
+    .form-group input:focus-visible,
+    .form-group textarea:focus-visible,
+    .form-group select:focus-visible { outline: none; }
   </style>
 </head>
 <body>
