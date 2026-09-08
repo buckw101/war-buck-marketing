@@ -657,6 +657,8 @@
       flex-wrap: wrap;
     }
 
+    #website-design .svc-cta { justify-content: center; }
+
     /* ── PROOF STRIP (who section imagery) ── */
     .proof-strip {
       display: grid;
@@ -1014,6 +1016,9 @@
       color: var(--text-faint);
       margin-bottom: 24px;
       max-width: 980px;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
     }
 
     .sites-grid {
@@ -1021,6 +1026,7 @@
       grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
       gap: 24px;
       max-width: 980px;
+      margin: 0 auto;
     }
 
     @media (max-width: 780px) { .sites-grid { grid-template-columns: minmax(0, 1fr); } }
@@ -1759,9 +1765,9 @@
   <!-- ── WEBSITE DESIGN ── -->
   <section id="website-design" style="border-top: 1px solid var(--line);">
     <div class="section-inner">
-      <div class="section-head reveal">
+      <div class="section-head reveal" style="margin: 0 auto 56px; text-align: center;">
         <h2 class="section-title">Your Ads Need Somewhere Great to Land.</h2>
-        <p class="section-sub">We also design and build fast, mobile-first websites for local service businesses, built to earn trust in seconds and turn visitors into booked jobs.</p>
+        <p class="section-sub" style="margin: 0 auto;">We also design and build fast, mobile-first websites for local service businesses, built to earn trust in seconds and turn visitors into booked jobs.</p>
       </div>
       <div class="svc-list">
         <div class="svc-row reveal">
