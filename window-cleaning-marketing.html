@@ -99,9 +99,9 @@
 
     :root {
       /* ── Color tokens ── */
-      --ink: oklch(16% 0.02 260);
-      --ink-raised: oklch(21% 0.026 260);
-      --ink-raised-2: oklch(26% 0.03 260);
+      --ink: #000033;
+      --ink-raised: #000033;
+      --ink-raised-2: #000033;
       --ink-line: oklch(45% 0.04 260 / 0.35);
       --ink-line-soft: oklch(45% 0.04 260 / 0.16);
 
@@ -120,8 +120,8 @@
       --accent: oklch(50% 0.205 264);
       --accent-hover: oklch(44% 0.205 264);
       --accent-bright: oklch(61.5% 0.205 264);
-      --accent-deep: oklch(22% 0.075 264);
-      --accent-deep-2: oklch(27% 0.085 264);
+      --accent-deep: #000033;
+      --accent-deep-2: #000033;
 
       --line: oklch(88% 0.01 260);
       --line-strong: oklch(78% 0.014 260);
@@ -195,9 +195,9 @@
       align-items: center;
       justify-content: space-between;
       padding: 18px 40px;
-      background: var(--ink);
-      border-bottom: 1px solid var(--ink-line-soft);
-      transition: box-shadow 0.3s var(--ease);
+      background: transparent;
+      border-bottom: 1px solid transparent;
+      transition: background 0.3s var(--ease), border-color 0.3s var(--ease);
     }
 
     /* No drop shadow on the scrolled nav. Its background is var(--ink), the same
@@ -205,7 +205,11 @@
        invisible and the shadow reads as an unexplained 30px dark band with a hard
        1px edge across the section. Over the light sections the dark bar already has
        ample contrast without it. The border-bottom stays as the separator. */
-    nav#navbar.scrolled { box-shadow: none; }
+    nav#navbar.scrolled {
+      box-shadow: none;
+      background: var(--ink);
+      border-bottom-color: var(--ink-line-soft);
+    }
 
     .nav-brand {
       display: flex;
@@ -399,7 +403,7 @@
 
     .btn-secondary.on-ink:hover {
       border-color: var(--accent-bright);
-      background: oklch(74% 0.135 258 / 0.08);
+      background: oklch(from var(--accent-bright) l c h / 0.08);
     }
 
     .btn-lg { font-size: 17px !important; padding: 19px 38px !important; }
@@ -662,7 +666,7 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(to top, oklch(16% 0.02 260 / 0.75) 0%, transparent 55%);
+      background: linear-gradient(to top, rgba(0, 0, 51, 0.75) 0%, transparent 55%);
     }
 
     .proof-strip-label {
@@ -1147,16 +1151,6 @@
       overflow: hidden;
     }
 
-    #contact::before {
-      content: '';
-      position: absolute;
-      bottom: -20%;
-      left: -8%;
-      width: 560px;
-      height: 560px;
-      background: radial-gradient(circle, oklch(50% 0.205 264 / 0.35) 0%, transparent 70%);
-      pointer-events: none;
-    }
 
     .contact-inner {
       max-width: 700px;
@@ -1551,11 +1545,9 @@
        (3x DPR + panel dithering); desktop panels don't. A mean-neutral noise
        tile in `overlay` dithers each step boundary so the ramp reads smooth.
        Paints above the glow, below the content (which sits at z-index 1). */
-    #hero,
-    #contact { isolation: isolate; }
+    #hero { isolation: isolate; }
 
-    #hero::after,
-    #contact::after {
+    #hero::after {
       content: '';
       position: absolute;
       inset: 0;
@@ -1567,13 +1559,9 @@
       opacity: 0.5;
     }
 
-    /* the contact glow already spans ~50 levels, so it needs less dither */
-    #contact::after { opacity: 0.35; }
-
     /* keep the tile at 1:1 device pixels so the dither isn't smoothed away */
     @media (min-resolution: 2dppx) {
-      #hero::after,
-      #contact::after { background-size: 64px 64px; }
+      #hero::after { background-size: 64px 64px; }
     }
   
     /* Very narrow phones: the CTA labels are long and the buttons are

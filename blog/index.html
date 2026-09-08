@@ -84,9 +84,9 @@
     }
 
     :root {
-      --ink: oklch(16% 0.02 260);
-      --ink-raised: oklch(21% 0.026 260);
-      --ink-raised-2: oklch(26% 0.03 260);
+      --ink: #000033;
+      --ink-raised: #000033;
+      --ink-raised-2: #000033;
       --ink-line: oklch(45% 0.04 260 / 0.35);
       --ink-line-soft: oklch(45% 0.04 260 / 0.16);
 
@@ -105,8 +105,8 @@
       --accent: oklch(50% 0.205 264);
       --accent-hover: oklch(44% 0.205 264);
       --accent-bright: oklch(61.5% 0.205 264);
-      --accent-deep: oklch(22% 0.075 264);
-      --accent-deep-2: oklch(27% 0.085 264);
+      --accent-deep: #000033;
+      --accent-deep-2: #000033;
 
       --line: oklch(88% 0.01 260);
       --line-strong: oklch(78% 0.014 260);
@@ -170,9 +170,9 @@
       align-items: center;
       justify-content: space-between;
       padding: 18px 40px;
-      background: var(--ink);
-      border-bottom: 1px solid var(--ink-line-soft);
-      transition: box-shadow 0.3s var(--ease);
+      background: transparent;
+      border-bottom: 1px solid transparent;
+      transition: background 0.3s var(--ease), border-color 0.3s var(--ease);
     }
 
     /* No drop shadow on the scrolled nav. Its background is var(--ink), the same
@@ -180,7 +180,11 @@
        invisible and the shadow reads as an unexplained 30px dark band with a hard
        1px edge across the section. Over the light sections the dark bar already has
        ample contrast without it. The border-bottom stays as the separator. */
-    nav#navbar.scrolled { box-shadow: none; }
+    nav#navbar.scrolled {
+      box-shadow: none;
+      background: var(--ink);
+      border-bottom-color: var(--ink-line-soft);
+    }
 
     .nav-brand { display: flex; flex-direction: column; gap: 1px; text-decoration: none; line-height: 1; }
     .nav-brand-main { font-family: 'Cabinet Grotesk', sans-serif; font-size: 19px; font-weight: 800; letter-spacing: -0.02em; color: var(--text-on-ink); }
