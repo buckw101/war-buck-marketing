@@ -964,8 +964,6 @@
   <script>
     const SUPABASE_URL = 'https://mlpwadopeqisrgflqwbi.supabase.co';
     const SUPABASE_ANON_KEY = 'sb_publishable_YQO_ZljWCubOqvMpHylkFw_hnnmPPsA';
-    const AUTO_EMAIL = 'buckwarnock101@gmail.com';
-    const AUTO_PASS  = 'WarBuck2026!';
 
     const STAGES = [
       { key: 'new',              label: 'New',              dot: 'var(--blue)',    light: 'var(--blue-light)' },
@@ -990,16 +988,14 @@
       };
     }
 
+    // Re-auth without a password prompt by swapping the stored refresh token.
+    // Never hardcode credentials here — this page is publicly served.
     async function silentLogin() {
-      const res = await fetch(`${SUPABASE_URL}/auth/v1/token?grant_type=password`, {
-        method: 'POST',
-        headers: { 'apikey': SUPABASE_ANON_KEY, 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: AUTO_EMAIL, password: AUTO_PASS }),
-      });
-      if (!res.ok) return false;
-      session = await res.json();
-      localStorage.setItem('wb_crm_session', JSON.stringify(session));
-      return true;
+      let refreshToken = session?.refresh_token;
+      if (!refreshToken) {
+        try { refreshToken = JSON.parse(localStorage.getItem('wb_crm_session') || '{}').refresh_token; } catch (e) {}
+      }
+      return refreshToken ? refreshSession(refreshToken) : false;
     }
 
     async function refreshSession(refreshToken) {
@@ -1052,17 +1048,11 @@
       loadLeads();
     }
 
-    // ── Restore session — auto-login, no password prompt ──
+    // ── Restore session — sign in once per device, then no password prompt ──
     window.addEventListener('DOMContentLoaded', async () => {
       document.getElementById('loginPassword').addEventListener('keydown', e => {
         if (e.key === 'Enter') doLogin();
       });
-      const saved = localStorage.getItem('wb_crm_session');
-      if (saved) {
-        const parsed = JSON.parse(saved);
-        const ok = parsed.refresh_token ? await refreshSession(parsed.refresh_token) : false;
-        if (ok) { showApp(); return; }
-      }
       const ok = await silentLogin();
       if (ok) showApp();
     });
