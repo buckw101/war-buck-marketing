@@ -1107,8 +1107,8 @@
       min-height: 100vh;
       display: flex;
       align-items: center;
-      padding-top: 90px;
-      padding-bottom: 56px;
+      padding-top: 88px;
+      padding-bottom: 48px;
     }
     #reviews .section-inner { width: 100%; }
 
@@ -1116,81 +1116,111 @@
       display: flex;
       justify-content: space-between;
       align-items: flex-end;
-      gap: 32px;
-      margin-bottom: 36px;
+      gap: 40px;
+      margin-bottom: 32px;
     }
     .reviews-head .section-head { margin-bottom: 0; }
+    .reviews-head .section-sub { max-width: 520px; }
 
     .reviews-score {
-      display: flex;
+      display: grid;
+      grid-template-columns: auto auto;
       align-items: center;
-      gap: 14px;
+      column-gap: 16px;
       flex-shrink: 0;
-      padding: 14px 20px;
-      border: 1px solid var(--line);
-      border-radius: var(--radius-md);
-      background: var(--white);
-      color: var(--text);
-      text-decoration: none;
-      transition: border-color 0.2s var(--ease), box-shadow 0.2s var(--ease);
     }
-    .reviews-score:hover { border-color: var(--line-strong); box-shadow: var(--shadow-sm); }
     .reviews-score-num {
       font-family: 'Cabinet Grotesk', sans-serif;
-      font-size: 34px;
+      font-size: clamp(3rem, 5vw, 4rem);
       font-weight: 800;
-      letter-spacing: -0.02em;
-      line-height: 1;
+      letter-spacing: -0.03em;
+      line-height: 0.9;
+      color: var(--text);
+      font-variant-numeric: tabular-nums;
     }
-    .reviews-score-meta { font-size: 13px; color: var(--text-muted); line-height: 1.4; }
+    .reviews-score-meta { display: flex; flex-direction: column; gap: 6px; }
+    .reviews-score-meta p { font-size: 14px; color: var(--text-muted); line-height: 1.3; }
     .reviews-score-meta strong { color: var(--text); font-weight: 700; }
-
-    .stars { display: inline-flex; gap: 2px; color: oklch(78% 0.16 75); }
-    .stars svg { width: 15px; height: 15px; fill: currentColor; }
-
-    .reviews-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
-      gap: 48px;
-      align-items: start;
+    .reviews-score-link {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--accent);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
     }
+    .reviews-score-link svg { transition: transform 0.25s var(--ease); }
+    .reviews-score-link:hover { color: var(--accent-hover); text-decoration: underline; text-underline-offset: 3px; }
+    .reviews-score-link:hover svg { transform: translate(2px, -2px); }
 
-    .review-feature {
+    .stars { display: inline-flex; gap: 3px; color: var(--accent); }
+    .stars svg { width: 16px; height: 16px; fill: currentColor; }
+
+    .reviews-panel {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
       background: var(--white);
       border: 1px solid var(--line);
       border-radius: var(--radius-lg);
-      padding: 32px 36px 28px;
-      box-shadow: var(--shadow-sm);
+      overflow: hidden;
     }
-    .review-feature blockquote {
-      font-size: 17px;
-      line-height: 1.65;
-      color: var(--text);
-      margin: 18px 0 24px;
-      text-wrap: pretty;
-    }
-    .review-feature blockquote p + p { margin-top: 12px; }
 
-    .review-list { border-top: 1px solid var(--line); }
-    .review-item { padding: 20px 0; border-bottom: 1px solid var(--line); }
-    .review-item blockquote {
+    .review {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      padding: 28px 36px;
+    }
+    .review blockquote {
       font-size: 16px;
       line-height: 1.6;
       color: var(--text);
-      margin: 10px 0 12px;
       text-wrap: pretty;
     }
 
-    .review-by { font-size: 14px; font-weight: 700; color: var(--text); }
-    .review-by span { display: block; font-size: 12.5px; font-weight: 400; color: var(--text-faint); margin-top: 2px; }
+    .review-feature {
+      padding: 40px 44px;
+      gap: 20px;
+      border-right: 1px solid var(--line);
+    }
+    .review-feature blockquote { font-size: clamp(17px, 1.45vw, 20px); line-height: 1.6; }
+    .review-feature blockquote p + p { margin-top: 14px; }
+    .review-feature .review-by { margin-top: auto; padding-top: 8px; }
 
-    @media (max-width: 860px) {
-      .reviews-head { flex-direction: column; align-items: flex-start; }
-      .reviews-grid { grid-template-columns: minmax(0, 1fr); gap: 16px; }
+    .review-stack { display: flex; flex-direction: column; }
+    .review-stack .review + .review { border-top: 1px solid var(--line); }
+    .review-stack .review:last-child { flex: 1; }
+
+    .review-by { display: flex; align-items: center; gap: 12px; }
+    .review-avatar {
+      width: 40px;
+      height: 40px;
+      flex-shrink: 0;
+      border-radius: 50%;
+      background: var(--ink);
+      color: var(--text-on-ink);
+      font-family: 'Cabinet Grotesk', sans-serif;
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      display: grid;
+      place-items: center;
+    }
+    .review-name { font-size: 15px; font-weight: 700; color: var(--text); line-height: 1.3; }
+    .review-name span { display: block; font-size: 13px; font-weight: 400; color: var(--text-faint); margin-top: 1px; }
+
+    @media (max-width: 900px) {
+      .reviews-head { flex-direction: column; align-items: flex-start; gap: 28px; }
+      .reviews-panel { grid-template-columns: minmax(0, 1fr); }
+      .review-feature { border-right: 0; border-bottom: 1px solid var(--line); }
     }
     @media (max-width: 640px) {
-      .review-feature { padding: 26px 22px 24px; }
-      .review-feature blockquote { font-size: 16px; }
+      #reviews { padding-top: 72px; padding-bottom: 56px; }
+      .reviews-panel { border-radius: var(--radius-md); }
+      .review { padding: 24px 22px; }
+      .review-feature { padding: 28px 22px; }
+      .review-feature blockquote { font-size: 16.5px; }
     }
 
     /* ── FAQ ── */
@@ -2190,39 +2220,43 @@
       <div class="reviews-head reveal">
         <div class="section-head">
           <h2 class="section-title">Don't Take Our Word for It.</h2>
-          <p class="section-sub">Real reviews from real clients, copied straight from our Google Business Profile.</p>
+          <p class="section-sub">Every review we've gotten on Google, word for word.</p>
         </div>
-        <a class="reviews-score" href="https://maps.google.com/?cid=4467748598388939517" target="_blank" rel="noopener">
+        <div class="reviews-score">
           <span class="reviews-score-num">5.0</span>
-          <span class="reviews-score-meta"><span class="stars" role="img" aria-label="5 out of 5 stars"><svg viewBox="0 0 20 20"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg></span><br /><strong>4 reviews</strong> on Google</span>
-        </a>
+          <div class="reviews-score-meta">
+            <span class="stars" role="img" aria-label="5 out of 5 stars"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg></span>
+            <p><strong>4 of 4</strong> Google reviews are 5 stars</p>
+            <a class="reviews-score-link" href="https://maps.google.com/?cid=4467748598388939517" target="_blank" rel="noopener">See them on Google<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+          </div>
+        </div>
       </div>
 
-      <div class="reviews-grid">
-        <figure class="review-feature reveal">
-          <span class="stars" role="img" aria-label="5 out of 5 stars"><svg viewBox="0 0 20 20"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg></span>
+      <div class="reviews-panel reveal">
+        <figure class="review review-feature">
+          <span class="stars" role="img" aria-label="5 out of 5 stars"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg></span>
           <blockquote>
             <p>Working with Buck at War-Buck Marketing has been an excellent experience. He&rsquo;s a talented designer who really understands how to create clean, professional websites that look great and are built to perform. From the start, communication was clear and responsive, the process moved quickly, and the strategy behind everything felt thoughtful and results-focused.</p>
             <p>I&rsquo;m especially looking forward to the traffic increases, better rankings, and sales growth the new site is set up to deliver. If you&rsquo;re looking for a designer and marketing partner who actually cares about the outcome, I highly recommend Buck and the <span style="white-space:nowrap">War-Buck</span> team.</p>
           </blockquote>
-          <figcaption class="review-by">Missy Walker<span>Macon You Glow Med Spa</span></figcaption>
+          <figcaption class="review-by"><span class="review-avatar" aria-hidden="true">MW</span><span class="review-name">Missy Walker<span>Macon You Glow Med Spa</span></span></figcaption>
         </figure>
 
-        <div class="review-list reveal reveal-delay-1">
-          <figure class="review-item">
-            <span class="stars" role="img" aria-label="5 out of 5 stars"><svg viewBox="0 0 20 20"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg></span>
+        <div class="review-stack">
+          <figure class="review">
+            <span class="stars" role="img" aria-label="5 out of 5 stars"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg></span>
             <blockquote>Buck is the man for the job! He was fast and responsive anytime I have called. You will not be disappointed, he had me setup and going in no time. The website looks great and booking system is easy to navigate. Thank you for what you done for my business!</blockquote>
-            <figcaption class="review-by">Cody Glisson<span>Glisson Tree Service</span></figcaption>
+            <figcaption class="review-by"><span class="review-avatar" aria-hidden="true">CG</span><span class="review-name">Cody Glisson<span>Glisson Tree Service</span></span></figcaption>
           </figure>
-          <figure class="review-item">
-            <span class="stars" role="img" aria-label="5 out of 5 stars"><svg viewBox="0 0 20 20"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg></span>
+          <figure class="review">
+            <span class="stars" role="img" aria-label="5 out of 5 stars"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg></span>
             <blockquote>Highly recommended. Very responsive. Great job creating a new website for my company.</blockquote>
-            <figcaption class="review-by">Gerald Collins<span>Google review</span></figcaption>
+            <figcaption class="review-by"><span class="review-avatar" aria-hidden="true">GC</span><span class="review-name">Gerald Collins<span>Google review</span></span></figcaption>
           </figure>
-          <figure class="review-item">
-            <span class="stars" role="img" aria-label="5 out of 5 stars"><svg viewBox="0 0 20 20"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg></span>
+          <figure class="review">
+            <span class="stars" role="img" aria-label="5 out of 5 stars"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg></span>
             <blockquote>Helped me grow on social media, and set a path to succeed wouldn&rsquo;t trust anyone else</blockquote>
-            <figcaption class="review-by">Johnathon Watson<span>Google review</span></figcaption>
+            <figcaption class="review-by"><span class="review-avatar" aria-hidden="true">JW</span><span class="review-name">Johnathon Watson<span>Google review</span></span></figcaption>
           </figure>
         </div>
       </div>
