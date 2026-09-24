@@ -1101,48 +1101,36 @@
       white-space: nowrap;
     }
 
-    /* ── GOOGLE REVIEWS ── */
+    /* ── GOOGLE REVIEWS (auto-scrolling marquee) ── */
     #reviews {
       background: var(--paper);
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      padding-top: 88px;
-      padding-bottom: 48px;
+      padding-top: clamp(64px, 7vw, 88px);
+      padding-bottom: clamp(56px, 6vw, 80px);
+      overflow: hidden;
     }
-    #reviews .section-inner { width: 100%; }
 
     .reviews-head {
       display: flex;
       justify-content: space-between;
       align-items: flex-end;
-      gap: 40px;
-      margin-bottom: 32px;
+      gap: 24px 40px;
+      margin-bottom: 36px;
     }
     .reviews-head .section-head { margin-bottom: 0; }
-    .reviews-head .section-sub { max-width: 520px; }
 
-    .reviews-score {
-      display: grid;
-      grid-template-columns: auto auto;
-      align-items: center;
-      column-gap: 16px;
-      flex-shrink: 0;
-    }
+    .reviews-side { display: flex; align-items: center; gap: 28px; flex-shrink: 0; }
+    .reviews-score { display: flex; align-items: center; gap: 12px; }
     .reviews-score-num {
       font-family: 'Cabinet Grotesk', sans-serif;
-      font-size: clamp(3rem, 5vw, 4rem);
+      font-size: 2.5rem;
       font-weight: 800;
       letter-spacing: -0.03em;
-      line-height: 0.9;
+      line-height: 1;
       color: var(--text);
-      font-variant-numeric: tabular-nums;
     }
-    .reviews-score-meta { display: flex; flex-direction: column; gap: 6px; }
-    .reviews-score-meta p { font-size: 14px; color: var(--text-muted); line-height: 1.3; }
-    .reviews-score-meta strong { color: var(--text); font-weight: 700; }
+    .reviews-score-meta { display: flex; flex-direction: column; gap: 4px; }
     .reviews-score-link {
-      font-size: 14px;
+      font-size: 13.5px;
       font-weight: 700;
       color: var(--accent);
       text-decoration: none;
@@ -1154,73 +1142,103 @@
     .reviews-score-link:hover { color: var(--accent-hover); text-decoration: underline; text-underline-offset: 3px; }
     .reviews-score-link:hover svg { transform: translate(2px, -2px); }
 
-    .stars { display: inline-flex; gap: 3px; color: var(--accent); }
-    .stars svg { width: 16px; height: 16px; fill: currentColor; }
-
-    .reviews-panel {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-      background: var(--white);
-      border: 1px solid var(--line);
-      border-radius: var(--radius-lg);
-      overflow: hidden;
+    .rv-pause {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 44px;
+      padding: 0 16px;
+      border: 1.5px solid var(--line-strong);
+      border-radius: var(--radius-sm);
+      background: transparent;
+      color: var(--text);
+      font: inherit;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: border-color 0.2s var(--ease), color 0.2s var(--ease);
     }
+    .rv-pause:hover { border-color: var(--accent); color: var(--accent); }
+    .rv-pause svg { width: 14px; height: 14px; fill: currentColor; }
+    .rv-pause .ic-play, .rv-pause[aria-pressed="true"] .ic-pause { display: none; }
+    .rv-pause[aria-pressed="true"] .ic-play { display: block; }
+
+    .stars { display: inline-flex; gap: 3px; color: var(--accent); }
+    .stars svg { width: 15px; height: 15px; fill: currentColor; }
+
+    .rv-row {
+      overflow: hidden;
+      -webkit-mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+      mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+    }
+    .rv-track {
+      display: flex;
+      width: max-content;
+      list-style: none;
+      animation: rvScroll 70s linear infinite;
+      will-change: transform;
+    }
+    .rv-row:hover .rv-track,
+    .rv-row:focus-within .rv-track,
+    .rv-row.is-paused .rv-track { animation-play-state: paused; }
+    @keyframes rvScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    .rv-track > li { flex: none; display: flex; width: clamp(280px, 26vw, 360px); margin-right: 16px; }
+    .rv-track > li.rv-wide { width: clamp(300px, 46vw, 640px); }
 
     .review {
       display: flex;
       flex-direction: column;
-      gap: 14px;
-      padding: 28px 36px;
+      gap: 12px;
+      width: 100%;
+      padding: 22px 24px;
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
     }
     .review blockquote {
-      font-size: 16px;
+      font-size: 15px;
       line-height: 1.6;
       color: var(--text);
       text-wrap: pretty;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 6;
+      overflow: hidden;
     }
 
-    .review-feature {
-      padding: 40px 44px;
-      gap: 20px;
-      border-right: 1px solid var(--line);
-    }
-    .review-feature blockquote { font-size: clamp(17px, 1.45vw, 20px); line-height: 1.6; }
-    .review-feature blockquote p + p { margin-top: 14px; }
-    .review-feature .review-by { margin-top: auto; padding-top: 8px; }
-
-    .review-stack { display: flex; flex-direction: column; }
-    .review-stack .review + .review { border-top: 1px solid var(--line); }
-    .review-stack .review:last-child { flex: 1; }
-
-    .review-by { display: flex; align-items: center; gap: 12px; }
+    .review-by { display: flex; align-items: center; gap: 10px; margin-top: auto; padding-top: 4px; }
     .review-avatar {
-      width: 40px;
-      height: 40px;
+      width: 36px;
+      height: 36px;
       flex-shrink: 0;
       border-radius: 50%;
       background: var(--ink);
       color: var(--text-on-ink);
       font-family: 'Cabinet Grotesk', sans-serif;
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 800;
       letter-spacing: 0.02em;
       display: grid;
       place-items: center;
     }
-    .review-name { font-size: 15px; font-weight: 700; color: var(--text); line-height: 1.3; }
-    .review-name span { display: block; font-size: 13px; font-weight: 400; color: var(--text-faint); margin-top: 1px; }
+    .review-name { font-size: 14px; font-weight: 700; color: var(--text); line-height: 1.3; }
+    .review-name span { display: block; font-size: 12.5px; font-weight: 400; color: var(--text-faint); margin-top: 1px; }
 
     @media (max-width: 900px) {
-      .reviews-head { flex-direction: column; align-items: flex-start; gap: 28px; }
-      .reviews-panel { grid-template-columns: minmax(0, 1fr); }
-      .review-feature { border-right: 0; border-bottom: 1px solid var(--line); }
+      .reviews-head { flex-direction: column; align-items: flex-start; }
+      .reviews-side { width: 100%; justify-content: space-between; }
     }
     @media (max-width: 640px) {
-      #reviews { padding-top: 72px; padding-bottom: 56px; }
-      .reviews-panel { border-radius: var(--radius-md); }
-      .review { padding: 24px 22px; }
-      .review-feature { padding: 28px 22px; }
-      .review-feature blockquote { font-size: 16.5px; }
+      .rv-track > li, .rv-track > li.rv-wide { width: 82vw; }
+      .review blockquote { -webkit-line-clamp: 7; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .rv-track { animation: none !important; transform: none !important; }
+      .rv-row { overflow-x: auto; -webkit-mask-image: none; mask-image: none; scroll-snap-type: x mandatory; padding-bottom: 8px; }
+      .rv-track > li { scroll-snap-align: start; }
+      .rv-track > li[aria-hidden="true"] { display: none; }
+      .rv-pause { display: none; }
     }
 
     /* ── FAQ ── */
@@ -2215,51 +2233,49 @@
   </section>
 
   <!-- ── GOOGLE REVIEWS ── -->
-  <section id="reviews">
+  <section id="reviews" aria-labelledby="reviews-title">
     <div class="section-inner">
       <div class="reviews-head reveal">
         <div class="section-head">
-          <h2 class="section-title">Don't Take Our Word for It.</h2>
+          <h2 class="section-title" id="reviews-title">Don't Take Our Word for It.</h2>
           <p class="section-sub">Every review we've gotten on Google, word for word.</p>
         </div>
-        <div class="reviews-score">
-          <span class="reviews-score-num">5.0</span>
-          <div class="reviews-score-meta">
-            <span class="stars" role="img" aria-label="5 out of 5 stars"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg></span>
-            <p><strong>4 of 4</strong> Google reviews are 5 stars</p>
-            <a class="reviews-score-link" href="https://maps.google.com/?cid=4467748598388939517" target="_blank" rel="noopener">See them on Google<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+        <div class="reviews-side">
+          <div class="reviews-score">
+            <span class="reviews-score-num">5.0</span>
+            <div class="reviews-score-meta">
+              <span class="stars" role="img" aria-label="5 out of 5 stars"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg></span>
+              <a class="reviews-score-link" href="https://maps.google.com/?cid=4467748598388939517" target="_blank" rel="noopener">4 reviews on Google<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+            </div>
           </div>
+          <button class="rv-pause" type="button" aria-pressed="false" data-rv-pause>
+            <svg class="ic-pause" viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/></svg>
+            <svg class="ic-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15a1 1 0 0 0 1.5.86l12-7.5a1 1 0 0 0 0-1.72l-12-7.5A1 1 0 0 0 7 4.5z"/></svg>
+            <span data-rv-label>Pause</span><span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap"> scrolling reviews</span>
+          </button>
         </div>
       </div>
+    </div>
 
-      <div class="reviews-panel reveal">
-        <figure class="review review-feature">
-          <span class="stars" role="img" aria-label="5 out of 5 stars"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg></span>
-          <blockquote>
-            <p>Working with Buck at War-Buck Marketing has been an excellent experience. He&rsquo;s a talented designer who really understands how to create clean, professional websites that look great and are built to perform. From the start, communication was clear and responsive, the process moved quickly, and the strategy behind everything felt thoughtful and results-focused.</p>
-            <p>I&rsquo;m especially looking forward to the traffic increases, better rankings, and sales growth the new site is set up to deliver. If you&rsquo;re looking for a designer and marketing partner who actually cares about the outcome, I highly recommend Buck and the <span style="white-space:nowrap">War-Buck</span> team.</p>
-          </blockquote>
-          <figcaption class="review-by"><span class="review-avatar" aria-hidden="true">MW</span><span class="review-name">Missy Walker<span>Macon You Glow Med Spa</span></span></figcaption>
-        </figure>
-
-        <div class="review-stack">
-          <figure class="review">
-            <span class="stars" role="img" aria-label="5 out of 5 stars"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg></span>
-            <blockquote>Buck is the man for the job! He was fast and responsive anytime I have called. You will not be disappointed, he had me setup and going in no time. The website looks great and booking system is easy to navigate. Thank you for what you done for my business!</blockquote>
-            <figcaption class="review-by"><span class="review-avatar" aria-hidden="true">CG</span><span class="review-name">Cody Glisson<span>Glisson Tree Service</span></span></figcaption>
-          </figure>
-          <figure class="review">
-            <span class="stars" role="img" aria-label="5 out of 5 stars"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg></span>
-            <blockquote>Highly recommended. Very responsive. Great job creating a new website for my company.</blockquote>
-            <figcaption class="review-by"><span class="review-avatar" aria-hidden="true">GC</span><span class="review-name">Gerald Collins<span>Google review</span></span></figcaption>
-          </figure>
-          <figure class="review">
-            <span class="stars" role="img" aria-label="5 out of 5 stars"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg></span>
-            <blockquote>Helped me grow on social media, and set a path to succeed wouldn&rsquo;t trust anyone else</blockquote>
-            <figcaption class="review-by"><span class="review-avatar" aria-hidden="true">JW</span><span class="review-name">Johnathon Watson<span>Google review</span></span></figcaption>
-          </figure>
-        </div>
-      </div>
+    <div class="rv-row reveal" data-rv>
+      <ul class="rv-track" role="list">
+            <li class="rv-wide"><figure class="review"><span class="stars" role="img" aria-label="5 out of 5 stars"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg></span><blockquote>Working with Buck at War-Buck Marketing has been an excellent experience. He&rsquo;s a talented designer who really understands how to create clean, professional websites that look great and are built to perform. From the start, communication was clear and responsive, the process moved quickly, and the strategy behind everything felt thoughtful and results-focused. I&rsquo;m especially looking forward to the traffic increases, better rankings, and sales growth the new site is set up to deliver. If you&rsquo;re looking for a designer and marketing partner who actually cares about the outcome, I highly recommend Buck and the <span style="white-space:nowrap">War-Buck</span> team.</blockquote><figcaption class="review-by"><span class="review-avatar" aria-hidden="true">MW</span><span class="review-name">Missy Walker<span>Macon You Glow Med Spa</span></span></figcaption></figure></li>
+            <li><figure class="review"><span class="stars" role="img" aria-label="5 out of 5 stars"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg></span><blockquote>Buck is the man for the job! He was fast and responsive anytime I have called. You will not be disappointed, he had me setup and going in no time. The website looks great and booking system is easy to navigate. Thank you for what you done for my business!</blockquote><figcaption class="review-by"><span class="review-avatar" aria-hidden="true">CG</span><span class="review-name">Cody Glisson<span>Glisson Tree Service</span></span></figcaption></figure></li>
+            <li><figure class="review"><span class="stars" role="img" aria-label="5 out of 5 stars"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg></span><blockquote>Highly recommended. Very responsive. Great job creating a new website for my company.</blockquote><figcaption class="review-by"><span class="review-avatar" aria-hidden="true">GC</span><span class="review-name">Gerald Collins<span>Google review</span></span></figcaption></figure></li>
+            <li><figure class="review"><span class="stars" role="img" aria-label="5 out of 5 stars"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg></span><blockquote>Helped me grow on social media, and set a path to succeed wouldn&rsquo;t trust anyone else</blockquote><figcaption class="review-by"><span class="review-avatar" aria-hidden="true">JW</span><span class="review-name">Johnathon Watson<span>Google review</span></span></figcaption></figure></li>
+            <li class="rv-wide" aria-hidden="true"><figure class="review"><span class="stars" role="img" aria-label="5 out of 5 stars"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg></span><blockquote>Working with Buck at War-Buck Marketing has been an excellent experience. He&rsquo;s a talented designer who really understands how to create clean, professional websites that look great and are built to perform. From the start, communication was clear and responsive, the process moved quickly, and the strategy behind everything felt thoughtful and results-focused. I&rsquo;m especially looking forward to the traffic increases, better rankings, and sales growth the new site is set up to deliver. If you&rsquo;re looking for a designer and marketing partner who actually cares about the outcome, I highly recommend Buck and the <span style="white-space:nowrap">War-Buck</span> team.</blockquote><figcaption class="review-by"><span class="review-avatar" aria-hidden="true">MW</span><span class="review-name">Missy Walker<span>Macon You Glow Med Spa</span></span></figcaption></figure></li>
+            <li aria-hidden="true"><figure class="review"><span class="stars" role="img" aria-label="5 out of 5 stars"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg></span><blockquote>Buck is the man for the job! He was fast and responsive anytime I have called. You will not be disappointed, he had me setup and going in no time. The website looks great and booking system is easy to navigate. Thank you for what you done for my business!</blockquote><figcaption class="review-by"><span class="review-avatar" aria-hidden="true">CG</span><span class="review-name">Cody Glisson<span>Glisson Tree Service</span></span></figcaption></figure></li>
+            <li aria-hidden="true"><figure class="review"><span class="stars" role="img" aria-label="5 out of 5 stars"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg></span><blockquote>Highly recommended. Very responsive. Great job creating a new website for my company.</blockquote><figcaption class="review-by"><span class="review-avatar" aria-hidden="true">GC</span><span class="review-name">Gerald Collins<span>Google review</span></span></figcaption></figure></li>
+            <li aria-hidden="true"><figure class="review"><span class="stars" role="img" aria-label="5 out of 5 stars"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg></span><blockquote>Helped me grow on social media, and set a path to succeed wouldn&rsquo;t trust anyone else</blockquote><figcaption class="review-by"><span class="review-avatar" aria-hidden="true">JW</span><span class="review-name">Johnathon Watson<span>Google review</span></span></figcaption></figure></li>
+            <li class="rv-wide" aria-hidden="true"><figure class="review"><span class="stars" role="img" aria-label="5 out of 5 stars"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg></span><blockquote>Working with Buck at War-Buck Marketing has been an excellent experience. He&rsquo;s a talented designer who really understands how to create clean, professional websites that look great and are built to perform. From the start, communication was clear and responsive, the process moved quickly, and the strategy behind everything felt thoughtful and results-focused. I&rsquo;m especially looking forward to the traffic increases, better rankings, and sales growth the new site is set up to deliver. If you&rsquo;re looking for a designer and marketing partner who actually cares about the outcome, I highly recommend Buck and the <span style="white-space:nowrap">War-Buck</span> team.</blockquote><figcaption class="review-by"><span class="review-avatar" aria-hidden="true">MW</span><span class="review-name">Missy Walker<span>Macon You Glow Med Spa</span></span></figcaption></figure></li>
+            <li aria-hidden="true"><figure class="review"><span class="stars" role="img" aria-label="5 out of 5 stars"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg></span><blockquote>Buck is the man for the job! He was fast and responsive anytime I have called. You will not be disappointed, he had me setup and going in no time. The website looks great and booking system is easy to navigate. Thank you for what you done for my business!</blockquote><figcaption class="review-by"><span class="review-avatar" aria-hidden="true">CG</span><span class="review-name">Cody Glisson<span>Glisson Tree Service</span></span></figcaption></figure></li>
+            <li aria-hidden="true"><figure class="review"><span class="stars" role="img" aria-label="5 out of 5 stars"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg></span><blockquote>Highly recommended. Very responsive. Great job creating a new website for my company.</blockquote><figcaption class="review-by"><span class="review-avatar" aria-hidden="true">GC</span><span class="review-name">Gerald Collins<span>Google review</span></span></figcaption></figure></li>
+            <li aria-hidden="true"><figure class="review"><span class="stars" role="img" aria-label="5 out of 5 stars"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg></span><blockquote>Helped me grow on social media, and set a path to succeed wouldn&rsquo;t trust anyone else</blockquote><figcaption class="review-by"><span class="review-avatar" aria-hidden="true">JW</span><span class="review-name">Johnathon Watson<span>Google review</span></span></figcaption></figure></li>
+            <li class="rv-wide" aria-hidden="true"><figure class="review"><span class="stars" role="img" aria-label="5 out of 5 stars"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg></span><blockquote>Working with Buck at War-Buck Marketing has been an excellent experience. He&rsquo;s a talented designer who really understands how to create clean, professional websites that look great and are built to perform. From the start, communication was clear and responsive, the process moved quickly, and the strategy behind everything felt thoughtful and results-focused. I&rsquo;m especially looking forward to the traffic increases, better rankings, and sales growth the new site is set up to deliver. If you&rsquo;re looking for a designer and marketing partner who actually cares about the outcome, I highly recommend Buck and the <span style="white-space:nowrap">War-Buck</span> team.</blockquote><figcaption class="review-by"><span class="review-avatar" aria-hidden="true">MW</span><span class="review-name">Missy Walker<span>Macon You Glow Med Spa</span></span></figcaption></figure></li>
+            <li aria-hidden="true"><figure class="review"><span class="stars" role="img" aria-label="5 out of 5 stars"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg></span><blockquote>Buck is the man for the job! He was fast and responsive anytime I have called. You will not be disappointed, he had me setup and going in no time. The website looks great and booking system is easy to navigate. Thank you for what you done for my business!</blockquote><figcaption class="review-by"><span class="review-avatar" aria-hidden="true">CG</span><span class="review-name">Cody Glisson<span>Glisson Tree Service</span></span></figcaption></figure></li>
+            <li aria-hidden="true"><figure class="review"><span class="stars" role="img" aria-label="5 out of 5 stars"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg></span><blockquote>Highly recommended. Very responsive. Great job creating a new website for my company.</blockquote><figcaption class="review-by"><span class="review-avatar" aria-hidden="true">GC</span><span class="review-name">Gerald Collins<span>Google review</span></span></figcaption></figure></li>
+            <li aria-hidden="true"><figure class="review"><span class="stars" role="img" aria-label="5 out of 5 stars"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg></span><blockquote>Helped me grow on social media, and set a path to succeed wouldn&rsquo;t trust anyone else</blockquote><figcaption class="review-by"><span class="review-avatar" aria-hidden="true">JW</span><span class="review-name">Johnathon Watson<span>Google review</span></span></figcaption></figure></li>
+      </ul>
     </div>
   </section>
 
@@ -2659,6 +2675,19 @@
         btn.disabled = false;
       }
     }
+  </script>
+  <script>
+    // Reviews marquee pause/play (WCAG 2.2.2: moving content needs a stop control)
+    document.querySelectorAll('[data-rv-pause]').forEach(btn => {
+      const row = btn.closest('section').querySelector('[data-rv]');
+      const label = btn.querySelector('[data-rv-label]');
+      btn.addEventListener('click', () => {
+        const paused = btn.getAttribute('aria-pressed') !== 'true';
+        btn.setAttribute('aria-pressed', String(paused));
+        row.classList.toggle('is-paused', paused);
+        label.textContent = paused ? 'Play' : 'Pause';
+      });
+    });
   </script>
   <script>
     function toggleFaq(btn) {
