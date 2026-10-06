@@ -1035,6 +1035,10 @@
 
     @media (max-width: 780px) { .sites-grid { grid-template-columns: minmax(0, 1fr); } }
 
+    @media (min-width: 781px) {
+      .sites-grid > .site-card:last-child:nth-child(odd) { grid-column: 1 / -1; width: calc(50% - 12px); justify-self: center; }
+    }
+
     .site-card {
       text-decoration: none;
       display: block;
@@ -1994,6 +1998,22 @@
             <div>
               <div class="site-name">Macon You Glow Med Spa</div>
               <div class="site-industry">Med Spa, Macon GA</div>
+            </div>
+            <div class="site-link">Visit Site &rarr;</div>
+          </div>
+        </a>
+        <a href="https://www.mtnarcontractors.com" target="_blank" rel="noopener noreferrer" class="site-card reveal">
+          <div class="site-frame">
+            <div class="site-chrome"><span></span><span></span><span></span></div>
+            <picture>
+              <source srcset="/images/portfolio/client-mtnarea.webp" type="image/webp" />
+              <img src="/images/portfolio/client-mtnarea.jpg" alt="Mountain Area Recommended Contractors website, live client site built by War-Buck Marketing" loading="lazy" width="1400" height="875" />
+            </picture>
+          </div>
+          <div class="site-meta">
+            <div>
+              <div class="site-name">Mountain Area Contractors</div>
+              <div class="site-industry">Remodeling &amp; Roofing, Blairsville GA</div>
             </div>
             <div class="site-link">Visit Site &rarr;</div>
           </div>
