@@ -877,11 +877,11 @@
           document.getElementById('negForm').style.display = 'none';
           document.getElementById('negSuccess').style.display = 'block';
         } else {
-          btn.textContent = 'Send Feedback';
+          btn.textContent = 'Did not send. Try again.';
           btn.disabled = false;
         }
       } catch {
-        btn.textContent = 'Send Feedback';
+        btn.textContent = 'Did not send. Try again.';
         btn.disabled = false;
       }
     }
