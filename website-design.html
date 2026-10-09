@@ -508,6 +508,9 @@
     .sites-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 24px; max-width: 980px; margin: 0 auto; }
 
     @media (max-width: 780px) { .sites-grid { grid-template-columns: minmax(0, 1fr); } }
+    @media (min-width: 781px) {
+      .sites-grid > .site-card:last-child:nth-child(odd) { grid-column: 1 / -1; width: calc(50% - 12px); justify-self: center; }
+    }
 
     .site-card { text-decoration: none; display: block; color: inherit; }
 
@@ -1149,6 +1152,23 @@
             <div>
               <div class="site-name">Mountain Area Contractors</div>
               <div class="site-industry">Remodeling &amp; Roofing, Blairsville GA · 19-page site</div>
+            </div>
+            <div class="site-link">Visit Site &rarr;</div>
+          </div>
+        </a>
+        <a href="https://www.starlitstudi0s.com" target="_blank" rel="noopener noreferrer" class="site-card reveal">
+          <div class="site-frame">
+            <div class="site-chrome"><span></span><span></span><span></span></div>
+            <picture>
+              <source srcset="/images/portfolio/client-starlit.webp" type="image/webp" />
+              <img src="/images/portfolio/client-starlit.jpg" alt="Starlit Studio website, live client site built by War-Buck Marketing" width="1400" height="875" loading="lazy" />
+            </picture>
+            <span class="site-live-badge">Live Site</span>
+          </div>
+          <div class="site-meta">
+            <div>
+              <div class="site-name">Starlit Studio</div>
+              <div class="site-industry">Starlight Headliners &amp; Lighting, Cumming GA · 21-page site</div>
             </div>
             <div class="site-link">Visit Site &rarr;</div>
           </div>
