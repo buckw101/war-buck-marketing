@@ -86,7 +86,6 @@
       --z-nav: 40;
       --z-menu: 30;
 
-      --star-gold: #f5b81f;
     }
 
     html { scroll-behavior: smooth; scroll-padding-top: 90px; }
@@ -394,22 +393,13 @@
     }
 
     .review-sub { font-size: 16px; color: var(--text-muted); line-height: 1.6; margin-bottom: 34px; }
+    .review-sub a { color: var(--accent); text-decoration: underline; }
     .review-emoji { font-size: 38px; margin-bottom: 18px; }
 
     /* ── STEPS ── */
     .review-step.hidden { display: none; }
     .review-step { animation: fadeIn 0.4s var(--ease); }
     @keyframes fadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
-
-    /* ── STAR RATING ── */
-    .star-rating { display: flex; flex-direction: row-reverse; justify-content: center; gap: 6px; border: none; }
-    .star-rating input { position: absolute; opacity: 0; pointer-events: none; }
-    .star-rating label { cursor: pointer; color: var(--line-strong); transition: color 0.15s var(--ease), transform 0.15s var(--ease); line-height: 0; }
-    .star-rating label:hover { transform: scale(1.12); }
-    .star-rating input:checked ~ label,
-    .star-rating label:hover ~ label,
-    .star-rating label:hover { color: var(--star-gold); }
-    .star-rating-hint { font-size: 13px; color: var(--text-faint); margin-top: 18px; }
 
     /* ── PRIVATE FEEDBACK FORM ── */
     .form-group { display: flex; flex-direction: column; gap: 8px; text-align: left; margin-bottom: 16px; }
@@ -434,11 +424,6 @@
 
     .review-actions { display: flex; flex-direction: column; gap: 12px; margin-top: 8px; }
     .success-msg { display: none; text-align: center; }
-
-    /* ── RATING DISPLAY (echo back selected stars) ── */
-    .rating-display { display: flex; justify-content: center; gap: 4px; margin-bottom: 18px; }
-    .rating-display svg { width: 22px; height: 22px; color: var(--line-strong); }
-    .rating-display svg.filled { color: var(--star-gold); }
 
     /* ── MICROCOPY / FALLBACK / SECONDARY ACTIONS ── */
     .review-microcopy { font-size: 13px; color: var(--text-faint); margin-top: 18px; line-height: 1.5; }
@@ -626,75 +611,35 @@
   <main class="review-wrap">
     <div class="review-card">
 
-      <!-- STEP 1: Rating -->
-      <div class="review-step" id="step-rating">
-        <div class="review-badge">Quick Feedback</div>
-        <h1>How was your experience with War-Buck Marketing?</h1>
-        <p class="review-sub">It takes less than a minute, and it really helps us out.</p>
-
-        <fieldset class="star-rating" id="starRating">
-          <legend class="sr-only">Rate your experience from 1 to 5 stars</legend>
-
-          <input type="radio" id="star5" name="rating" value="5" aria-label="5 stars" />
-          <label for="star5">
-            <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"/></svg>
-          </label>
-
-          <input type="radio" id="star4" name="rating" value="4" aria-label="4 stars" />
-          <label for="star4">
-            <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"/></svg>
-          </label>
-
-          <input type="radio" id="star3" name="rating" value="3" aria-label="3 stars" />
-          <label for="star3">
-            <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"/></svg>
-          </label>
-
-          <input type="radio" id="star2" name="rating" value="2" aria-label="2 stars" />
-          <label for="star2">
-            <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"/></svg>
-          </label>
-
-          <input type="radio" id="star1" name="rating" value="1" aria-label="1 star" />
-          <label for="star1">
-            <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"/></svg>
-          </label>
-        </fieldset>
-
-        <p class="star-rating-hint">Tap a star to continue</p>
-      </div>
-
-      <!-- STEP 2A: Positive path -->
-      <div class="review-step hidden" id="step-positive">
-        <div class="review-emoji">🎉</div>
-        <div class="rating-display" id="ratingDisplay" aria-hidden="true"></div>
-        <h2>Thanks, that means a lot!</h2>
-        <p class="review-sub">Reviews like yours help other local business owners find War-Buck Marketing and trust we can help them too. Mind sharing it on Google? It takes less than a minute.</p>
+      <!-- MAIN: every visitor gets the Google review button (no rating filter: Google bans review gating) -->
+      <div class="review-step" id="step-review">
+        <div class="review-badge">Leave a Review</div>
+        <h1>Thanks for working with War&#8209;Buck Marketing!</h1>
+        <p class="review-sub">A quick Google review helps other local business owners find us and trust we can help them too. It takes about a minute.</p>
         <div class="review-actions">
           <a href="https://g.page/r/Cf3auNitoQA-EBM/review" target="_blank" rel="noopener noreferrer" class="btn-primary" onclick="confirmReviewClick()">
             Leave Us a Google Review
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
           </a>
         </div>
-        <p class="review-microcopy">Opens Google in a new tab, takes about 30 seconds. You may need to be signed in to your Google account.</p>
+        <p class="review-microcopy">Opens Google in a new tab. You may need to be signed in to your Google account.</p>
         <p id="positiveConfirm" aria-live="polite">Thanks for clicking through, we really appreciate it! 🙏</p>
         <p class="review-fallback">Button didn't open anything? <a href="https://g.page/r/Cf3auNitoQA-EBM/review" target="_blank" rel="noopener noreferrer">Use this link instead</a></p>
-        <button type="button" class="review-text-link" onclick="resetFunnel()">Selected the wrong rating? Change it</button>
+        <button type="button" class="review-text-link" onclick="showFeedback()">Something not right? Tell Buck directly</button>
       </div>
 
-      <!-- STEP 2B: Negative path -->
+      <!-- OPTIONAL: private message to Buck (open to anyone, never replaces the Google link) -->
       <div class="review-step hidden" id="step-negative">
         <div id="negForm">
           <div class="review-emoji">🙏</div>
-          <h2>We'd like to make this right.</h2>
-          <p class="review-sub">Tell us what happened and Buck will personally follow up, usually within a few hours. This goes straight to our team and won't be posted publicly.</p>
+          <h1>We'd like to make this right.</h1>
+          <p class="review-sub">Tell us what happened and Buck will personally follow up, usually within a few hours. This goes straight to Buck and won't be posted publicly. You're still welcome to <a href="https://g.page/r/Cf3auNitoQA-EBM/review" target="_blank" rel="noopener noreferrer">leave a Google review</a> too.</p>
 
           <form id="feedbackForm" action="https://formsubmit.co/buckwarnock101@gmail.com" method="POST" onsubmit="handleFeedbackSubmit(event)">
             <input type="hidden" name="_subject" value="Private Feedback: War-Buck Marketing" />
             <input type="hidden" name="_captcha" value="false" />
             <input type="hidden" name="_template" value="table" />
             <input type="hidden" name="_next" value="" />
-            <input type="hidden" id="ratingField" name="Rating Given" value="" />
 
             <div class="form-group">
               <label for="name">Name</label>
@@ -718,13 +663,13 @@
               </button>
             </div>
             <p class="form-note">We read every message personally and respond fast.</p>
-            <button type="button" class="review-text-link" onclick="resetFunnel()">Selected the wrong rating? Change it</button>
+            <button type="button" class="review-text-link" onclick="resetFunnel()">Back to the Google review</button>
           </form>
         </div>
 
         <div id="negSuccess" class="success-msg">
           <div class="review-emoji">✅</div>
-          <h2>Thanks for letting us know.</h2>
+          <h1>Thanks for letting us know.</h1>
           <p class="review-sub" style="margin-bottom: 0;">Buck will personally follow up soon. We appreciate you taking the time to tell us.</p>
         </div>
       </div>
@@ -802,60 +747,26 @@
       if (e.key === 'Escape') { closeMenu(); }
     });
 
-    // ── Rating branching ──
-    const stepRating = document.getElementById('step-rating');
-    const stepPositive = document.getElementById('step-positive');
+    // ── Review page: Google button for everyone, optional private message ──
+    const stepReview = document.getElementById('step-review');
     const stepNegative = document.getElementById('step-negative');
-    const ratingField = document.getElementById('ratingField');
-
-    // ── Star icon helper (echoes the selected rating back to the user) ──
-    const STAR_PATH = 'M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z';
-    function renderStars(container, rating) {
-      container.innerHTML = '';
-      for (let i = 1; i <= 5; i++) {
-        const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-        svg.setAttribute('viewBox', '0 0 24 24');
-        svg.setAttribute('fill', 'currentColor');
-        if (i <= rating) svg.classList.add('filled');
-        const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-        path.setAttribute('d', STAR_PATH);
-        svg.appendChild(path);
-        container.appendChild(svg);
-      }
-    }
-
-    document.querySelectorAll('input[name="rating"]').forEach(input => {
-      input.addEventListener('change', () => {
-        const rating = parseInt(input.value, 10);
-        ratingField.value = rating + ' / 5 stars';
-
-        setTimeout(() => {
-          stepRating.classList.add('hidden');
-          if (rating >= 4) {
-            renderStars(document.getElementById('ratingDisplay'), rating);
-            stepPositive.classList.remove('hidden');
-          } else {
-            stepNegative.classList.remove('hidden');
-          }
-        }, 350);
-      });
-    });
 
     function confirmReviewClick() {
       document.getElementById('positiveConfirm').style.display = 'block';
     }
 
+    function showFeedback() {
+      stepReview.classList.add('hidden');
+      stepNegative.classList.remove('hidden');
+      document.getElementById('name').focus();
+    }
+
     function resetFunnel() {
-      document.querySelectorAll('input[name="rating"]').forEach(input => { input.checked = false; });
-      stepPositive.classList.add('hidden');
       stepNegative.classList.add('hidden');
-      stepRating.classList.remove('hidden');
-      document.getElementById('positiveConfirm').style.display = 'none';
-      document.getElementById('ratingDisplay').innerHTML = '';
+      stepReview.classList.remove('hidden');
 
       const form = document.getElementById('feedbackForm');
       form.reset();
-      form.style.display = '';
       document.getElementById('negForm').style.display = '';
       document.getElementById('negSuccess').style.display = 'none';
       const btn = form.querySelector('button[type="submit"]');
